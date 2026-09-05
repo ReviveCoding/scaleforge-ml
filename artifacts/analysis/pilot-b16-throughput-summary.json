@@ -1,0 +1,23 @@
+{
+  "run_id": "pilot-b16-throughput",
+  "protocol_identity": "SF-MODEL-v1",
+  "state": "PILOT",
+  "config_hash": "baffc377478c0859f558e64abe51c9f6a1d6319c7c25044134f7913d0c12ebda",
+  "model": "Qwen/Qwen2.5-1.5B-Instruct",
+  "revision": "989aa7980e4cf806f80c7fef2b1adb7bc71aa306",
+  "examples_per_config": 16,
+  "execution_elapsed_s": 55.28482346999226,
+  "measured_generation_s": 55.163606620015344,
+  "estimated_full_validation_s": 2492.7054741419433,
+  "results": {
+    "m0": {
+      "exact_match": 0.6875,
+      "parse_failures": 0
+    },
+    "m1": {
+      "exact_match": 0.5,
+      "parse_failures": 0
+    }
+  },
+  "raw_predictions": "artifacts/raw/model/pilot-b16-throughput.jsonl"
+}

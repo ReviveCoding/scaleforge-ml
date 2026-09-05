@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0.0",
+  "created_at": "2026-09-05T05:36:37.269777+00:00",
+  "protocol_identity": "SF-MODEL-v1",
+  "state": "CANDIDATE_SELECTION",
+  "run_id": "dev-baselines-sf-model-v1-b16",
+  "expected_examples_per_config": 723,
+  "counts": {
+    "m0": 723,
+    "m1": 723
+  },
+  "parse_failures": {
+    "m0": 0,
+    "m1": 0
+  },
+  "paired_statistics_m0_vs_m1": {
+    "n": 723,
+    "baseline_em": 0.7869986168741355,
+    "candidate_em": 0.6749654218533887,
+    "delta_pp": -11.20331950207469,
+    "candidate_only": 70,
+    "baseline_only": 151,
+    "both_correct": 418,
+    "both_wrong": 84,
+    "ci_low_pp": -15.214384508990317,
+    "ci_high_pp": -7.192254495159059,
+    "mcnemar_exact_p": 5.298320685581128e-08
+  },
+  "selection_rule": [
+    "higher validation exact match",
+    "lower parse-failure rate",
+    "M0 simpler prompt tie-breaker"
+  ],
+  "selected_strongest_pretrained_baseline": "m0",
+  "protected_data_used": false,
+  "claimable_as_protected_result": false
+}

@@ -1,0 +1,19 @@
+{
+  "schema_version": "1.0.0",
+  "protocol_identity": "SF-MODEL-v1",
+  "state": "CANDIDATE_SELECTION",
+  "run_id": "dev-baselines-sf-model-v1-b16",
+  "expected_rows": 1446,
+  "validated_rows": 1446,
+  "duplicate_config_example_pairs": 0,
+  "paired_examples": 723,
+  "selected_baseline": "m0",
+  "selection_rule_applied_as_declared": true,
+  "protected_data_used": false,
+  "claim_ledger_entries_added": 0,
+  "canonical_artifacts": [
+    "artifacts/model/baseline_selection.json",
+    "artifacts/warehouse/model_predictions_development.parquet"
+  ],
+  "result": "PASS"
+}

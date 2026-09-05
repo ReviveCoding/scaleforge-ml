@@ -26,5 +26,5 @@ baseline_selection:
   secondary: lower_parse_failure_rate
   tie_breaker: m0_simpler_prompt
 pilot:
-  validation_examples: 4
-  batch_size: 4
+  validation_examples: 16
+  batch_size: 16

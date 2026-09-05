@@ -1,0 +1,23 @@
+{
+  "run_id": "dev-baselines-sf-model-v1-b16",
+  "protocol_identity": "SF-MODEL-v1",
+  "state": "DEVELOPMENT",
+  "config_hash": "baffc377478c0859f558e64abe51c9f6a1d6319c7c25044134f7913d0c12ebda",
+  "model": "Qwen/Qwen2.5-1.5B-Instruct",
+  "revision": "989aa7980e4cf806f80c7fef2b1adb7bc71aa306",
+  "examples_per_config": 723,
+  "execution_elapsed_s": 2747.994647904008,
+  "measured_generation_s": 2742.979899852129,
+  "estimated_full_validation_s": 2742.979899852129,
+  "results": {
+    "m0": {
+      "exact_match": 0.7869986168741355,
+      "parse_failures": 0
+    },
+    "m1": {
+      "exact_match": 0.6749654218533887,
+      "parse_failures": 0
+    }
+  },
+  "raw_predictions": "artifacts/raw/model/dev-baselines-sf-model-v1-b16.jsonl"
+}

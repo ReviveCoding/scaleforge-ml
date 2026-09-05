@@ -1,0 +1,20 @@
+{
+  "schema_version": "1.0.0",
+  "run_id": "dev-baselines-sf-model-v1-b4",
+  "protocol_identity": "SF-MODEL-v1",
+  "state": "DEVELOPMENT",
+  "timestamp": "2026-09-05T00:30:00-04:00",
+  "classification": "controlled_runtime_candidate_rejected",
+  "completed_rows_preserved": 84,
+  "target_rows": 1446,
+  "completed_config": "m0_partial",
+  "scientific_outcomes_used_for_decision": false,
+  "observed_system_state": {
+    "batch_size": 4,
+    "gpu_utilization_sample_percent": "23-37",
+    "vram_mib": 3444,
+    "temperature_c": "74-76"
+  },
+  "reason": "Low GPU occupancy and large unused memory showed batch size 4 was not a competent evaluation runtime; continuing would waste approximately 1.7 hours.",
+  "disposition": "Interrupted with SIGINT after a flushed batch; raw rows and immutable run metadata retained. Test batch size 16 under identical scientific settings."
+}

@@ -1,0 +1,23 @@
+{
+  "schema_version": "1.0.0",
+  "protocol_identity": "SF-MODEL-v1",
+  "state": "PILOT",
+  "selected_batch_size": 16,
+  "selection_basis": "reliability and projected runtime only",
+  "quality_outcomes_used": false,
+  "batch_size_4": {
+    "projected_full_validation_s": 6429.97768248371,
+    "sampled_vram_mib": 3444,
+    "full_run_partial_rows_preserved": 84
+  },
+  "batch_size_16": {
+    "run_id": "pilot-b16-throughput",
+    "examples_per_config": 16,
+    "measured_generation_s": 55.163606620015344,
+    "projected_full_validation_s": 2492.7054741419433,
+    "sampled_peak_vram_mib": 4602,
+    "oom": false
+  },
+  "projected_runtime_reduction_percent": 61.233064,
+  "claimable_performance_result": false
+}
