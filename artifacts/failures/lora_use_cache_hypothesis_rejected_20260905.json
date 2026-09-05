@@ -1,0 +1,19 @@
+{
+  "schema_version": "1.0.0",
+  "protocol_identity": "SF-MODEL-v1",
+  "state": "PILOT",
+  "comparison": "rank-32 attention+MLP, microbatch 2, global batch 16, 20 steps",
+  "use_cache_true": {
+    "mean_step_time_s": 6.543092581199017,
+    "peak_allocated_mib": 12143.4912109375,
+    "start_temperature_c": 73
+  },
+  "use_cache_false": {
+    "mean_step_time_s": 15.844879730604589,
+    "peak_allocated_mib": 12108.4912109375,
+    "start_temperature_c": 77
+  },
+  "memory_reduction_mib": 35.0,
+  "conclusion": "Disabling KV cache is correct training semantics but did not materially reduce memory; throughput comparison is confounded by run order and clock residency and does not support a speed claim.",
+  "next_hypothesis": "Fixed 640-token padding wastes compute relative to median formatted length 206; dynamically crop only trailing padding per batch."
+}

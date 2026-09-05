@@ -1,0 +1,15 @@
+{
+  "schema_version": "1.0.0",
+  "run_id": "finalist-lora-r32-attn-mlp-378s",
+  "protocol_identity": "SF-MODEL-v1",
+  "state": "CANDIDATE_SELECTION",
+  "classification": "implementation_configuration_failure",
+  "completed_steps_preserved": 31,
+  "target_steps": 378,
+  "model_checkpoint_created": false,
+  "observed_step_time_s_late": "approximately 13-21",
+  "observed_sm_clock_mhz": "approximately 540-750 during probes",
+  "hardware_slowdown_flags": false,
+  "root_cause_hypothesis": "Causal LM retained use_cache=True during training, potentially constructing inference KV state and inflating memory/kernel gaps.",
+  "disposition": "Interrupted; preserve step telemetry; set use_cache=False and validate with a controlled 20-step pilot before restarting from step zero."
+}

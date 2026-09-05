@@ -4,6 +4,8 @@ from collections.abc import Mapping, Sequence
 from dataclasses import dataclass
 from typing import Any, Protocol, cast
 
+import torch
+
 
 class ChatTokenizer(Protocol):
     pad_token_id: int | None
@@ -90,3 +92,17 @@ def formatted_length(tokenizer: Any, *, system: str, question: str, response: st
     ]
     rendered = tokenizer.apply_chat_template(messages, tokenize=True, add_generation_prompt=False)
     return len(extract_input_ids(rendered))
+
+
+def right_padded_batch_width(attention_mask: torch.Tensor) -> int:
+    """Return the shortest safe width after removing batch-level trailing padding."""
+    if attention_mask.ndim != 2 or attention_mask.shape[1] == 0:
+        raise ValueError("attention mask must be a non-empty rank-2 tensor")
+    if bool(torch.any((attention_mask != 0) & (attention_mask != 1)).item()):
+        raise ValueError("attention mask must be binary")
+    if bool(torch.any(attention_mask[:, 1:] > attention_mask[:, :-1]).item()):
+        raise ValueError("attention mask must use right padding")
+    width = int(attention_mask.sum(dim=1).max().item())
+    if width == 0:
+        raise ValueError("an all-padding batch is invalid")
+    return width

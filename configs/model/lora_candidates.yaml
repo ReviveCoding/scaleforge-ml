@@ -19,6 +19,7 @@ runtime:
   weight_decay: 0.01
   warmup_ratio: 0.05
   gradient_checkpointing: false
+  dynamic_batch_padding: true
 candidates:
   lora_r8_lr2e4_attn:
     rank: 8

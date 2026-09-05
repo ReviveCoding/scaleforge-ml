@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.0.0",
+  "protocol_identity": "SF-MODEL-v1",
+  "state": "PILOT",
+  "selected_runtime": {
+    "micro_batch_size": 2,
+    "gradient_accumulation_steps": 8,
+    "global_batch_size": 16,
+    "use_cache": false,
+    "dynamic_batch_padding": true
+  },
+  "dynamic_run": {
+    "run_id": "pilot-lora-r32-dynamic-padding-20s",
+    "start_temperature_c": 78,
+    "mean_step_time_s": 5.858416662451054,
+    "mean_tokens_per_s": 595.4765939335654,
+    "peak_allocated_mib": 9356.8974609375
+  },
+  "fixed_no_cache_run": {
+    "run_id": "pilot-lora-r32-no-cache-20s",
+    "start_temperature_c": 77,
+    "mean_step_time_s": 15.844879730604589,
+    "mean_tokens_per_s": 220.16891635105446,
+    "peak_allocated_mib": 12108.4912109375
+  },
+  "thermally_comparable_step_time_reduction_percent": 63.026437,
+  "thermally_comparable_allocated_memory_reduction_percent": 22.724506,
+  "comparison_limitation": "Laptop clocks varied across and within runs; this is development runtime selection evidence, not a final training performance claim.",
+  "tokens_removed": "trailing padding only",
+  "examples_truncated": 0,
+  "quality_gate": {
+    "ruff_format": "PASS",
+    "ruff_check": "PASS",
+    "mypy": "PASS",
+    "pytest": "26 passed",
+    "coverage_percent": 85.59,
+    "coverage_gate_percent": 80
+  },
+  "selected": true
+}

@@ -18,7 +18,7 @@ from torch.utils.data import DataLoader, TensorDataset
 from transformers import AutoModelForCausalLM, AutoTokenizer
 
 from scaleforge.protocol import canonical_sha256
-from scaleforge.training.examples import format_response_only_example
+from scaleforge.training.examples import format_response_only_example, right_padded_batch_width
 
 
 def parse_args() -> argparse.Namespace:
@@ -145,6 +145,7 @@ def main() -> None:
         cache_dir=cache_dir,
         dtype=torch.bfloat16,
     ).to("cuda")
+    model.config.use_cache = False
     lora = LoraConfig(
         task_type=TaskType.CAUSAL_LM,
         r=int(candidate["rank"]),
@@ -197,6 +198,11 @@ def main() -> None:
             input_ids = input_ids.to("cuda", dtype=torch.long, non_blocking=True)
             attention_mask = attention_mask.to("cuda", non_blocking=True)
             labels = labels.to("cuda", dtype=torch.long, non_blocking=True)
+            if runtime["dynamic_batch_padding"]:
+                batch_width = right_padded_batch_width(attention_mask)
+                input_ids = input_ids[:, :batch_width]
+                attention_mask = attention_mask[:, :batch_width]
+                labels = labels[:, :batch_width]
             outputs = model(input_ids=input_ids, attention_mask=attention_mask, labels=labels)
             loss = outputs.loss / int(runtime["gradient_accumulation_steps"])
             loss.backward()
@@ -241,6 +247,8 @@ def main() -> None:
         "fit_examples_available": len(fit),
         "global_batch_size": runtime["global_batch_size"],
         "sequence_length": config["data"]["sequence_length"],
+        "training_use_cache": bool(model.config.use_cache),
+        "dynamic_batch_padding": bool(runtime["dynamic_batch_padding"]),
         "elapsed_s": elapsed,
         "mean_step_time_s": float(np.mean([row["step_time_s"] for row in step_records])),
         "p95_step_time_s": float(np.quantile([row["step_time_s"] for row in step_records], 0.95)),
