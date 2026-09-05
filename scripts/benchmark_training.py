@@ -23,7 +23,7 @@ from scaleforge.benchmarks.training import (
     summarize_training_steps,
     validate_training_system_config,
 )
-from scaleforge.protocol import canonical_sha256
+from scaleforge.protocol import canonical_sha256, sha256_file
 from scaleforge.training.cache import tensor_cache
 from scaleforge.training.examples import (
     right_padded_batch_width,
@@ -67,6 +67,26 @@ def start_telemetry(path: Path) -> subprocess.Popen[str] | None:
         return None
 
 
+def verify_qualification_freeze(config: dict[str, Any], config_path: Path) -> tuple[str, str]:
+    manifest_path = Path("artifacts/manifests/training_freeze.json")
+    manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+    if config_path.resolve() != Path(manifest["configuration_path"]).resolve():
+        raise ValueError("qualification config path differs from the frozen path")
+    if config["protocol_identity"] != manifest["protocol_identity"]:
+        raise ValueError("qualification protocol identity differs from the freeze manifest")
+    if canonical_sha256(config) != manifest["configuration_sha256"]:
+        raise ValueError("qualification config hash differs from the freeze manifest")
+    for path_text, expected_hash in manifest["file_sha256"].items():
+        if sha256_file(Path(path_text)) != expected_hash:
+            raise ValueError(f"frozen source hash mismatch: {path_text}")
+    if sha256_file(Path(config["data"]["path"])) != manifest["data_sha256"]:
+        raise ValueError("frozen training data hash mismatch")
+    git_sha = subprocess.check_output(["git", "rev-parse", "HEAD"], text=True).strip()
+    if git_sha != manifest["git_sha"]:
+        raise ValueError("current Git SHA differs from the training freeze manifest")
+    return str(manifest_path), sha256_file(manifest_path)
+
+
 def main() -> None:
     args = parse_args()
     raw_dir = Path("artifacts/raw/training")
@@ -81,7 +101,13 @@ def main() -> None:
         raise FileExistsError(f"run ID already exists: {args.run_id}")
     config = yaml.safe_load(args.config.read_text(encoding="utf-8"))
     workload = validate_training_system_config(config)
-    if args.state != config["state"]:
+    freeze_path = None
+    freeze_sha256 = None
+    if args.state == "QUALIFICATION":
+        if config["state"] != "FROZEN":
+            raise ValueError("qualification requires a FROZEN configuration")
+        freeze_path, freeze_sha256 = verify_qualification_freeze(config, args.config)
+    elif args.state != config["state"]:
         raise ValueError("requested state differs from the configuration state")
     if args.config_id not in config["configs"]:
         raise ValueError(f"unknown training config: {args.config_id}")
@@ -238,6 +264,8 @@ def main() -> None:
             "replicate": args.replicate,
             "run_order": args.run_order,
             "config_hash": canonical_sha256(config),
+            "freeze_manifest_path": freeze_path,
+            "freeze_manifest_sha256": freeze_sha256,
             "hypothesis": selected["hypothesis"],
             "dynamic_batch_padding": bool(selected["dynamic_batch_padding"]),
             "compile": bool(selected["compile"]),
