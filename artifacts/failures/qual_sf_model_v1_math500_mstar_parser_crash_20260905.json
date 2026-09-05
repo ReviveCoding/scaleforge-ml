@@ -1,0 +1,16 @@
+{
+  "schema_version": "1.0.0",
+  "protocol_identity": "SF-MODEL-v1",
+  "state": "QUALIFICATION",
+  "run_id": "qual-sf-model-v1-math500-mstar",
+  "failure_type": "parser_failure",
+  "protected_data_used": true,
+  "scientifically_meaningful_outcomes_exposed": true,
+  "completed_prediction_rows": 208,
+  "raw_artifact": "artifacts/raw/model/qual-sf-model-v1-math500-mstar.jsonl",
+  "exception": "decimal.InvalidOperation from Decimal.quantize(Decimal(1))",
+  "root_cause": "The frozen numeric normalizer attempted context-limited quantization of an extreme integral Decimal.",
+  "disposition": "CASE_B_OUTCOMES_EXPOSED_PROTOCOL_CONSUMED",
+  "recovery_rule": "Do not patch or resume SF-MODEL-v1. Create SF-MODEL-v2, freeze the overflow-safe parser, and rerun the complete protected comparison matrix.",
+  "partial_results_claimable": false
+}
