@@ -1,0 +1,70 @@
+{
+  "schema_version": "1.0.0",
+  "created_at": "2026-09-05T22:36:37.110641+00:00",
+  "protocol_identity": "SF-SERVE-v2",
+  "state": "CANDIDATE_SELECTION",
+  "slo_sha256": "655b9b3a305f5db0ca36342d8b751b0aaa9f4a41e18af4e61f9710381b81d6ec",
+  "input_artifact_sha256": {
+    "artifacts/raw/serving/dev-sf-serve-v2-hf-c1-r1-requests.jsonl": "d9cc4c44d709d4dd1a458e3954109aba2c9db7fb470186b88d8e53ba6d6afbfa",
+    "artifacts/analysis/serving/dev-sf-serve-v2-hf-c1-r1.json": "060e5f99929e0d092546ddffac415dd4c3d72b5e832a625fdf1c5c4710cafda7",
+    "artifacts/raw/serving/dev-sf-serve-v2-hf-c2-r1-requests.jsonl": "e2cafebccb6bc765decd424b67489183b82505253ed8f88d22c19a53df066d5d",
+    "artifacts/analysis/serving/dev-sf-serve-v2-hf-c2-r1.json": "4fd800ee758e84d6db953b0c45e6850c31804313e98467df1e873e6e6a5b7f4c",
+    "artifacts/raw/serving/dev-sf-serve-v2-hf-c4-r1-requests.jsonl": "bb823cf9ecc16d989ccccbab2193832bfb391e7bdf605e5c55b7d27938156132",
+    "artifacts/analysis/serving/dev-sf-serve-v2-hf-c4-r1.json": "f94c8d768b81406c6cb66154a206c51b44dd717b29eecc06646df6c3296bb489",
+    "artifacts/raw/serving/dev-sf-serve-v2-hf-c8-r1-requests.jsonl": "eb4459c2fe3d7a0a703f76f7d7f5a1f29ff7c99f1cb220cf7a8802535b8b67c9",
+    "artifacts/analysis/serving/dev-sf-serve-v2-hf-c8-r1.json": "fb812c3e58a846f26db169e80cf46b822b34a9d54a789d8294004472268cd8cc",
+    "artifacts/raw/serving/dev-sf-serve-v2-hf-c16-r1-requests.jsonl": "0a38ce3d129098c35358bc5ec002e7e64eb916612b4bba39651ad38e0f9fd8a8",
+    "artifacts/analysis/serving/dev-sf-serve-v2-hf-c16-r1.json": "6611b5cb9059b6ca8a20266ab7ba870d17e0f7a2bbeb0a5721ca071ffe3ad96d",
+    "artifacts/raw/serving/dev-sf-serve-v2-hf-c32-r1-requests.jsonl": "6ca8ac6797c78e1c60eb5afae93ed7b952e8f7343c53fff112f58c568ac235f9",
+    "artifacts/analysis/serving/dev-sf-serve-v2-hf-c32-r1.json": "8b2d69ce4c4616e33ef75a9a61c493c61066bdb106fe0891d6e5c08e5e81717a",
+    "artifacts/raw/serving/dev-sf-serve-v2-vllm-c1-r1-requests.jsonl": "e388918dac7a4cd5cce94810690a257a8fc1749123c492be840a12afebffd086",
+    "artifacts/analysis/serving/dev-sf-serve-v2-vllm-c1-r1.json": "07bd716f8c16e310456c49ef2a19643e2d1bd6de89ef5b7e4f5d498245b44f79",
+    "artifacts/raw/serving/dev-sf-serve-v2-vllm-c2-r1-requests.jsonl": "0531f9de3dad2e27fa35e7d62d309714d7c5f03ef5359c860b82de8e360b4a61",
+    "artifacts/analysis/serving/dev-sf-serve-v2-vllm-c2-r1.json": "f1967e0f57dd639a159c01bfc962c2e8a0f08503236993e364d6e6e7df1d66fe",
+    "artifacts/raw/serving/dev-sf-serve-v2-vllm-c4-r1-requests.jsonl": "10369373a34ee242e2b39067140598d1cb96284647b5e6d32becf90d04c301bf",
+    "artifacts/analysis/serving/dev-sf-serve-v2-vllm-c4-r1.json": "26f75adb45a18479085868c509ee2d925d1565b4a48ca899f48c7fe1a3b44c9e",
+    "artifacts/raw/serving/dev-sf-serve-v2-vllm-c8-r1-requests.jsonl": "3f309d9693bbda32e748be96e9a0125f1d6db8f6eeb20adda46eba34b4a89c7a",
+    "artifacts/analysis/serving/dev-sf-serve-v2-vllm-c8-r1.json": "54be0e679c0f661e06fe970d0ea6cb8cc767b4a2d7dbd140265576509ca869de",
+    "artifacts/raw/serving/dev-sf-serve-v2-vllm-c16-r1-requests.jsonl": "137d8768334a481a36e3bb7c925afe09b02da6476c94916ed7763fe9a6c97d22",
+    "artifacts/analysis/serving/dev-sf-serve-v2-vllm-c16-r1.json": "4ee6895004e775a2de72c91d9125315e7f175694a3d52c397def6cb7b80fce51",
+    "artifacts/raw/serving/dev-sf-serve-v2-vllm-c32-r1-requests.jsonl": "7371bfcd1420cb592c010e06fd8ca59d25ea148b19e091d1ae446cb535cfcc2d",
+    "artifacts/analysis/serving/dev-sf-serve-v2-vllm-c32-r1.json": "319c5aaf6f76ab69ce36dc493d8b62be92db0250268516f1d45eb3c244563f07"
+  },
+  "runs_expected": 12,
+  "runs_observed": 12,
+  "request_failures": 0,
+  "max_slo_compliant": {
+    "s0_hf_bf16": {
+      "concurrency": 2,
+      "throughput": 0.11771152878908873,
+      "output_tokens_per_s": 31.48047698053192,
+      "ttft_p95_ms": 80.28204269985508,
+      "tpot_p95_ms": 109.05136328461225,
+      "e2e_p95_ms": 26170.27492594943,
+      "exact_match": 0.890625
+    },
+    "s2_vllm_v1_runner": {
+      "concurrency": 2,
+      "throughput": 0.18940771289727132,
+      "output_tokens_per_s": 50.6843201731042,
+      "ttft_p95_ms": 468.2029631495423,
+      "tpot_p95_ms": 42.38363632706889,
+      "e2e_p95_ms": 18137.12342140015,
+      "exact_match": 0.921875
+    }
+  },
+  "development_throughput_gain_percent": 60.90837902262336,
+  "selection": {
+    "baseline": "s0_hf_bf16",
+    "challenger": "s2_vllm_v1_runner",
+    "selected_finalist": "s2_vllm_v1_runner",
+    "decision": "ADVANCE_TO_QUALIFICATION",
+    "s1_hf_compile": "NOT_ADVANCED_NO_SERVING_BOTTLENECK_EVIDENCE",
+    "s3_vllm_tuning": "NOT_ADVANCED_S2_ALREADY_CLEARS_FROZEN_SLO_AND_NO_SPECIFIC_TUNING_HYPOTHESIS"
+  },
+  "limitations": [
+    "Single development replicate; all numeric claims require frozen qualification.",
+    "Development points shared one server process and may include order or prefix-cache carryover.",
+    "Qualification must restart the server before every replicate and use balanced runtime order."
+  ]
+}

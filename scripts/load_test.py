@@ -13,9 +13,12 @@ from typing import Any
 
 import httpx
 import pandas as pd
+import yaml
 from transformers import AutoTokenizer
 
-from scaleforge.protocol import sha256_file
+from scaleforge.protocol import canonical_sha256, sha256_file
+
+SERVING_FREEZE = Path("artifacts/manifests/serving_freeze.json")
 
 
 def start_telemetry(path: Path) -> subprocess.Popen[str] | None:
@@ -54,6 +57,45 @@ def parse_args() -> argparse.Namespace:
         "--corpus", type=Path, default=Path("artifacts/data/serving_request_corpus.parquet")
     )
     return parser.parse_args()
+
+
+def verify_qualification_freeze(args: argparse.Namespace) -> str | None:
+    if args.state != "QUALIFICATION":
+        return None
+    if not SERVING_FREEZE.is_file():
+        raise ValueError("serving qualification freeze manifest is absent")
+    manifest = json.loads(SERVING_FREEZE.read_text(encoding="utf-8"))
+    config_path = Path(manifest["configuration_path"])
+    config = yaml.safe_load(config_path.read_text(encoding="utf-8"))
+    if (
+        manifest["state"] != "FROZEN"
+        or manifest["protocol_identity"] != args.protocol_identity
+        or config["state"] != "FROZEN"
+        or canonical_sha256(config) != manifest["configuration_sha256"]
+        or sha256_file(Path(config["corpus"]["path"])) != manifest["data_sha256"]
+        or sha256_file(Path(manifest["slo_path"])) != manifest["slo_sha256"]
+    ):
+        raise ValueError("serving qualification freeze identity or artifact mismatch")
+    for path_text, expected_hash in manifest["file_sha256"].items():
+        if sha256_file(Path(path_text)) != expected_hash:
+            raise ValueError(f"serving qualification source differs from freeze: {path_text}")
+    allowed = {
+        (row["config_id"], int(row["replicate"]), int(concurrency))
+        for row in config["qualification"]["balanced_order"]
+        for concurrency in row["concurrency"]
+    }
+    if (args.config_id, args.replicate, args.concurrency) not in allowed:
+        raise ValueError("serving qualification run is outside the frozen run matrix")
+    generation = config["generation"]
+    if (
+        args.max_new_tokens != int(generation["max_new_tokens"])
+        or args.max_model_len != int(generation["max_model_len"])
+        or args.requests != int(config["qualification"]["measured_requests_per_point"])
+        or args.warmup != int(config["qualification"]["warmup_requests_per_point"])
+        or args.timeout_s != float(config["qualification"]["request_timeout_s"])
+    ):
+        raise ValueError("serving qualification runtime controls differ from freeze")
+    return sha256_file(SERVING_FREEZE)
 
 
 async def one_request(
@@ -229,6 +271,7 @@ async def execute(
 def run_and_persist(
     args: argparse.Namespace, *, corpus: pd.DataFrame | None = None, tokenizer: Any = None
 ) -> dict[str, Any]:
+    freeze_sha256 = verify_qualification_freeze(args)
     raw_dir = Path("artifacts/raw/serving")
     analysis_dir = Path("artifacts/analysis/serving")
     raw_dir.mkdir(parents=True, exist_ok=True)
@@ -271,6 +314,8 @@ def run_and_persist(
                 telemetry.wait(timeout=5)
             except subprocess.TimeoutExpired:
                 telemetry.kill()
+    for record in records:
+        record["freeze_manifest_sha256"] = freeze_sha256
     with output.open("w", encoding="utf-8") as stream:
         for record in records:
             stream.write(json.dumps(record) + "\n")
@@ -289,6 +334,8 @@ def run_and_persist(
         "corpus_sha256": sha256_file(args.corpus),
         "max_new_tokens": args.max_new_tokens,
         "max_model_len": args.max_model_len,
+        "freeze_manifest_path": str(SERVING_FREEZE) if freeze_sha256 else None,
+        "freeze_manifest_sha256": freeze_sha256,
         "warmup_requests": len(records) - len(measured),
         "requests": len(measured),
         "successes": len(successes),

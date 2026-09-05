@@ -1,0 +1,55 @@
+protocol_identity: SF-SERVE-v2
+state: FROZEN
+model:
+  repository: Qwen/Qwen2.5-1.5B-Instruct
+  revision: 989aa7980e4cf806f80c7fef2b1adb7bc71aa306
+  dtype: bfloat16
+  selected_quality_config: m0
+tokenizer:
+  repository: Qwen/Qwen2.5-1.5B-Instruct
+  revision: 989aa7980e4cf806f80c7fef2b1adb7bc71aa306
+corpus:
+  path: artifacts/data/serving_request_corpus.parquet
+  manifest: artifacts/manifests/serving_corpus.json
+  split_role: POLICY
+generation:
+  do_sample: false
+  temperature: 0.0
+  max_new_tokens: 512
+  max_model_len: 1024
+  eos_handling: tokenizer_eos_token_id
+runtimes:
+  s0_hf_bf16:
+    engine: transformers
+    max_batch_size: 16
+    batch_wait_ms: 5.0
+  s2_vllm_v1_runner:
+    engine: vllm
+    version: 0.28.0
+    runner_compatibility: VLLM_USE_V2_MODEL_RUNNER=0
+    gpu_memory_utilization: 0.85
+    max_num_seqs: 32
+    prefix_caching: runtime_default
+qualification:
+  replicates_per_config: 3
+  measured_requests_per_point: 64
+  warmup_requests_per_point: 8
+  request_timeout_s: 180
+  fresh_server_per_replicate: true
+  preserve_all_failures: true
+  balanced_order:
+    - {config_id: s0_hf_bf16, replicate: 1, concurrency: [1, 2, 4, 8, 16, 32]}
+    - {config_id: s2_vllm_v1_runner, replicate: 1, concurrency: [32, 16, 8, 4, 2, 1]}
+    - {config_id: s2_vllm_v1_runner, replicate: 2, concurrency: [4, 8, 16, 32, 1, 2]}
+    - {config_id: s0_hf_bf16, replicate: 2, concurrency: [2, 1, 32, 16, 8, 4]}
+    - {config_id: s0_hf_bf16, replicate: 3, concurrency: [8, 4, 2, 1, 32, 16]}
+    - {config_id: s2_vllm_v1_runner, replicate: 3, concurrency: [16, 32, 1, 2, 4, 8]}
+release_criteria:
+  candidate_max_slo_compliant_throughput_gt_baseline: true
+  candidate_quality_non_regression: true
+  candidate_parse_failure_non_regression: true
+  service_error_rate_max: 0.01
+  require_all_36_points_complete: true
+  confidence_method: hierarchical_bootstrap
+  bootstrap_samples: 5000
+

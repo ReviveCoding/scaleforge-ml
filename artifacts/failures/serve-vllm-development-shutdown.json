@@ -1,0 +1,12 @@
+{
+  "schema_version": "1.0.0",
+  "created_at": "2026-09-05T22:35:01Z",
+  "run_id": "dev-sf-serve-v2-vllm-server-shutdown",
+  "protocol_identity": "SF-SERVE-v2",
+  "state": "DEVELOPMENT",
+  "config_id": "s2_vllm_v1_runner",
+  "failure_type": "worker_crash",
+  "failure_message": "After all six development grids completed, vLLM SIGINT shutdown force-killed its idle EngineCore and Python reported one leaked semaphore.",
+  "scientifically_meaningful_outcomes_exposed": true,
+  "impact": "No request outcomes were lost and all 384 measured requests had completed successfully; preserve as a lifecycle reliability limitation. Qualification must use fresh server processes and preserve shutdown logs."
+}
