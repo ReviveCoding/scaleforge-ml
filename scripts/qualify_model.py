@@ -33,11 +33,16 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("dataset", choices=("gsm8k", "math500"))
     parser.add_argument("config_id", choices=("m0", "mstar_lora_r32_attn_mlp"))
     parser.add_argument("--run-id", required=True)
+    parser.add_argument("--config", type=Path, default=CONFIG_PATH)
+    parser.add_argument("--freeze", type=Path, default=FREEZE_PATH)
     return parser.parse_args()
 
 
 def verify_freeze(config: dict[str, Any], manifest: dict[str, Any]) -> None:
-    if manifest["state"] != "FROZEN" or manifest["protocol_identity"] != "SF-MODEL-v1":
+    if (
+        manifest["state"] != "FROZEN"
+        or manifest["protocol_identity"] != config["protocol_identity"]
+    ):
         raise ValueError("invalid frozen protocol identity")
     if canonical_sha256(config) != manifest["configuration_sha256"]:
         raise ValueError("qualification configuration differs from freeze")
@@ -123,15 +128,16 @@ def main() -> None:
     summary_path = Path("artifacts/analysis/model") / f"{args.run_id}.json"
     if output_path.exists() or summary_path.exists():
         raise FileExistsError(f"protected run ID already exists: {args.run_id}")
-    config = yaml.safe_load(CONFIG_PATH.read_text(encoding="utf-8"))
-    freeze = json.loads(FREEZE_PATH.read_text(encoding="utf-8"))
+    config = yaml.safe_load(args.config.read_text(encoding="utf-8"))
+    freeze = json.loads(args.freeze.read_text(encoding="utf-8"))
     verify_freeze(config, freeze)
+    protocol_identity = str(config["protocol_identity"])
     dataset = config["datasets"][args.dataset]
     access_id = f"access-{args.run_id}"
     entry: dict[str, Any] = {
         "access_id": access_id,
         "timestamp": datetime.now(UTC).isoformat(),
-        "protocol_identity": "SF-MODEL-v1",
+        "protocol_identity": protocol_identity,
         "dataset": dataset["repository"],
         "revision": dataset["revision"],
         "requested_split": dataset["split"],
@@ -205,7 +211,7 @@ def main() -> None:
                 batch_records.append(
                     {
                         "run_id": args.run_id,
-                        "protocol_identity": "SF-MODEL-v1",
+                        "protocol_identity": protocol_identity,
                         "state": "QUALIFICATION",
                         "dataset_id": args.dataset,
                         "split_role": dataset["split_role"],
@@ -235,7 +241,7 @@ def main() -> None:
             "schema_version": "1.0.0",
             "created_at": datetime.now(UTC).isoformat(),
             "run_id": args.run_id,
-            "protocol_identity": "SF-MODEL-v1",
+            "protocol_identity": protocol_identity,
             "state": "QUALIFICATION",
             "dataset_id": args.dataset,
             "config_id": args.config_id,
@@ -245,7 +251,7 @@ def main() -> None:
             "elapsed_s": time.perf_counter() - started_run,
             "peak_allocated_mib": torch.cuda.max_memory_allocated() / 2**20,
             "peak_reserved_mib": torch.cuda.max_memory_reserved() / 2**20,
-            "freeze_manifest_sha256": sha256_file(FREEZE_PATH),
+            "freeze_manifest_sha256": sha256_file(args.freeze),
         }
         summary_path.parent.mkdir(parents=True, exist_ok=True)
         summary_path.write_text(json.dumps(summary, indent=2) + "\n", encoding="utf-8")

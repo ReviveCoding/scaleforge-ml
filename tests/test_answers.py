@@ -16,3 +16,9 @@ def test_generation_parser_precedence_and_fallback() -> None:
     assert parse_generated_answer(r"answer is \boxed{4.50}").normalized == "4.5"
     assert parse_generated_answer("work 2 final 6").normalized == "6"
     assert parse_generated_answer("none").failure == "no_numeric_answer"
+
+
+def test_numeric_normalization_handles_extreme_integral_exponent() -> None:
+    result = parse_generated_answer("reasoning\n#### 1e1000")
+    assert result.failure is None
+    assert result.normalized == "1" + ("0" * 1000)

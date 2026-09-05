@@ -24,7 +24,7 @@ def normalize_numeric_answer(value: str) -> str:
     except InvalidOperation:
         return cleaned.casefold()
     if number == number.to_integral():
-        return str(number.quantize(Decimal(1)))
+        return format(number, "f")
     return format(number.normalize(), "f")
 
 
