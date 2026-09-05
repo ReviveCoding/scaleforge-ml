@@ -1,0 +1,6 @@
+{
+  "schema_version": "1.0.0",
+  "updated_at": "2026-09-04T00:00:00-04:00",
+  "policy": "No user-facing numeric claim is permitted without a validated canonical qualification artifact.",
+  "claims": []
+}

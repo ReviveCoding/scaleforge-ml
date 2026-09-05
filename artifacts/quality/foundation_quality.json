@@ -1,0 +1,28 @@
+{
+  "schema_version": "1.0.0",
+  "captured_at": "2026-09-04T23:38:23.9413830-04:00",
+  "ruff_format": "PASS",
+  "ruff_lint": "PASS",
+  "mypy_strict": "PASS",
+  "pytest": {
+    "status": "PASS",
+    "passed": 13,
+    "failed": 0,
+    "coverage_percent": 87.35,
+    "coverage_gate_percent": 80.0,
+    "warnings": [
+      "FastAPI/Starlette test client emitted upstream httpx transition deprecations."
+    ]
+  },
+  "package_build": {
+    "status": "PASS",
+    "wheel": {
+      "path": "dist/scaleforge_ml-0.1.0-py3-none-any.whl",
+      "sha256": "5711ecb5227bb06b0db9f9871ea5c213428e98f5023e431149c87d35d129728b"
+    },
+    "sdist": {
+      "path": "dist/scaleforge_ml-0.1.0.tar.gz",
+      "sha256": "c0f48268ed98f8de21227177379c77f9b9209b935e6fc4e8e39964a8c774ad1e"
+    }
+  }
+}

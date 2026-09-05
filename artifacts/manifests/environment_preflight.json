@@ -1,0 +1,50 @@
+{
+  "schema_version": "1.0.0",
+  "captured_at": "2026-09-04T00:00:00-04:00",
+  "pre_dependency_install": true,
+  "repository": {
+    "windows_path": "C:\\Users\\bjw-0\\Downloads\\scaleforge-ml",
+    "wsl_path": "/mnt/c/Users/bjw-0/Downloads/scaleforge-ml",
+    "branch": "main",
+    "git_history": "unborn",
+    "git_user_name": "Jinwoo Bae",
+    "git_user_email": "bjw-0907@hanmail.net"
+  },
+  "windows": {
+    "os_version": "Microsoft Windows 10.0.26200",
+    "powershell": "7.6.5 Core",
+    "git": "2.54.0.windows.1",
+    "codex_cli": "0.153.2",
+    "gpu": "NVIDIA GeForce RTX 4090 Laptop GPU",
+    "nvidia_driver": "610.62",
+    "vram_total_mib": 16376,
+    "vram_free_mib_at_capture": 16048
+  },
+  "wsl": {
+    "distribution": "Ubuntu 22.04.5 LTS",
+    "wsl_version": "2.7.3.0",
+    "wsl_generation": 2,
+    "kernel": "6.6.114.1-microsoft-standard-WSL2",
+    "python": "3.10.12",
+    "cpu": "13th Gen Intel(R) Core(TM) i9-13900HX",
+    "logical_cpus": 32,
+    "ram_gib": 15,
+    "swap_gib": 4,
+    "uv": "0.12.7"
+  },
+  "gpu": {
+    "physical_cuda_gpu_count": 1,
+    "device_name": "NVIDIA GeForce RTX 4090 Laptop GPU",
+    "driver": "610.62",
+    "cuda_visibility_via_nvidia_smi": true,
+    "nvidia_smi_cuda_compatibility_is_toolkit_version": false,
+    "pytorch_installed": false,
+    "pytorch_cuda_available": null,
+    "installed_cuda_toolkit_version": null
+  },
+  "limitations": [
+    "CIM OS query was denied by the managed shell; PowerShell's platform record supplied the Windows build.",
+    "PyTorch CUDA availability is intentionally unknown before the training environment is installed.",
+    "Only one physical CUDA GPU is visible, so local numerical multi-GPU qualification is unavailable."
+  ]
+}

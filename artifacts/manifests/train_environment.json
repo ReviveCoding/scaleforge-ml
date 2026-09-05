@@ -1,0 +1,31 @@
+{
+  "schema_version": "1.0.0",
+  "captured_at": "2026-09-04T23:38:23.9413830-04:00",
+  "environment_path": ".venv",
+  "environment_role": "TRAIN_MODEL_ANALYSIS",
+  "platform": "Ubuntu 22.04.5 LTS under WSL2",
+  "python": "3.12.14",
+  "manager": "uv 0.12.7",
+  "lockfile": "uv.lock",
+  "lockfile_sha256": "127735ba0dc742ec1d2517529f0dc632a5ae07ea9fb6becfd8748047e2e6b329",
+  "exact_inventory_source": "uv.lock",
+  "selected_packages": {
+    "torch": "2.14.0+cu130",
+    "torch_cuda_runtime": "13.0",
+    "transformers": "5.16.1",
+    "datasets": "4.8.5",
+    "peft": "0.20.0",
+    "accelerate": "1.14.0",
+    "duckdb": "1.5.5",
+    "pyarrow": "21.0.0",
+    "fastapi": "0.141.1",
+    "pytest": "8.4.2"
+  },
+  "cuda_verification": {
+    "available": true,
+    "device_count": 1,
+    "device_name": "NVIDIA GeForce RTX 4090 Laptop GPU"
+  },
+  "installation_seconds": 642,
+  "installation_note": "uv could not hardlink across cache and drvfs target; repository-local copies were intentionally retained."
+}

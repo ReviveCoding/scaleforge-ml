@@ -1,0 +1,14 @@
+name: Manual self-hosted GPU smoke
+
+on:
+  workflow_dispatch:
+
+jobs:
+  cuda-smoke:
+    runs-on: [self-hosted, linux, x64, gpu]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+      - run: uv sync --frozen --extra dev --extra train
+      - run: uv run python -c "import torch; assert torch.cuda.is_available(); print(torch.cuda.get_device_name(0))"
+      - run: uv run pytest -m gpu

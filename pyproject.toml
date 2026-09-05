@@ -1,0 +1,74 @@
+[build-system]
+requires = ["hatchling>=1.27"]
+build-backend = "hatchling.build"
+
+[project]
+name = "scaleforge-ml"
+version = "0.1.0"
+description = "Evidence-first Transformer quality and systems performance engineering"
+readme = "README.md"
+requires-python = ">=3.10,<3.13"
+license = {text = "Apache-2.0"}
+authors = [{name = "Jinwoo Bae"}]
+dependencies = [
+  "duckdb>=1.1,<2",
+  "fastapi>=0.115,<1",
+  "numpy>=1.26,<3",
+  "pandas>=2.2,<3",
+  "pyarrow>=17,<22",
+  "pydantic>=2.9,<3",
+  "pyyaml>=6,<7",
+  "scipy>=1.13,<2",
+  "structlog>=24,<26",
+  "typer>=0.12,<1",
+  "uvicorn>=0.30,<1",
+]
+
+[project.optional-dependencies]
+train = [
+  "accelerate>=1.2,<2",
+  "datasets>=3.2,<5",
+  "peft>=0.14,<1",
+  "safetensors>=0.4,<1",
+  "torch>=2.6,<3",
+  "transformers>=4.48,<6",
+]
+analysis = ["matplotlib>=3.9,<4", "seaborn>=0.13,<1", "statsmodels>=0.14,<1"]
+ui = ["streamlit>=1.41,<2"]
+dev = [
+  "build>=1.2,<2",
+  "httpx>=0.28,<1",
+  "mypy>=1.14,<2",
+  "pandas-stubs>=2.2",
+  "pytest>=8.3,<9",
+  "pytest-cov>=6,<8",
+  "ruff>=0.9,<1",
+]
+
+[project.scripts]
+scaleforge = "scaleforge.cli:app"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/scaleforge", "api"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP", "SIM", "RUF"]
+
+[tool.mypy]
+python_version = "3.12"
+strict = true
+warn_unreachable = true
+
+[[tool.mypy.overrides]]
+module = ["scipy", "scipy.*"]
+ignore_missing_imports = true
+
+[tool.pytest.ini_options]
+addopts = "-ra --strict-markers --cov=scaleforge --cov-report=term-missing --cov-fail-under=80"
+testpaths = ["tests"]
+pythonpath = [".", "src"]
+markers = ["gpu: requires a CUDA GPU", "integration: requires external model or data"]
