@@ -43,3 +43,7 @@ The unit matches assignment: paired example for quality, replicate/run for train
 ## Release and claims
 
 Independent gates issue MODEL, TRAINING SYSTEM, SERVING, DISTRIBUTED, and REPRODUCIBILITY decisions. Simpler candidates win when added complexity lacks evidence. Only canonical validated artifacts may feed presentation. Every numeric claim must be `SUPPORTED`, `SUPPORTED_WITH_QUALIFIER`, or `NOT_SUPPORTED` in `CLAIM_LEDGER.json` with a prohibited stronger formulation.
+
+## Closed training identity
+
+`SF-TRAIN-v1` was frozen at Git `00080388a59f9d3ab8ef12d7ba8c62a6443cc7e1`. Its balanced order was T0, T4, T4, T0, T0, T4 with three fresh-process replicates per configuration, isolated compiler caches, two warmup steps, and ten measured synchronized steps. All six runs completed and the identity is closed to further measurement. Analysis uses replicate as the statistical unit, charges first-step/compiler overhead to 378-step projections, and reports order/temperature associations descriptively because three replicates cannot support reliable adjustment.

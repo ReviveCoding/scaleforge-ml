@@ -1,0 +1,27 @@
+{
+  "schema_version": "1.0.0",
+  "created_at": "2026-09-05T17:19:45.828894+00:00",
+  "protocol_identity": "SF-TRAIN-v1",
+  "state": "FROZEN",
+  "git_sha": "00080388a59f9d3ab8ef12d7ba8c62a6443cc7e1",
+  "configuration_path": "configs/training/qualification.yaml",
+  "configuration_sha256": "5d94bce4742b70153bf07a7a73da2a97a166409eb022f4b3794c89b9a17dd5fc",
+  "file_sha256": {
+    "configs/training/qualification.yaml": "a33bd9855f75f4d3563d80af33d84f5a7a4134b8d9cfaade257f03d3b332c6fd",
+    "scripts/benchmark_training.py": "1f5b1f9b5629602cbea71aa70fca9bceb55a217f4e54bd00f660401382d24b84",
+    "src/scaleforge/benchmarks/training.py": "428e70ed3546320ea365136b9912052e99f04f7638d0cbb4b478774fbb86c406",
+    "src/scaleforge/training/cache.py": "1798cd045da630b23b312c7040973e08d8540acd0f298f19e2ec68f17f8356e9",
+    "src/scaleforge/training/examples.py": "a766e9abc049a732e792f1527071fbed01fcfee8371aea3bec4ef56ebafe5db2",
+    "configs/model/baselines.yaml": "e9ead38e174383c01d7a00dee17d4a63da73628382ee109a5debe26b1be85381"
+  },
+  "data_sha256": "46f620066160c4a0d6548054bc8ae1a6dc8ea2e7f545adf646dfd217e1d3c10a",
+  "pilot_runtime_estimate_minutes": 40,
+  "selection_basis": {
+    "t0_unprofiled_tokens_per_s": 514.4152034404076,
+    "t1_unprofiled_tokens_per_s": 1389.9511134541733,
+    "t4_steady_tokens_per_s": 4401.73814997755,
+    "t4_cold_setup_plus_first_step_s": 405.4109575030161,
+    "estimated_compile_break_even_steps_vs_t1": 227,
+    "target_training_steps": 378
+  }
+}

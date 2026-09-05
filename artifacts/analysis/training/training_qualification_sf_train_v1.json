@@ -1,0 +1,112 @@
+{
+  "schema_version": "1.0.0",
+  "created_at": "2026-09-05T18:20:01.432452+00:00",
+  "protocol_identity": "SF-TRAIN-v1",
+  "state": "ANALYSIS",
+  "freeze_manifest_sha256": "4fd0609cc5a3b3f8470448f1710f27971a98c7ba6e9b9fb9108b7177f9e99c9f",
+  "input_artifact_sha256": {
+    "artifacts/analysis/training/qual-sf-train-v1-t0-r1-o1.json": "f7edf18f48a3f32ac80136e3990d6b71d722b9bcaaf027104d203200a106f33e",
+    "artifacts/raw/training/qual-sf-train-v1-t0-r1-o1-steps.jsonl": "1ba778d30f7035b8c0abeddb6f54805e11ea1f1fb1371c4bf40d8722d7c37509",
+    "artifacts/raw/training/qual-sf-train-v1-t0-r1-o1-gpu.csv": "f226fa3f614892a56e63e9ed4357ed443ed973cee876beae8bb2435f7ebe12f7",
+    "artifacts/analysis/training/qual-sf-train-v1-t4-r1-o2.json": "39eca06878a0db8f6051bfd970d0fa5d89bdfcb1f6c704c4f51bcb02856d4399",
+    "artifacts/raw/training/qual-sf-train-v1-t4-r1-o2-steps.jsonl": "47653d5f93d67d204bbe98ed8e77fbc19e985e9e3a58e3626bda939525bfb2c8",
+    "artifacts/raw/training/qual-sf-train-v1-t4-r1-o2-gpu.csv": "dd8e4f79d6956483669e70a90fca144c361d938c963bb3b92d652efe2ff9ff90",
+    "artifacts/analysis/training/qual-sf-train-v1-t4-r2-o3.json": "ba03161cb516d112d0095de9cbfde76020847bfee7b8d77ef64e0614c3a24b28",
+    "artifacts/raw/training/qual-sf-train-v1-t4-r2-o3-steps.jsonl": "e2da916ce570496379c0721bc5f74e2c35262b5c3afefc45804a69a5b3354eac",
+    "artifacts/raw/training/qual-sf-train-v1-t4-r2-o3-gpu.csv": "6723ceb00bdb249fea5ab2f5c0603718daf85f4d39aa8aea4b27225484c568dc",
+    "artifacts/analysis/training/qual-sf-train-v1-t0-r2-o4.json": "3dfd2f6228db4d0ecbd83453623d41a2b30aeaae9127967b60bdee9ad7b90dc3",
+    "artifacts/raw/training/qual-sf-train-v1-t0-r2-o4-steps.jsonl": "0fdb57e122ffaf99b8a551c0aee2b3497fae2c2475b69b6909b2cc555e94fe61",
+    "artifacts/raw/training/qual-sf-train-v1-t0-r2-o4-gpu.csv": "dc067c42558aa5b079a62ad0ab0619813abc7722a341b460185e04c8a30dc6d2",
+    "artifacts/analysis/training/qual-sf-train-v1-t0-r3-o5.json": "255dab8a2aca775e2dac97c0eb689e2a7cea8875865759120b4d1fa53f141bf0",
+    "artifacts/raw/training/qual-sf-train-v1-t0-r3-o5-steps.jsonl": "39726dcecdeacd43514f56671732367ac79c572859f396162f50517d11569d2c",
+    "artifacts/raw/training/qual-sf-train-v1-t0-r3-o5-gpu.csv": "5a27fbeafb398a1ed7d04f2fa72e43781baf3eb67e46a36eb466754a33373e8d",
+    "artifacts/analysis/training/qual-sf-train-v1-t4-r3-o6.json": "69e093d4c6aa22844bafe90f730a526e3a7a295aabe687d4026cad6b267f69a4",
+    "artifacts/raw/training/qual-sf-train-v1-t4-r3-o6-steps.jsonl": "78a2048af23747821b7203e311726affc72f16c6adfef9bf2a8ad762a76cd55a",
+    "artifacts/raw/training/qual-sf-train-v1-t4-r3-o6-gpu.csv": "a1ff2bdd3612ee5ae4160898e079ba3032261ae41c991a1d961d25a52dfa58ab"
+  },
+  "matrix": {
+    "runs": 6,
+    "replicates_per_config": 3,
+    "measured_steps_per_run": 10
+  },
+  "equal_measured_tokens_per_run": 35382,
+  "steady_throughput": {
+    "baseline_median": 987.8416664900908,
+    "candidate_median": 4430.59981498,
+    "median_paired_change_pct": 348.5131540080107,
+    "ci_low_pct": 157.25857707272138,
+    "ci_high_pct": 588.819517176839,
+    "pairs": 3,
+    "bootstrap_samples": 20000
+  },
+  "projected_378_step_wall_time_change": {
+    "baseline_median": 1360.7591526295819,
+    "candidate_median": 790.9809081396911,
+    "median_paired_change_pct": -41.87208613580368,
+    "ci_low_pct": -68.25634977532499,
+    "ci_high_pct": -17.28338077715639,
+    "pairs": 3,
+    "bootstrap_samples": 20000
+  },
+  "break_even_steps_by_pair": [
+    270.11409056468125,
+    173.27690656807667,
+    75.03726794165736
+  ],
+  "break_even_steps_median": 173.27690656807667,
+  "peak_allocated_mib": {
+    "baseline_median": 12108.4912109375,
+    "candidate_median": 7956.294921875,
+    "candidate_reduction_pct": 34.29160757297206
+  },
+  "thermal_and_order_diagnostics": {
+    "t0_eager_fixed": {
+      "run_order_vs_tokens_per_s": {
+        "x_column": "run_order",
+        "y_column": "tokens_per_s",
+        "coefficient": -1.0,
+        "p_value_descriptive_only": 0.0,
+        "n": 3,
+        "material_association_threshold_abs_rho_ge_0_5": true
+      },
+      "temperature_vs_tokens_per_s": {
+        "x_column": "temperature_c_mean",
+        "y_column": "tokens_per_s",
+        "coefficient": 1.0,
+        "p_value_descriptive_only": 0.0,
+        "n": 3,
+        "material_association_threshold_abs_rho_ge_0_5": true
+      }
+    },
+    "t4_dynamic_compile": {
+      "run_order_vs_tokens_per_s": {
+        "x_column": "run_order",
+        "y_column": "tokens_per_s",
+        "coefficient": 1.0,
+        "p_value_descriptive_only": 0.0,
+        "n": 3,
+        "material_association_threshold_abs_rho_ge_0_5": true
+      },
+      "temperature_vs_tokens_per_s": {
+        "x_column": "temperature_c_mean",
+        "y_column": "tokens_per_s",
+        "coefficient": 0.5,
+        "p_value_descriptive_only": 0.6666666666666666,
+        "n": 3,
+        "material_association_threshold_abs_rho_ge_0_5": true
+      }
+    }
+  },
+  "thermal_or_order_confound_material": true,
+  "telemetry_phase_note": "MEASURED_APPROX is the final elapsed_s window of each telemetry trace; sampling at 500 ms prevents exact step-boundary alignment.",
+  "release_gates": {
+    "artifact_integrity": true,
+    "useful_gain": true,
+    "memory_non_regression": true,
+    "reliability": true,
+    "adoption_target": true
+  },
+  "decision": "PASS",
+  "selected_configuration": "t4_dynamic_compile",
+  "claim_qualification": "Three paired replicates on one laptop GPU; strong run-order/thermal associations are possible with n=3 per config, so report the paired interval and cold cost."
+}

@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "updated_at": "2026-09-05T12:25:00-04:00",
+  "updated_at": "2026-09-05T14:20:00-04:00",
   "policy": "No user-facing numeric claim is permitted without a validated canonical qualification artifact.",
   "claims": [
     {
@@ -48,6 +48,52 @@
       "status": "SUPPORTED_WITH_QUALIFIER",
       "qualification": "All 500 MATH-500 examples; conservative normalized final-answer exact match, not symbolic equivalence.",
       "prohibited_stronger_claim": "Do not describe 29.80% as canonical MATH-500 accuracy or claim symbolic-equivalence evaluation."
+    },
+    {
+      "claim_id": "CLM-TRAIN-001",
+      "claim_text": "Dynamic padding plus torch.compile increased median paired steady-state training throughput by 348.51% versus the frozen BF16 eager fixed-width baseline (95% paired bootstrap interval 157.26% to 588.82%).",
+      "metric": "median_paired_steady_tokens_per_s_change_pct",
+      "baseline": "t0_eager_fixed",
+      "candidate": "t4_dynamic_compile",
+      "artifact_paths": [
+        "artifacts/analysis/training/training_qualification_sf_train_v1.json",
+        "artifacts/warehouse/training_runs.parquet",
+        "artifacts/analysis/figure_tables/F04_training_throughput.parquet"
+      ],
+      "protocol_identity": "SF-TRAIN-v1",
+      "status": "SUPPORTED_WITH_QUALIFIER",
+      "qualification": "Three paired fresh-process replicates on one RTX 4090 Laptop GPU; 35,382 identical non-padding tokens per run; synchronized BF16 steps; material run-order/thermal association and wide interval must be disclosed.",
+      "prohibited_stronger_claim": "Do not claim a hardware-independent 4.5x speedup, omit the n=3/order qualifier, or apply this result to other models or sequence distributions."
+    },
+    {
+      "claim_id": "CLM-TRAIN-002",
+      "claim_text": "For the fixed 378-step workload, T4 reduced median projected wall time including measured cold overhead by 41.87%; the median paired compile break-even was 173 steps.",
+      "metric": "projected_target_wall_time_change_pct",
+      "baseline": "t0_eager_fixed",
+      "candidate": "t4_dynamic_compile",
+      "artifact_paths": [
+        "artifacts/analysis/training/training_qualification_sf_train_v1.json",
+        "artifacts/warehouse/training_runs.parquet"
+      ],
+      "protocol_identity": "SF-TRAIN-v1",
+      "status": "SUPPORTED_WITH_QUALIFIER",
+      "qualification": "Projection from measured first-step/compiler overhead and measured steady mean step time; not a directly timed 378-step end-to-end run. Pairwise break-even range was 75 to 270 steps.",
+      "prohibited_stronger_claim": "Do not describe the projected wall-time reduction as a directly measured full-training runtime reduction."
+    },
+    {
+      "claim_id": "CLM-MEMORY-001",
+      "claim_text": "T4 reduced median peak allocated training VRAM by 34.29%, from 12,108 MiB to 7,956 MiB, under the frozen workload.",
+      "metric": "peak_allocated_vram_change_pct",
+      "baseline": "t0_eager_fixed",
+      "candidate": "t4_dynamic_compile",
+      "artifact_paths": [
+        "artifacts/analysis/training/training_qualification_sf_train_v1.json",
+        "artifacts/analysis/figure_tables/F05_training_vram.parquet"
+      ],
+      "protocol_identity": "SF-TRAIN-v1",
+      "status": "SUPPORTED_WITH_QUALIFIER",
+      "qualification": "PyTorch peak allocated memory on one RTX 4090 Laptop GPU; three runs per configuration; fixed model, data, global batch, and measured tokens.",
+      "prohibited_stronger_claim": "Do not equate allocated-memory reduction with total system VRAM or generalize to other accelerators."
     }
   ]
 }

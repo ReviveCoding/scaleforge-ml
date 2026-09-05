@@ -15,9 +15,9 @@ Statuses: `NOT_STARTED`, `IN_PROGRESS`, `PASS`, `PASS_WITH_LIMITATIONS`, `BLOCKE
 | R009 | Freeze manifest and protected-access ledger | src/scaleforge/protocol | FREEZE_MANIFEST.json; FINAL_ACCESS_LEDGER.json | PASS_WITH_LIMITATIONS |
 | R010 | Protected GSM8K/MATH-500 qualification without tuning | scripts/qualify_model.py; scripts/rescore_model_v3.py | artifacts/raw/model; artifacts/analysis/model/model_qualification_sf_model_v3.json | PASS_WITH_LIMITATIONS |
 | R011 | Paired quality statistics, transitions, slices, OOD check | src/scaleforge/analysis/quality.py | artifacts/analysis/model/model_qualification_sf_model_v3.json; reports/figures/F01-F03* | PASS |
-| R012 | Competent BF16 eager T0 and fixed systems workload | src/scaleforge/benchmarks/training.py | artifacts/raw/training | NOT_STARTED |
-| R013 | Profile-led controlled training interventions | src/scaleforge/profiling | artifacts/profiles; reports/figures/F04-F06* | NOT_STARTED |
-| R014 | Replicated synchronized training qualification with telemetry | src/scaleforge/benchmarks | artifacts/warehouse/training_runs.parquet; gpu_telemetry.parquet | NOT_STARTED |
+| R012 | Competent BF16 eager T0 and fixed systems workload | src/scaleforge/benchmarks/training.py | artifacts/raw/training; artifacts/manifests/training_freeze.json | PASS |
+| R013 | Profile-led controlled training interventions | src/scaleforge/profiling | artifacts/profiles; reports/figures/F04-F06* | PASS |
+| R014 | Replicated synchronized training qualification with telemetry | src/scaleforge/benchmarks | artifacts/analysis/training/training_qualification_sf_train_v1.json; artifacts/warehouse/training_runs.parquet; gpu_telemetry.parquet | PASS_WITH_LIMITATIONS |
 | R015 | Separate WSL vLLM installation and inventory | requirements-serve.lock; scripts/setup_serve.sh | artifacts/manifests/serve_environment.txt | NOT_STARTED |
 | R016 | HF/vLLM candidates with apples-to-apples serving corpus | src/scaleforge/serving | artifacts/raw/serving | NOT_STARTED |
 | R017 | FastAPI health/generate/metrics and structured logging | api/ | tests/test_api.py; tests/test_hf_server_api.py | PASS |
@@ -26,7 +26,7 @@ Statuses: `NOT_STARTED`, `IN_PROGRESS`, `PASS`, `PASS_WITH_LIMITATIONS`, `BLOCKE
 | R020 | Detect GPU count; real distributed metrics or honest external block | src/scaleforge/distributed | artifacts/manifests/gpu_topology.json; DISTRIBUTED_QUALIFICATION_PENDING.md | IN_PROGRESS |
 | R021 | DDP launch/test; justified FSDP2 only | scripts/distributed; tests | artifacts/raw/distributed; distributed runbook | NOT_STARTED |
 | R022 | Validated Parquet/DuckDB canonical result warehouse | src/scaleforge/warehouse | artifacts/warehouse/*.parquet; artifacts/warehouse/results.duckdb | IN_PROGRESS |
-| R023 | Correct uncertainty, failure, thermal, and order analysis | src/scaleforge/analysis | artifacts/analysis; reports/figures/F13* | NOT_STARTED |
+| R023 | Correct uncertainty, failure, thermal, and order analysis | src/scaleforge/analysis | artifacts/analysis; reports/figures/F13* | IN_PROGRESS |
 | R024 | Independent critical release gates | src/scaleforge/release | artifacts/warehouse/release_gate_results.parquet; F14* | NOT_STARTED |
 | R025 | Professional typed package and configuration | pyproject.toml; src/scaleforge; configs | dist/*; mypy/ruff evidence | IN_PROGRESS |
 | R026 | Tests and meaningful non-GPU coverage gate | tests/ | artifacts/quality/foundation_quality.json; coverage.xml | PASS |
@@ -34,6 +34,6 @@ Statuses: `NOT_STARTED`, `IN_PROGRESS`, `PASS`, `PASS_WITH_LIMITATIONS`, `BLOCKE
 | R028 | Minimal end-to-end Streamlit demonstration | ui/ | ui smoke evidence | NOT_STARTED |
 | R029 | Data/model/system/evaluation cards and final report | *.md; reports/ | FINAL_TECHNICAL_REPORT.md | NOT_STARTED |
 | R030 | Claim ledger, resume evidence, interview explanations | CLAIM_LEDGER.json; reports/ | reports/RESUME_EVIDENCE.md; artifacts/analysis/resume_claims.json; INTERVIEW_GUIDE.md | NOT_STARTED |
-| R031 | Data-supported figures and underlying tables | src/scaleforge/reporting | reports/figures; artifacts/analysis/figure_tables | NOT_STARTED |
+| R031 | Data-supported figures and underlying tables | scripts/plot_model_results.py; scripts/plot_training_results.py | reports/figures; artifacts/analysis/figure_tables | IN_PROGRESS |
 | R032 | Full independent audit and cross-check | audit tooling; root docs | FINAL_AUDIT.md | NOT_STARTED |
 | R033 | Phase checkpoint review and protected-boundary verification | scripts/checkpoint_review.py | artifacts/audit/checkpoints | IN_PROGRESS |
