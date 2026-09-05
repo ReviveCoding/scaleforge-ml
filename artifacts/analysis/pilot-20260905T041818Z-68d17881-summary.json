@@ -1,0 +1,22 @@
+{
+  "run_id": "pilot-20260905T041818Z-68d17881",
+  "protocol_identity": "SF-MODEL-v1",
+  "state": "PILOT",
+  "config_hash": "7d68ebec45a921e94492a59736acc96ee3e56a9313e92bb2ac97a19dba7c1e13",
+  "model": "Qwen/Qwen2.5-1.5B-Instruct",
+  "revision": "989aa7980e4cf806f80c7fef2b1adb7bc71aa306",
+  "examples_per_config": 4,
+  "elapsed_total_s": 35.57387376201223,
+  "estimated_full_validation_s": 6429.97768248371,
+  "results": {
+    "m0": {
+      "exact_match": 0.75,
+      "parse_failures": 0
+    },
+    "m1": {
+      "exact_match": 0.5,
+      "parse_failures": 0
+    }
+  },
+  "raw_predictions": "artifacts/raw/model/pilot-20260905T041818Z-68d17881.jsonl"
+}

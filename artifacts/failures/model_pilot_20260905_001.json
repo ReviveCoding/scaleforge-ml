@@ -1,0 +1,14 @@
+{
+  "schema_version": "1.0.0",
+  "failure_id": "model-pilot-20260905-001",
+  "timestamp": "2026-09-05T00:08:00-04:00",
+  "protocol_identity": "SF-MODEL-v1",
+  "state": "PILOT",
+  "failure_type": "invalid_generation",
+  "command": ".venv/bin/python scripts/pilot_baselines.py",
+  "model_revision": "989aa7980e4cf806f80c7fef2b1adb7bc71aa306",
+  "observed": "Transformers warned that decoder-only batched generation used right padding.",
+  "outcomes_used": false,
+  "partial_predictions_published": false,
+  "disposition": "Interrupted immediately; set and validate padding_side=left before retry."
+}

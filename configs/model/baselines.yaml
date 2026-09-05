@@ -1,0 +1,30 @@
+protocol_identity: SF-MODEL-v1
+state: DEVELOPMENT
+model:
+  repository: Qwen/Qwen2.5-1.5B-Instruct
+  revision: 989aa7980e4cf806f80c7fef2b1adb7bc71aa306
+  dtype: bfloat16
+generation:
+  do_sample: false
+  max_new_tokens: 512
+  use_cache: true
+  eos_handling: tokenizer_eos_token_id
+  pad_handling: tokenizer_pad_token_id_or_eos
+  padding_side: left
+  chat_template: tokenizer_pinned_revision
+parser: scaleforge.evaluation.answers.parse_generated_answer
+prompts:
+  m0:
+    system: You are a careful mathematics assistant. Solve the problem step by step and end with exactly "#### <numeric answer>".
+    few_shot_count: 0
+  m1:
+    system: You are a careful mathematics assistant. Follow the demonstrated format, solve the problem step by step, and end with exactly "#### <numeric answer>".
+    few_shot_count: 4
+    selection: lexicographically smallest example_id values in FIT
+baseline_selection:
+  primary: validation_exact_match
+  secondary: lower_parse_failure_rate
+  tie_breaker: m0_simpler_prompt
+pilot:
+  validation_examples: 4
+  batch_size: 4

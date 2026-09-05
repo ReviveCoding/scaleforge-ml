@@ -17,6 +17,7 @@ artifacts/data/*.parquet
 artifacts/data/*.arrow
 artifacts/data/*.jsonl
 artifacts/data/hf_cache/
+artifacts/data/source/
 !artifacts/raw/.gitkeep
 !artifacts/cache/.gitkeep
 !artifacts/models/.gitkeep

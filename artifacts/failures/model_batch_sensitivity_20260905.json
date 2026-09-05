@@ -1,0 +1,14 @@
+{
+  "schema_version": "1.0.0",
+  "protocol_identity": "SF-MODEL-v1",
+  "state": "PILOT",
+  "classification": "reproducibility_batch_shape_sensitivity",
+  "batch_size_2_run": "pilot-20260905T041255Z-15455c5f",
+  "batch_size_4_run": "pilot-20260905T041818Z-68d17881",
+  "paired_examples_per_config": 4,
+  "parsed_answers_changed": 4,
+  "parsed_answers_compared": 8,
+  "interpretation": "Greedy decoding in BF16 is deterministic only for a fixed execution shape; rounding differences changed token trajectories.",
+  "control": "Freeze batch_size=4 and use it identically for M0 and M1 selection and later frozen comparisons.",
+  "claim_boundary": "Neither pilot EM is a model-quality result."
+}

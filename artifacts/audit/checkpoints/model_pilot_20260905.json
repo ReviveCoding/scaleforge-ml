@@ -1,0 +1,19 @@
+{
+  "schema_version": "1.0.0",
+  "protocol_identity": "SF-MODEL-v1",
+  "state": "PILOT",
+  "reviewed_at": "2026-09-05T04:15:00+00:00",
+  "failed_attempt": "artifacts/failures/model_pilot_20260905_001.json",
+  "successful_run_id": "pilot-20260905T041255Z-15455c5f",
+  "primary_model_executed": true,
+  "model_revision": "989aa7980e4cf806f80c7fef2b1adb7bc71aa306",
+  "examples_per_config": 4,
+  "elapsed_total_s": 66.27749517202028,
+  "projected_full_validation_s": 11979.657252342666,
+  "projected_full_validation_hours": 3.327682570095185,
+  "parse_failures": 0,
+  "scientific_selection_authorized": false,
+  "pilot_quality_result_claimable": false,
+  "protected_data_accessed": false,
+  "next_control": "evaluate a larger batch size under identical prompt and decoding settings"
+}

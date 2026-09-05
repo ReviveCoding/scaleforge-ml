@@ -1,0 +1,23 @@
+{
+  "run_id": "pilot-resume-smoke-b4",
+  "protocol_identity": "SF-MODEL-v1",
+  "state": "PILOT",
+  "config_hash": "7d68ebec45a921e94492a59736acc96ee3e56a9313e92bb2ac97a19dba7c1e13",
+  "model": "Qwen/Qwen2.5-1.5B-Instruct",
+  "revision": "989aa7980e4cf806f80c7fef2b1adb7bc71aa306",
+  "examples_per_config": 1,
+  "execution_elapsed_s": 15.789055603992892,
+  "measured_generation_s": 15.733922774030361,
+  "estimated_full_validation_s": 11375.626165623951,
+  "results": {
+    "m0": {
+      "exact_match": 1.0,
+      "parse_failures": 0
+    },
+    "m1": {
+      "exact_match": 1.0,
+      "parse_failures": 0
+    }
+  },
+  "raw_predictions": "artifacts/raw/model/pilot-resume-smoke-b4.jsonl"
+}
