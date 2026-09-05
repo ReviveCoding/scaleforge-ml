@@ -11,3 +11,4 @@
 | D007 | 2026-09-04 | Mark local numerical distributed qualification `BLOCKED_EXTERNAL` after launch-code validation | Preflight found exactly one physical CUDA GPU | ADOPTED |
 | D008 | 2026-09-04 | Lock the training environment on Python 3.12.14 and PyTorch 2.14.0+cu130 | The resolved stack passes CUDA visibility and foundation quality gates | ADOPTED |
 | D009 | 2026-09-04 | Retain the project-local WSL environment despite drvfs copy overhead | It preserves the default workspace-local contract; timed workloads can use an approved ext4 cache only if pilots prove necessity | ADOPTED |
+| D010 | 2026-09-04 | Replace `datasets.load_dataset(split="train")` acquisition with direct immutable train-parquet retrieval | The Datasets builder materialized GSM8K test despite the requested split, violating the intended protected-data boundary at infrastructure level | ADOPTED |

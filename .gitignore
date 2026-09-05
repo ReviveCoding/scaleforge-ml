@@ -13,6 +13,10 @@ build/
 artifacts/raw/**
 artifacts/cache/**
 artifacts/models/**
+artifacts/data/*.parquet
+artifacts/data/*.arrow
+artifacts/data/*.jsonl
+artifacts/data/hf_cache/
 !artifacts/raw/.gitkeep
 !artifacts/cache/.gitkeep
 !artifacts/models/.gitkeep

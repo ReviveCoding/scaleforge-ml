@@ -1,0 +1,44 @@
+{
+  "authorized_source_split": "train",
+  "blank_questions": 0,
+  "captured_at": "2026-09-05T03:55:48.754944+00:00",
+  "combined_token_lengths": {
+    "max": 536,
+    "p50": 168,
+    "p90": 275,
+    "p95": 312,
+    "p99": 390
+  },
+  "cross_role_overlap": 0,
+  "data_fingerprint_sha256": "88699b5b035e2102ea2523632fe460cd30dd0c5470aa3102ca55c11df4cf4ec8",
+  "fingerprint_matches_frozen_expectation": true,
+  "fingerprint_reproducibility_runs": 2,
+  "duplicate_example_ids": 0,
+  "duplicate_normalized_question_rows": 0,
+  "malformed_reference_answers": 0,
+  "null_cells": 0,
+  "prompt_token_lengths": {
+    "max": 212,
+    "p50": 56,
+    "p90": 89,
+    "p95": 101,
+    "p99": 128
+  },
+  "reference_solution_token_lengths": {
+    "max": 453,
+    "p50": 111,
+    "p90": 195,
+    "p95": 229,
+    "p99": 288
+  },
+  "role_counts": {
+    "FIT": 6046,
+    "POLICY": 704,
+    "VALIDATION": 723
+  },
+  "row_count": 7473,
+  "schema_version": "1.0.0",
+  "selected_sequence_length": 640,
+  "selection_policy": "ceil(max observed * 1.10 / 128) * 128; fail above 4096",
+  "silent_truncation_allowed": false
+}

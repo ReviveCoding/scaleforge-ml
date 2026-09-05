@@ -1,0 +1,34 @@
+{
+  "schema_version": "1.0.0",
+  "stage": "DATA_DEVELOPMENT",
+  "protocol_identity": "SF-DATA-v1",
+  "reviewed_at": "2026-09-05T03:56:00+00:00",
+  "base_git_sha": "ca98b72",
+  "source_diff_inspected": true,
+  "quality_gates": {
+    "ruff_format": "PASS",
+    "ruff_lint": "PASS",
+    "mypy_strict": "PASS",
+    "pytest": "PASS",
+    "tests_passed": 15,
+    "coverage_percent": 87.60
+  },
+  "evidence_validation": {
+    "rows": 7473,
+    "fit": 6046,
+    "validation": 723,
+    "policy": 704,
+    "schema_failures": 0,
+    "cross_role_overlap": 0,
+    "fingerprint_reproduced": true,
+    "fingerprint_sha256": "88699b5b035e2102ea2523632fe460cd30dd0c5470aa3102ca55c11df4cf4ec8"
+  },
+  "protected_boundary": {
+    "status": "PASS_WITH_RECORDED_CASE_A_INCIDENT",
+    "incident": "access-20260904-gsm8k-builder-001",
+    "scientific_outcomes_exposed": false,
+    "corrective_control_verified": "direct immutable train-parquet retrieval"
+  },
+  "claims_added": 0,
+  "result": "PASS_WITH_LIMITATIONS"
+}

@@ -1,0 +1,21 @@
+{
+  "accessed_splits": [
+    "train"
+  ],
+  "captured_at": "2026-09-05T03:55:48.754944+00:00",
+  "configuration": "main",
+  "dataset": "openai/gsm8k",
+  "dataset_fingerprint_sha256": "88699b5b035e2102ea2523632fe460cd30dd0c5470aa3102ca55c11df4cf4ec8",
+  "dataset_license": "['mit']",
+  "dataset_revision": "740312add88f781978c0658806c59bc2815b9866",
+  "dataset_rows": 7473,
+  "protected_splits_accessed": [],
+  "raw_data_committed": false,
+  "schema_version": "1.0.0",
+  "split_config_hash": "61b08e5cfa7ed704bd026b041249c985db5116dd194d2b4630c66e20622b1b0b",
+  "tokenizer": "Qwen/Qwen2.5-1.5B-Instruct",
+  "tokenizer_artifact_hash": "e360e6f6266884e6667874f3a7d158ca20c4639e2e1dc80427e1edc2c69a38c7",
+  "tokenizer_class": "Qwen2Tokenizer",
+  "tokenizer_revision": "989aa7980e4cf806f80c7fef2b1adb7bc71aa306",
+  "tokenizer_vocab_size": 151665
+}

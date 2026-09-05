@@ -1,0 +1,13 @@
+dataset: openai/gsm8k
+configuration: main
+authorized_split: train
+model_tokenizer: Qwen/Qwen2.5-1.5B-Instruct
+split_seed_contract: sha256(example_id) mapped to [0, 1)
+fractions:
+  fit: 0.8
+  validation: 0.1
+  policy: 0.1
+sequence_headroom_ratio: 1.10
+sequence_rounding_multiple: 128
+maximum_allowed_sequence_length: 4096
+expected_curated_fingerprint: 88699b5b035e2102ea2523632fe460cd30dd0c5470aa3102ca55c11df4cf4ec8

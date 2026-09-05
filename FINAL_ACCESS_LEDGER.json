@@ -1,0 +1,23 @@
+{
+  "schema_version": "1.0.0",
+  "updated_at": "2026-09-04T23:48:47.7189078-04:00",
+  "entries": [
+    {
+      "access_id": "access-20260904-gsm8k-builder-001",
+      "timestamp": "2026-09-04T23:47:00-04:00",
+      "protocol_identity": "SF-DATA-v1",
+      "dataset": "openai/gsm8k",
+      "revision": "740312add88f781978c0658806c59bc2815b9866",
+      "requested_split": "train",
+      "materialized_splits": ["train", "test"],
+      "purpose": "Development data preparation; test materialization was unintended dataset-builder behavior",
+      "outcome_exposed": false,
+      "scientific_outcomes_exposed": [],
+      "project_code_selected_test_rows": false,
+      "artifacts": [
+        "artifacts/data/hf_cache/openai___gsm8k/main/0.0.0/740312add88f781978c0658806c59bc2815b9866/gsm8k-test.arrow"
+      ],
+      "disposition": "CASE_A_INFRASTRUCTURE_EXPOSURE; preserve cache and failure; switch development acquisition to the split-specific train parquet; no scientific configuration changed"
+    }
+  ]
+}

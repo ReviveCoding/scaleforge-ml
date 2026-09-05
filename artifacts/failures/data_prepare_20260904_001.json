@@ -1,0 +1,19 @@
+{
+  "schema_version": "1.0.0",
+  "failure_id": "data-prepare-20260904-001",
+  "timestamp": "2026-09-04T23:47:00-04:00",
+  "protocol_identity": "SF-DATA-v1",
+  "state": "DEVELOPMENT",
+  "failure_type": "artifact_integrity_failure",
+  "command": ".venv/bin/python scripts/prepare_data.py",
+  "requested_dataset_access": "openai/gsm8k main train",
+  "observed_unintended_access": "Hugging Face Datasets builder generated the official test Arrow cache despite split=train",
+  "scientific_outcomes_exposed": false,
+  "terminal_error": "TypeError: Object of type AddedToken is not JSON serializable",
+  "preserved_partial_artifacts": [
+    "artifacts/data/split_manifest.parquet",
+    "artifacts/data/hf_cache/openai___gsm8k/main/0.0.0/740312add88f781978c0658806c59bc2815b9866/gsm8k-train.arrow",
+    "artifacts/data/hf_cache/openai___gsm8k/main/0.0.0/740312add88f781978c0658806c59bc2815b9866/gsm8k-test.arrow"
+  ],
+  "corrective_action": "Use Hugging Face Hub split-specific train parquet retrieval and hash the fast tokenizer backend serialization."
+}

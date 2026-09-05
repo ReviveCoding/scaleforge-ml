@@ -7,9 +7,9 @@ Statuses: `NOT_STARTED`, `IN_PROGRESS`, `PASS`, `PASS_WITH_LIMITATIONS`, `BLOCKE
 | R001 | Persist specification and project controls | root control documents | PROJECT_SPEC.md; REQUIREMENTS_MATRIX.md; PROJECT_STATUS.md; DECISIONS.md; EXPERIMENT_PROTOCOL.md; RUNBOOK.md; CLAIM_LEDGER.json | PASS |
 | R002 | Record Windows/WSL/GPU preflight before dependency installation | scripts/preflight.ps1; scripts/preflight.sh | artifacts/manifests/environment_preflight.json | PASS |
 | R003 | Reproducible separated training and serving environments | pyproject.toml; uv.lock; requirements-serve.lock | artifacts/manifests/train_environment.json; serve_environment.txt | IN_PROGRESS |
-| R004 | Official model/data provenance, revisions, licenses, hashes | src/scaleforge/data | artifacts/manifests/dataset_manifest.json; model_manifest.json | NOT_STARTED |
-| R005 | Deterministic FIT/VALIDATION/POLICY partition and leakage controls | src/scaleforge/data/splits.py | artifacts/data/split_manifest.parquet | NOT_STARTED |
-| R006 | Schema, parser, quality, duplicate, token-length, sequence validation | src/scaleforge/data; src/scaleforge/evaluation | artifacts/data/data_quality.json; DATA_CARD.md | NOT_STARTED |
+| R004 | Official model/data provenance, revisions, licenses, hashes | src/scaleforge/data | artifacts/data/dataset_manifest.json; model manifest pending | IN_PROGRESS |
+| R005 | Deterministic FIT/VALIDATION/POLICY partition and leakage controls | src/scaleforge/data/splits.py | artifacts/data/split_manifest.parquet | PASS |
+| R006 | Schema, parser, quality, duplicate, token-length, sequence validation | src/scaleforge/data; src/scaleforge/evaluation | artifacts/data/data_quality.json; DATA_CARD.md | PASS |
 | R007 | Strong deterministic M0/M1 baselines and development-only selection | src/scaleforge/modeling; configs/model | artifacts/model/baseline_selection.json | NOT_STARTED |
 | R008 | Compact controlled LoRA selection and exactly one M* | src/scaleforge/training; configs/model | artifacts/model/candidate_selection.json | NOT_STARTED |
 | R009 | Freeze manifest and protected-access ledger | src/scaleforge/protocol | FREEZE_MANIFEST.json; FINAL_ACCESS_LEDGER.json | NOT_STARTED |
