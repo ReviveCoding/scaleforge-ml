@@ -1,0 +1,18 @@
+{
+  "schema_version": "1.0.0",
+  "created_at": "2026-09-05T08:58:18.511430+00:00",
+  "run_id": "diagnostic-finalist-lora-r32-378s-validation64",
+  "protocol_identity": "SF-MODEL-v1",
+  "state": "PILOT",
+  "candidate": "lora_r32_lr1e4_attn_mlp",
+  "adapter_path": "artifacts/models/lora/finalist-lora-r32-dynamic-378s-retry1",
+  "adapter_config_hash": "a58dd96e6fe0227f23b2288d3ad67b1c308b7710c5c5c28a678aa6e6097b532d",
+  "examples": 64,
+  "exact_match": 0.484375,
+  "parse_failures": 0,
+  "elapsed_s": 132.3151193369995,
+  "peak_allocated_mib": 3506.541015625,
+  "peak_reserved_mib": 3644.0,
+  "protected_data_used": false,
+  "claimable_result": false
+}

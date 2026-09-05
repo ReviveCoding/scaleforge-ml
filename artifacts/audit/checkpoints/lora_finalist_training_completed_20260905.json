@@ -1,0 +1,30 @@
+{
+  "schema_version": "1.0.0",
+  "protocol_identity": "SF-MODEL-v1",
+  "state": "CANDIDATE_SELECTION",
+  "run_id": "finalist-lora-r32-dynamic-378s-retry1",
+  "completed_steps": 378,
+  "fit_examples": 6046,
+  "protected_data_used": false,
+  "elapsed_s": 2791.649594339018,
+  "mean_step_time_s": 7.366628066622224,
+  "p95_step_time_s": 9.815457054498257,
+  "mean_non_padding_tokens_per_s": 476.2540217392735,
+  "initial_loss": 0.38867323100566864,
+  "final_loss": 0.28527470864355564,
+  "peak_allocated_mib": 11247.27685546875,
+  "peak_reserved_mib": 20752.0,
+  "reserved_memory_limitation": "PyTorch's cumulative allocator high-water mark exceeds physical VRAM and is not interpreted as simultaneous physical residency.",
+  "adapter_model_sha256": "cdaf2041f49dc055d138375298213e5d4bd2536a0d8a3d21fa986b5222bdc114",
+  "adapter_config_sha256": "1859531548ed6818bb0ce4d21c12c170fd6429f32b292d19f214f0cc89efca9e",
+  "diagnostic": {
+    "examples": 64,
+    "baseline_correct": 47,
+    "baseline_exact_match": 0.734375,
+    "candidate_correct": 31,
+    "candidate_exact_match": 0.484375,
+    "delta_percentage_points": -25.0,
+    "parse_failures": 0
+  },
+  "next_action": "Run the sole finalist once on all 723 development-validation examples before the final model-selection decision."
+}

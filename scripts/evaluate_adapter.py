@@ -23,6 +23,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("adapter", type=Path)
     parser.add_argument("--limit", type=int, default=64)
     parser.add_argument("--run-id", required=True)
+    parser.add_argument("--state", choices=("PILOT", "CANDIDATE_SELECTION"), default="PILOT")
     parser.add_argument("--data", type=Path, default=Path("artifacts/data/split_manifest.parquet"))
     parser.add_argument("--config", type=Path, default=Path("configs/model/baselines.yaml"))
     return parser.parse_args()
@@ -93,7 +94,7 @@ def main() -> None:
                 {
                     "run_id": args.run_id,
                     "protocol_identity": "SF-MODEL-v1",
-                    "state": "PILOT",
+                    "state": args.state,
                     "config_id": args.candidate,
                     "example_id": str(rows.iloc[index]["example_id"]),
                     "prediction": text,
@@ -116,7 +117,7 @@ def main() -> None:
         "created_at": datetime.now(UTC).isoformat(),
         "run_id": args.run_id,
         "protocol_identity": "SF-MODEL-v1",
-        "state": "PILOT",
+        "state": args.state,
         "candidate": args.candidate,
         "adapter_path": str(args.adapter),
         "adapter_config_hash": canonical_sha256(
