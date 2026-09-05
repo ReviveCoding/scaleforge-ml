@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0.0",
   "created_at": "2026-09-05T14:40:24.032189+00:00",
-  "protocol_identity": "SF-SERVE-v2",
+  "protocol_identity": "SF-SERVE-v1",
   "state": "DEVELOPMENT",
   "source_split_role": "POLICY",
   "protected_data_used": false,

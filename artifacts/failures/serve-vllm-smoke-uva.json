@@ -1,0 +1,15 @@
+{
+  "schema_version": "1.0.0",
+  "created_at": "2026-09-05T19:11:00Z",
+  "run_id": "serve-vllm-smoke-uva",
+  "protocol_identity": "SF-SERVE-v1",
+  "state": "DEVELOPMENT",
+  "config_id": "s2_vllm",
+  "failure_type": "service_failure",
+  "exception_type": "RuntimeError",
+  "failure_message": "vLLM 0.28.0 V2 Model Runner failed during EngineCore initialization: UVA is not available.",
+  "root_location": "vllm/v1/worker/gpu/buffer_utils.py UvaBuffer",
+  "outcomes_exposed": false,
+  "gpu_allocation_reached": false,
+  "disposition": "Preserved; inspect supported vLLM runner controls for a WSL-compatible fallback without patching vLLM or changing drivers."
+}

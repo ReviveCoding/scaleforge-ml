@@ -1,0 +1,39 @@
+{
+  "schema_version": "1.0.0",
+  "created_at": "2026-09-05T18:57:29.029269+00:00",
+  "run_id": "smoke-sf-serve-v1-hf-retry1",
+  "protocol_identity": "SF-SERVE-v1",
+  "state": "DEVELOPMENT",
+  "runtime": "s0_hf_bf16",
+  "health": {
+    "ok": true,
+    "model_ready": true
+  },
+  "models": {
+    "object": "list",
+    "data": [
+      {
+        "id": "Qwen/Qwen2.5-1.5B-Instruct",
+        "object": "model"
+      }
+    ]
+  },
+  "metrics_before": {
+    "ready": true,
+    "requests_total": 0,
+    "failures_total": 0,
+    "generated_tokens_total": 0,
+    "queue_depth": 0
+  },
+  "metrics_after": {
+    "ready": true,
+    "requests_total": 2,
+    "failures_total": 0,
+    "generated_tokens_total": 64,
+    "queue_depth": 0
+  },
+  "responses_equal": true,
+  "response_characters": 152,
+  "protected_data_used": false,
+  "status": "PASS"
+}

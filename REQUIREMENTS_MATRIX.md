@@ -6,7 +6,7 @@ Statuses: `NOT_STARTED`, `IN_PROGRESS`, `PASS`, `PASS_WITH_LIMITATIONS`, `BLOCKE
 |---|---|---|---|---|
 | R001 | Persist specification and project controls | root control documents | PROJECT_SPEC.md; REQUIREMENTS_MATRIX.md; PROJECT_STATUS.md; DECISIONS.md; EXPERIMENT_PROTOCOL.md; RUNBOOK.md; CLAIM_LEDGER.json | PASS |
 | R002 | Record Windows/WSL/GPU preflight before dependency installation | scripts/preflight.ps1; scripts/preflight.sh | artifacts/manifests/environment_preflight.json | PASS |
-| R003 | Reproducible separated training and serving environments | pyproject.toml; uv.lock; requirements-serve.lock | artifacts/manifests/train_environment.json; serve_environment.txt | IN_PROGRESS |
+| R003 | Reproducible separated training and serving environments | pyproject.toml; uv.lock; requirements-serve.lock | artifacts/manifests/train_environment.json; artifacts/manifests/serve_environment.json | PASS |
 | R004 | Official model/data provenance, revisions, licenses, hashes | src/scaleforge/data | artifacts/data/dataset_manifest.json; FREEZE_MANIFEST.json | PASS |
 | R005 | Deterministic FIT/VALIDATION/POLICY partition and leakage controls | src/scaleforge/data/splits.py | artifacts/data/split_manifest.parquet | PASS |
 | R006 | Schema, parser, quality, duplicate, token-length, sequence validation | src/scaleforge/data; src/scaleforge/evaluation | artifacts/data/data_quality.json; DATA_CARD.md | PASS |
@@ -18,11 +18,11 @@ Statuses: `NOT_STARTED`, `IN_PROGRESS`, `PASS`, `PASS_WITH_LIMITATIONS`, `BLOCKE
 | R012 | Competent BF16 eager T0 and fixed systems workload | src/scaleforge/benchmarks/training.py | artifacts/raw/training; artifacts/manifests/training_freeze.json | PASS |
 | R013 | Profile-led controlled training interventions | src/scaleforge/profiling | artifacts/profiles; reports/figures/F04-F06* | PASS |
 | R014 | Replicated synchronized training qualification with telemetry | src/scaleforge/benchmarks | artifacts/analysis/training/training_qualification_sf_train_v1.json; artifacts/warehouse/training_runs.parquet; gpu_telemetry.parquet | PASS_WITH_LIMITATIONS |
-| R015 | Separate WSL vLLM installation and inventory | requirements-serve.lock; scripts/setup_serve.sh | artifacts/manifests/serve_environment.txt | NOT_STARTED |
-| R016 | HF/vLLM candidates with apples-to-apples serving corpus | src/scaleforge/serving | artifacts/raw/serving | NOT_STARTED |
+| R015 | Separate WSL vLLM installation and inventory | requirements-serve.lock; scripts/setup_serve.sh | artifacts/manifests/serve_environment.txt; artifacts/manifests/serve_environment.json | PASS_WITH_LIMITATIONS |
+| R016 | HF/vLLM candidates with apples-to-apples serving corpus | api/hf_server.py; scripts/load_test.py; scripts/run_serving_grid.py | artifacts/raw/serving; artifacts/manifests/serving_corpus.json | IN_PROGRESS |
 | R017 | FastAPI health/generate/metrics and structured logging | api/ | tests/test_api.py; tests/test_hf_server_api.py | PASS |
-| R018 | Development SLO proposal frozen before qualification | configs/serving/slo.yaml | artifacts/serving/slo_freeze.json | NOT_STARTED |
-| R019 | Load test request telemetry, failures, tails, Pareto and knee | src/scaleforge/loadtest; analysis | artifacts/warehouse/serving_requests.parquet; reports/figures/F07-F10* | NOT_STARTED |
+| R018 | Development SLO proposal frozen before qualification | configs/serving/slo.yaml; scripts/propose_serving_slo.py | artifacts/analysis/serving/hf_baseline_slo_pilot.parquet; configs/serving/slo.yaml | PASS |
+| R019 | Load test request telemetry, failures, tails, Pareto and knee | scripts/load_test.py; scripts/run_serving_grid.py; src/scaleforge/analysis/serving.py | artifacts/warehouse/serving_requests.parquet; reports/figures/F07-F10* | IN_PROGRESS |
 | R020 | Detect GPU count; real distributed metrics or honest external block | src/scaleforge/distributed | artifacts/manifests/gpu_topology.json; DISTRIBUTED_QUALIFICATION_PENDING.md | IN_PROGRESS |
 | R021 | DDP launch/test; justified FSDP2 only | scripts/distributed; tests | artifacts/raw/distributed; distributed runbook | NOT_STARTED |
 | R022 | Validated Parquet/DuckDB canonical result warehouse | src/scaleforge/warehouse | artifacts/warehouse/*.parquet; artifacts/warehouse/results.duckdb | IN_PROGRESS |

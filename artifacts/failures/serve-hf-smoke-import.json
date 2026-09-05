@@ -1,0 +1,13 @@
+{
+  "schema_version": "1.0.0",
+  "created_at": "2026-09-05T18:52:00Z",
+  "run_id": "serve-hf-smoke-import",
+  "protocol_identity": "SF-SERVE-v1",
+  "state": "DEVELOPMENT",
+  "config_id": "s0_hf_bf16",
+  "failure_type": "artifact_integrity_failure",
+  "exception_type": "ModuleNotFoundError",
+  "failure_message": "No module named 'api' when invoking scripts/serve_hf.py before the local package was installed into .venv-serve.",
+  "outcomes_exposed": false,
+  "disposition": "Preserved; install the local project editable with --no-deps and retry the identical smoke configuration."
+}

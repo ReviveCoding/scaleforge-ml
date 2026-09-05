@@ -1,0 +1,40 @@
+protocol_identity: SF-SERVE-v2
+state: FROZEN
+created_at: '2026-09-05T21:40:51.658355+00:00'
+scope: ScaleForge experimental interactive SLO; not a Google SLO
+derivation:
+  source_runtime: s0_hf_bf16
+  source_data: development POLICY corpus only
+  candidate_results_read: false
+  selection_rule: Highest tested HF concurrency with TTFT p95 <= 500 ms, E2E p95 <=
+    30000 ms, and error rate <= 1%. The E2E bound targets complete long-form math
+    reasoning at the development-selected 512-token cap.
+  anchor_concurrency: 2
+  headroom_rule: At least the intended bound and 125% of anchor tail metrics; round
+    TTFT to 50 ms, TPOT to 5 ms, and E2E to 500 ms.
+  input_artifact_sha256:
+    artifacts/raw/serving/dev-sf-serve-v2-hf-c1-r1-requests.jsonl: d9cc4c44d709d4dd1a458e3954109aba2c9db7fb470186b88d8e53ba6d6afbfa
+    artifacts/raw/serving/dev-sf-serve-v2-hf-c2-r1-requests.jsonl: e2cafebccb6bc765decd424b67489183b82505253ed8f88d22c19a53df066d5d
+    artifacts/raw/serving/dev-sf-serve-v2-hf-c4-r1-requests.jsonl: bb823cf9ecc16d989ccccbab2193832bfb391e7bdf605e5c55b7d27938156132
+    artifacts/raw/serving/dev-sf-serve-v2-hf-c8-r1-requests.jsonl: eb4459c2fe3d7a0a703f76f7d7f5a1f29ff7c99f1cb220cf7a8802535b8b67c9
+    artifacts/raw/serving/dev-sf-serve-v2-hf-c16-r1-requests.jsonl: 0a38ce3d129098c35358bc5ec002e7e64eb916612b4bba39651ad38e0f9fd8a8
+    artifacts/raw/serving/dev-sf-serve-v2-hf-c32-r1-requests.jsonl: 6ca8ac6797c78e1c60eb5afae93ed7b952e8f7343c53fff112f58c568ac235f9
+thresholds:
+  ttft_p95_max_ms: 500.0
+  tpot_p95_max_ms: 140.0
+  e2e_p95_max_ms: 33000.0
+  error_rate_max: 0.01
+  quality_non_regression: candidate_exact_match_gte_paired_baseline
+  parse_failure_non_regression: candidate_rate_lte_paired_baseline
+qualification:
+  replicates_per_point: 3
+  warmup_requests: 8
+  measured_requests: 64
+  concurrency_grid:
+  - 1
+  - 2
+  - 4
+  - 8
+  - 16
+  - 32
+  replicate_aware_analysis: true

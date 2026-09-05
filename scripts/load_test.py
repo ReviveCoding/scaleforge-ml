@@ -15,6 +15,8 @@ import httpx
 import pandas as pd
 from transformers import AutoTokenizer
 
+from scaleforge.protocol import sha256_file
+
 
 def start_telemetry(path: Path) -> subprocess.Popen[str] | None:
     fields = "timestamp,index,name,temperature.gpu,clocks.sm,power.draw,utilization.gpu,memory.used"
@@ -38,6 +40,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--base-url", required=True)
     parser.add_argument("--model", required=True)
     parser.add_argument("--config-id", required=True)
+    parser.add_argument("--protocol-identity", required=True)
     parser.add_argument("--run-id", required=True)
     parser.add_argument("--state", choices=("DEVELOPMENT", "QUALIFICATION"), required=True)
     parser.add_argument("--replicate", type=int, required=True)
@@ -46,6 +49,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--warmup", type=int, default=8)
     parser.add_argument("--max-new-tokens", type=int, default=128)
     parser.add_argument("--timeout-s", type=float, default=180.0)
+    parser.add_argument("--max-model-len", type=int, default=1024)
     parser.add_argument(
         "--corpus", type=Path, default=Path("artifacts/data/serving_request_corpus.parquet")
     )
@@ -119,11 +123,12 @@ async def one_request(
     )
     return {
         "run_id": args.run_id,
-        "protocol_identity": "SF-SERVE-v1",
+        "protocol_identity": args.protocol_identity,
         "state": args.state,
         "request_id": attempt_id,
         "corpus_request_id": str(row.request_id),
         "example_id": str(row.example_id),
+        "reference_final_answer": str(row.normalized_final_answer),
         "config_id": args.config_id,
         "replicate": args.replicate,
         "concurrency": args.concurrency,
@@ -144,19 +149,46 @@ async def one_request(
     }
 
 
-async def execute(args: argparse.Namespace) -> tuple[list[dict[str, Any]], float]:
-    if args.concurrency < 1 or args.requests < 1 or args.warmup < 0:
-        raise ValueError("invalid load-test dimensions")
+def load_and_validate_corpus(args: argparse.Namespace) -> pd.DataFrame:
     corpus = pd.read_parquet(args.corpus)
-    required = {"request_id", "example_id", "rendered_prompt", "prompt_tokens"}
+    required = {
+        "request_id",
+        "example_id",
+        "rendered_prompt",
+        "prompt_tokens",
+        "normalized_final_answer",
+        "split_role",
+    }
     missing = required - set(corpus.columns)
     if missing or corpus.empty:
         raise ValueError(f"invalid serving corpus; missing columns: {sorted(missing)}")
-    tokenizer = AutoTokenizer.from_pretrained(
-        "Qwen/Qwen2.5-1.5B-Instruct",
-        revision="989aa7980e4cf806f80c7fef2b1adb7bc71aa306",
-        cache_dir=Path("artifacts/cache/huggingface"),
+    manifest = json.loads(
+        Path("artifacts/manifests/serving_corpus.json").read_text(encoding="utf-8")
     )
+    if (
+        manifest["path"] != str(args.corpus)
+        or manifest["corpus_sha256"] != sha256_file(args.corpus)
+        or set(corpus["split_role"]) != {"POLICY"}
+        or len(corpus) != int(manifest["rows"])
+    ):
+        raise ValueError("serving corpus differs from the POLICY-only manifest")
+    if int(corpus["prompt_tokens"].max()) + args.max_new_tokens > args.max_model_len:
+        raise ValueError("serving request would exceed the configured model context")
+    return corpus
+
+
+async def execute(
+    args: argparse.Namespace, *, corpus: pd.DataFrame | None = None, tokenizer: Any = None
+) -> tuple[list[dict[str, Any]], float]:
+    if args.concurrency < 1 or args.requests < 1 or args.warmup < 0:
+        raise ValueError("invalid load-test dimensions")
+    corpus = load_and_validate_corpus(args) if corpus is None else corpus
+    if tokenizer is None:
+        tokenizer = AutoTokenizer.from_pretrained(
+            "Qwen/Qwen2.5-1.5B-Instruct",
+            revision="989aa7980e4cf806f80c7fef2b1adb7bc71aa306",
+            cache_dir=Path("artifacts/cache/huggingface"),
+        )
     timeout = httpx.Timeout(args.timeout_s)
     limits = httpx.Limits(
         max_connections=args.concurrency, max_keepalive_connections=args.concurrency
@@ -194,8 +226,9 @@ async def execute(args: argparse.Namespace) -> tuple[list[dict[str, Any]], float
     return [*warmup_records, *measured_records], elapsed
 
 
-def main() -> None:
-    args = parse_args()
+def run_and_persist(
+    args: argparse.Namespace, *, corpus: pd.DataFrame | None = None, tokenizer: Any = None
+) -> dict[str, Any]:
     raw_dir = Path("artifacts/raw/serving")
     analysis_dir = Path("artifacts/analysis/serving")
     raw_dir.mkdir(parents=True, exist_ok=True)
@@ -208,7 +241,7 @@ def main() -> None:
     telemetry = start_telemetry(telemetry_path)
     try:
         try:
-            records, elapsed = asyncio.run(execute(args))
+            records, elapsed = asyncio.run(execute(args, corpus=corpus, tokenizer=tokenizer))
         except Exception as error:
             failure_path = Path("artifacts/failures") / f"{args.run_id}.json"
             failure_path.parent.mkdir(parents=True, exist_ok=True)
@@ -218,7 +251,7 @@ def main() -> None:
                         "schema_version": "1.0.0",
                         "created_at": datetime.now(UTC).isoformat(),
                         "run_id": args.run_id,
-                        "protocol_identity": "SF-SERVE-v1",
+                        "protocol_identity": args.protocol_identity,
                         "state": args.state,
                         "config_id": args.config_id,
                         "failure_type": "service_failure",
@@ -247,12 +280,15 @@ def main() -> None:
         "schema_version": "1.0.0",
         "created_at": datetime.now(UTC).isoformat(),
         "run_id": args.run_id,
-        "protocol_identity": "SF-SERVE-v1",
+        "protocol_identity": args.protocol_identity,
         "state": args.state,
         "status": "COMPLETED",
         "config_id": args.config_id,
         "replicate": args.replicate,
         "concurrency": args.concurrency,
+        "corpus_sha256": sha256_file(args.corpus),
+        "max_new_tokens": args.max_new_tokens,
+        "max_model_len": args.max_model_len,
         "warmup_requests": len(records) - len(measured),
         "requests": len(measured),
         "successes": len(successes),
@@ -274,6 +310,11 @@ def main() -> None:
     }
     summary_path.write_text(json.dumps(summary, indent=2) + "\n", encoding="utf-8")
     print(json.dumps(summary, indent=2))
+    return summary
+
+
+def main() -> None:
+    run_and_persist(parse_args())
 
 
 if __name__ == "__main__":

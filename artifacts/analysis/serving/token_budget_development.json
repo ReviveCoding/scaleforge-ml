@@ -1,0 +1,31 @@
+{
+  "schema_version": "1.0.0",
+  "created_at": "2026-09-05T20:28:46.515007+00:00",
+  "state": "DEVELOPMENT",
+  "source": "artifacts/raw/model/dev-baselines-sf-model-v1-b16.jsonl",
+  "source_sha256": "9473a65a177a6fd8bd2e491bba9786fd57980eb87baf2e54d0aa996ddff4e409",
+  "rows": 723,
+  "output_token_percentiles": {
+    "p50": 252.0,
+    "p90": 385.0,
+    "p95": 427.5999999999999,
+    "p99": 512.0
+  },
+  "max": 512,
+  "truncated_at_512": 10,
+  "completion_fraction_by_cap": {
+    "128": 0.017980636237897647,
+    "256": 0.5283540802213001,
+    "384": 0.8976486860304288,
+    "512": 0.9861687413554634
+  },
+  "correct_completion_fraction_by_cap": {
+    "128": 0.015214384508990318,
+    "256": 0.44813278008298757,
+    "384": 0.7219917012448133,
+    "512": 0.7856154910096819
+  },
+  "selection_rule": "Choose the smallest cap covering at least 95% of observed complete development outputs; never infer protected-set adequacy.",
+  "protected_data_used": false,
+  "selected_max_new_tokens": 512
+}

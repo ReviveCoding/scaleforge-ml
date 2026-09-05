@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.0.0",
+  "created_at": "2026-09-05T19:32:39.213849+00:00",
+  "run_id": "smoke-sf-serve-v1-vllm-v1-retry1",
+  "protocol_identity": "SF-SERVE-v1",
+  "state": "DEVELOPMENT",
+  "runtime": "s2_vllm_v1_runner",
+  "health": {
+    "ok": true,
+    "status_code": 200,
+    "content_type": null,
+    "body_characters": 0
+  },
+  "models": {
+    "object": "list",
+    "data": [
+      {
+        "id": "Qwen/Qwen2.5-1.5B-Instruct",
+        "object": "model",
+        "created": 1788636757,
+        "owned_by": "vllm",
+        "root": "Qwen/Qwen2.5-1.5B-Instruct",
+        "parent": null,
+        "max_model_len": 1024,
+        "permission": [
+          {
+            "id": "modelperm-82537e4278898636",
+            "object": "model_permission",
+            "created": 1788636757,
+            "allow_create_engine": false,
+            "allow_sampling": true,
+            "allow_logprobs": true,
+            "allow_search_indices": false,
+            "allow_view": true,
+            "allow_fine_tuning": false,
+            "organization": "*",
+            "group": null,
+            "is_blocking": false
+          }
+        ]
+      }
+    ]
+  },
+  "metrics_before": {
+    "ok": true,
+    "status_code": 200,
+    "content_type": "text/plain; version=1.0.0; charset=utf-8",
+    "body_characters": 53575
+  },
+  "metrics_after": {
+    "ok": true,
+    "status_code": 200,
+    "content_type": "text/plain; version=1.0.0; charset=utf-8",
+    "body_characters": 54974
+  },
+  "responses_equal": true,
+  "response_characters": 152,
+  "protected_data_used": false,
+  "status": "PASS"
+}
