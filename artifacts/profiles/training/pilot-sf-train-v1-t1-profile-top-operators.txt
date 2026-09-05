@@ -1,0 +1,37 @@
+-------------------------------------------------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  
+                                                   Name    Self CPU %      Self CPU   CPU total %     CPU total  CPU time avg     Self CUDA   Self CUDA %    CUDA total  CUDA time avg    # of Calls  
+-------------------------------------------------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  
+                                          ProfilerStep*         0.00%       0.000us         0.00%       0.000us       0.000us        3.187s       397.21%        3.187s        3.187s             1  
+                                               aten::mm         6.34%     305.219ms        11.22%     540.156ms      45.621us     484.814ms        60.43%     484.814ms      40.947us         11840  
+ampere_bf16_s16816gemm_bf16_256x128_ldg8_f2f_stages_...         0.00%       0.000us         0.00%       0.000us       0.000us      81.706ms        10.19%      81.706ms     238.210us           343  
+void cutlass::Kernel2<cutlass_80_tensorop_bf16_s1681...         0.00%       0.000us         0.00%       0.000us       0.000us      80.599ms        10.05%      80.599ms     279.856us           288  
+                                            aten::copy_         2.14%     103.222ms         5.46%     262.935ms      21.150us      65.749ms         8.20%      65.814ms       5.294us         12432  
+                                              aten::mul         3.11%     149.828ms         5.37%     258.579ms      26.757us      62.545ms         7.80%      62.545ms       6.472us          9664  
+ampere_bf16_s1688gemm_bf16_128x128_ldg8_f2f_stages_3...         0.00%       0.000us         0.00%       0.000us       0.000us      60.452ms         7.54%      60.452ms      76.136us           794  
+ampere_bf16_s1688gemm_bf16_128x128_ldg8_f2f_stages_3...         0.00%       0.000us         0.00%       0.000us       0.000us      37.339ms         4.65%      37.339ms     190.506us           196  
+void at::native::unrolled_elementwise_kernel<at::nat...         0.00%       0.000us         0.00%       0.000us       0.000us      32.020ms         3.99%      32.020ms       7.894us          4056  
+void cutlass::Kernel2<cutlass_80_tensorop_bf16_s1681...         0.00%       0.000us         0.00%       0.000us       0.000us      28.878ms         3.60%      28.878ms     206.272us           140  
+void cutlass::Kernel2<cutlass_80_tensorop_bf16_s1681...         0.00%       0.000us         0.00%       0.000us       0.000us      28.432ms         3.54%      28.432ms     203.083us           140  
+void at::native::vectorized_elementwise_kernel<4, at...         0.00%       0.000us         0.00%       0.000us       0.000us      26.734ms         3.33%      26.734ms       6.604us          4048  
+                                              aten::add         0.93%      44.933ms         1.62%      78.117ms      26.534us      25.885ms         3.23%      25.885ms       8.792us          2944  
+void at::native::vectorized_elementwise_kernel<4, at...         0.00%       0.000us         0.00%       0.000us       0.000us      25.255ms         3.15%      25.255ms       4.523us          5584  
+                    aten::_efficient_attention_backward         0.12%       5.935ms         0.46%      22.245ms      99.307us      22.341ms         2.78%      23.682ms     105.723us           224  
+fmha_cutlassB_bf16_aligned_64x64_k128_sm80(PyTorchMe...         0.00%       0.000us         0.00%       0.000us       0.000us      22.341ms         2.78%      22.341ms      99.738us           224  
+void at::native::unrolled_elementwise_kernel<at::nat...         0.00%       0.000us         0.00%       0.000us       0.000us      21.620ms         2.70%      21.620ms      13.788us          1568  
+                        ampere_sgemm_32x32_sliced1x4_tn         0.00%       0.000us         0.00%       0.000us       0.000us      20.506ms         2.56%      20.506ms      10.770us          1904  
+                                             aten::add_         1.30%      62.354ms         2.94%     141.677ms      19.898us      20.501ms         2.56%      20.501ms       2.879us          7120  
+ampere_bf16_s16816gemm_bf16_256x128_ldg8_f2f_stages_...         0.00%       0.000us         0.00%       0.000us       0.000us      18.936ms         2.36%      18.936ms     225.424us            84  
+                                            aten::addmm         0.50%      23.837ms         0.81%      38.795ms      57.731us      16.945ms         2.11%      16.945ms      25.215us           672  
+                       aten::_log_softmax_backward_data         0.00%     121.224us         0.00%     219.584us      27.448us      16.118ms         2.01%      16.118ms       2.015ms             8  
+void at::native::(anonymous namespace)::cunn_SoftMax...         0.00%       0.000us         0.00%       0.000us       0.000us      16.118ms         2.01%      16.118ms       2.015ms             8  
+                          aten::native_dropout_backward         0.38%      18.309ms         1.03%      49.603ms      32.126us      14.805ms         1.85%      14.805ms       9.589us          1544  
+void at::native::vectorized_elementwise_kernel<4, at...         0.00%       0.000us         0.00%       0.000us       0.000us      14.805ms         1.85%      14.805ms       9.589us          1544  
+void at::native::vectorized_elementwise_kernel<4, at...         0.00%       0.000us         0.00%       0.000us       0.000us      14.633ms         1.82%      14.633ms      21.776us           672  
+                                 ampere_sgemm_32x128_nt         0.00%       0.000us         0.00%       0.000us       0.000us      14.301ms         1.78%      14.301ms      23.216us           616  
+                        ampere_sgemm_64x32_sliced1x4_nt         0.00%       0.000us         0.00%       0.000us       0.000us      13.875ms         1.73%      13.875ms      15.486us           896  
+                                 ampere_sgemm_128x32_tn         0.00%       0.000us         0.00%       0.000us       0.000us      13.528ms         1.69%      13.528ms      21.962us           616  
+                                     aten::_log_softmax         0.00%     208.963us         0.01%     325.025us      40.628us      12.802ms         1.60%      12.802ms       1.600ms             8  
+-------------------------------------------------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  
+Self CPU time total: 4.814s
+Self CUDA time total: 802.219ms
+

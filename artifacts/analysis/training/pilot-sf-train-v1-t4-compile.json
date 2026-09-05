@@ -1,0 +1,32 @@
+{
+  "schema_version": "1.0.0",
+  "created_at": "2026-09-05T16:59:30.062972+00:00",
+  "started_at": "2026-09-05T16:51:59.732724+00:00",
+  "run_id": "pilot-sf-train-v1-t4-compile",
+  "protocol_identity": "SF-TRAIN-v1",
+  "state": "DEVELOPMENT",
+  "status": "COMPLETED",
+  "config_id": "t4_dynamic_compile",
+  "replicate": 0,
+  "run_order": 3,
+  "config_hash": "bce3802dea5ff585b1d85ddf79c096eb5a726ee3cd1686ca1ecfe603a0bfe4ca",
+  "hypothesis": "Compilation may reduce steady-state launch overhead after dynamic padding.",
+  "dynamic_batch_padding": true,
+  "compile": true,
+  "compile_prepare_s": 23.015432028012583,
+  "warmup_step_times_s": [
+    382.3955254750035,
+    0.8608489600010216
+  ],
+  "measured_steps": 10.0,
+  "tokens": 35382.0,
+  "elapsed_s": 8.038188278005691,
+  "tokens_per_s": 4401.73814997755,
+  "step_p50_s": 0.8025840030022664,
+  "step_p95_s": 0.8712711559899616,
+  "peak_allocated_mib": 7956.294921875,
+  "peak_reserved_mib": 8986.0,
+  "telemetry_path": "artifacts/raw/training/pilot-sf-train-v1-t4-compile-gpu.csv",
+  "profile_trace": null,
+  "protected_data_used": false
+}

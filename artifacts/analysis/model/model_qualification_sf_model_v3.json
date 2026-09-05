@@ -1,0 +1,116 @@
+{
+  "schema_version": "1.0.0",
+  "created_at": "2026-09-05T16:22:34.232665+00:00",
+  "protocol_identity": "SF-MODEL-v3",
+  "state": "ANALYSIS",
+  "integrity": {
+    "complete_expected_rows": true,
+    "exact_pairing": true,
+    "duplicate_run_or_example_ids": false,
+    "failed_generations_counted_as_incorrect": true
+  },
+  "gsm8k_final": {
+    "paired_statistics_m0_vs_mstar": {
+      "n": 1319,
+      "baseline_em": 0.6664139499620925,
+      "candidate_em": 0.4943138741470811,
+      "delta_pp": -17.210007581501138,
+      "candidate_only": 116,
+      "baseline_only": 343,
+      "both_correct": 536,
+      "both_wrong": 324,
+      "ci_low_pp": -20.242608036391204,
+      "ci_high_pp": -14.177407126611069,
+      "mcnemar_exact_p": 4.228976616024645e-27
+    },
+    "parse_failures": {
+      "m0": 0,
+      "mstar_lora_r32_attn_mlp": 0
+    }
+  },
+  "math500_ood": {
+    "paired_statistics_m0_vs_mstar": {
+      "n": 500,
+      "baseline_em": 0.298,
+      "candidate_em": 0.188,
+      "delta_pp": -11.0,
+      "candidate_only": 26,
+      "baseline_only": 81,
+      "both_correct": 68,
+      "both_wrong": 325,
+      "ci_low_pp": -14.799999999999999,
+      "ci_high_pp": -7.000000000000001,
+      "mcnemar_exact_p": 9.37450912824547e-08
+    },
+    "parse_failures": {
+      "m0": 1,
+      "mstar_lora_r32_attn_mlp": 0
+    }
+  },
+  "release_gates": {
+    "artifact_integrity": "PASS",
+    "parse_failure_rate": "PASS",
+    "challenger_primary_quality": "BLOCK",
+    "challenger_ood_non_regression": "BLOCK"
+  },
+  "decision": {
+    "challenger": "REJECT",
+    "selected_model_configuration": "m0",
+    "rationale": "Adopt the LoRA challenger only when GSM8K delta is positive with a paired 95% bootstrap interval above zero and MATH-500 is non-regressive."
+  },
+  "reproducibility_diagnostic_v2_vs_v3": {
+    "gsm8k": {
+      "m0": {
+        "available": true,
+        "paired_examples": 1319,
+        "prediction_text_equal": 1319,
+        "parsed_answer_equal": 1294,
+        "correctness_equal": 1300,
+        "v1_exact_match": 0.6520090978013646,
+        "v2_exact_match": 0.6664139499620925,
+        "absolute_delta_pp": 1.4404852160727843,
+        "interpretation": "V3 freezes and reuses V2 generation text; any parsed or correctness change is evaluator-only."
+      },
+      "mstar_lora_r32_attn_mlp": {
+        "available": true,
+        "paired_examples": 1319,
+        "prediction_text_equal": 1319,
+        "parsed_answer_equal": 1319,
+        "correctness_equal": 1319,
+        "v1_exact_match": 0.4943138741470811,
+        "v2_exact_match": 0.4943138741470811,
+        "absolute_delta_pp": 0.0,
+        "interpretation": "V3 freezes and reuses V2 generation text; any parsed or correctness change is evaluator-only."
+      }
+    },
+    "math500": {
+      "m0": {
+        "available": true,
+        "paired_examples": 500,
+        "prediction_text_equal": 500,
+        "parsed_answer_equal": 500,
+        "correctness_equal": 500,
+        "v1_exact_match": 0.298,
+        "v2_exact_match": 0.298,
+        "absolute_delta_pp": 0.0,
+        "interpretation": "V3 freezes and reuses V2 generation text; any parsed or correctness change is evaluator-only."
+      },
+      "mstar_lora_r32_attn_mlp": {
+        "available": true,
+        "paired_examples": 500,
+        "prediction_text_equal": 500,
+        "parsed_answer_equal": 500,
+        "correctness_equal": 500,
+        "v1_exact_match": 0.188,
+        "v2_exact_match": 0.188,
+        "absolute_delta_pp": 0.0,
+        "interpretation": "V3 freezes and reuses V2 generation text; any parsed or correctness change is evaluator-only."
+      }
+    }
+  },
+  "limitations": [
+    "MATH-500 exact match uses a deliberately conservative numeric final-answer parser, not symbolic equivalence.",
+    "Structural slice associations are descriptive and not causal.",
+    "V3 is an evaluator-only rescore of frozen V2 outputs, not an independent generation replicate."
+  ]
+}

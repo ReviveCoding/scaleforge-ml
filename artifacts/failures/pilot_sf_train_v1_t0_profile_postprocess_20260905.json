@@ -1,0 +1,17 @@
+{
+  "schema_version": "1.0.0",
+  "created_at": "2026-09-05T12:38:00-04:00",
+  "protocol_identity": "SF-TRAIN-v1",
+  "state": "DEVELOPMENT",
+  "run_id": "pilot-sf-train-v1-t0-profile-retry1",
+  "config_id": "t0_eager_fixed",
+  "failure_type": "artifact_integrity_failure",
+  "failure_message": "Post-measurement torch.profiler key_averages aggregation reached approximately 82% of WSL RAM after a complete 891 MB trace export and was stopped to prevent host OOM.",
+  "scientific_outcomes_exposed": true,
+  "completed_steps": 12,
+  "measured_steps": 10,
+  "trace_path": "artifacts/profiles/training/pilot-sf-train-v1-t0-profile-retry1-trace.json",
+  "trace_committed": false,
+  "disposition": "MEASUREMENTS_AND_TRACE_PRESERVED_POSTPROCESS_REJECTED",
+  "corrective_action": "Reduce profiler active steps from 3 to 1 and disable record_shapes/profile_memory; use profiled runs only for diagnostics."
+}

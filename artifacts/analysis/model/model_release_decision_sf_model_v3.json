@@ -1,0 +1,21 @@
+{
+  "schema_version": "1.0.0",
+  "protocol_identity": "SF-MODEL-v3",
+  "state": "CLOSED",
+  "subsystem": "MODEL",
+  "decision": "PASS",
+  "selected_configuration": "m0",
+  "challenger_decision": "BLOCK",
+  "gates": {
+    "artifact_integrity": "PASS",
+    "parse_failure_rate": "PASS",
+    "challenger_primary_quality": "BLOCK",
+    "challenger_ood_non_regression": "BLOCK"
+  },
+  "rationale": "The retained M0 baseline passed integrity and parser gates. The LoRA challenger was rejected because it regressed significantly on both GSM8K FINAL and MATH-500 OOD.",
+  "limitations": [
+    "V3 is an evaluator-only rescore of complete hash-frozen V2 generation outputs.",
+    "MATH-500 uses conservative final-answer exact matching rather than symbolic equivalence.",
+    "Historical V1/V2 parser failures are preserved and prevent an unqualified reproducibility PASS."
+  ]
+}

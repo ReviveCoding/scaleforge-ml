@@ -1,0 +1,16 @@
+{
+  "schema_version": "1.0.0",
+  "created_at": "2026-09-05T16:22:26.068669+00:00",
+  "run_id": "qual-sf-model-v3-math500-m0",
+  "protocol_identity": "SF-MODEL-v3",
+  "state": "QUALIFICATION",
+  "method": "frozen_prediction_rescore",
+  "dataset_id": "math500",
+  "config_id": "m0",
+  "examples": 500,
+  "exact_match": 0.298,
+  "parse_failures": 1,
+  "source_run_id": "qual-sf-model-v2-math500-m0",
+  "source_prediction_sha256": "f9404b0b7a33cc61485a75297cbde50f773874c168dbd5feaf26aedf05226c74",
+  "freeze_manifest_sha256": "d78b2a955e8cd6d319a289465c9017eb9ea7f402d7898a6aa3b332453a345f82"
+}

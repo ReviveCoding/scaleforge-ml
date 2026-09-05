@@ -11,6 +11,7 @@ dist/
 build/
 *.egg-info/
 artifacts/raw/**
+artifacts/profiles/**/*.json
 artifacts/cache/**
 artifacts/models/**
 artifacts/data/*.parquet

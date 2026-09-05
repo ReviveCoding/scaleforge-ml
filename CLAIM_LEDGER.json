@@ -1,6 +1,53 @@
 {
   "schema_version": "1.0.0",
-  "updated_at": "2026-09-04T00:00:00-04:00",
+  "updated_at": "2026-09-05T12:25:00-04:00",
   "policy": "No user-facing numeric claim is permitted without a validated canonical qualification artifact.",
-  "claims": []
+  "claims": [
+    {
+      "claim_id": "CLM-MODEL-001",
+      "claim_text": "The retained frozen M0 baseline achieved 66.64% exact match on all 1,319 protected GSM8K test examples.",
+      "metric": "exact_match",
+      "baseline": null,
+      "candidate": "m0",
+      "artifact_paths": [
+        "artifacts/analysis/model/model_qualification_sf_model_v3.json",
+        "artifacts/warehouse/model_predictions.parquet"
+      ],
+      "protocol_identity": "SF-MODEL-v3",
+      "status": "SUPPORTED_WITH_QUALIFIER",
+      "qualification": "Evaluator-only v3 rescore of complete, hash-frozen v2 generation outputs; exact normalized numeric/string matching.",
+      "prohibited_stronger_claim": "Do not call this symbolic mathematical accuracy or claim independent v3 model generation."
+    },
+    {
+      "claim_id": "CLM-MODEL-002",
+      "claim_text": "A rank-32 attention+MLP LoRA challenger was rejected after protected GSM8K exact match fell from 66.64% to 49.43% (-17.21 pp; paired 95% bootstrap CI [-20.24, -14.18]).",
+      "metric": "paired_exact_match_delta_pp",
+      "baseline": "m0",
+      "candidate": "mstar_lora_r32_attn_mlp",
+      "artifact_paths": [
+        "artifacts/analysis/model/model_qualification_sf_model_v3.json",
+        "artifacts/analysis/figure_tables/F01_model_quality.parquet",
+        "artifacts/analysis/figure_tables/F02_quality_transitions.parquet"
+      ],
+      "protocol_identity": "SF-MODEL-v3",
+      "status": "SUPPORTED_WITH_QUALIFIER",
+      "qualification": "All 1,319 paired GSM8K test examples; 20,000 paired bootstrap resamples; deterministic frozen v2 outputs re-scored by the corrected v3 parser.",
+      "prohibited_stronger_claim": "Do not claim LoRA improved quality or that the result generalizes beyond this checkpoint, prompt, parser, and dataset."
+    },
+    {
+      "claim_id": "CLM-MODEL-003",
+      "claim_text": "The LoRA challenger also regressed on the complete MATH-500 OOD check: 18.80% versus 29.80% for M0 (-11.00 pp; paired 95% CI [-14.80, -7.00]).",
+      "metric": "paired_ood_exact_match_delta_pp",
+      "baseline": "m0",
+      "candidate": "mstar_lora_r32_attn_mlp",
+      "artifact_paths": [
+        "artifacts/analysis/model/model_qualification_sf_model_v3.json",
+        "artifacts/analysis/figure_tables/F01_model_quality.parquet"
+      ],
+      "protocol_identity": "SF-MODEL-v3",
+      "status": "SUPPORTED_WITH_QUALIFIER",
+      "qualification": "All 500 MATH-500 examples; conservative normalized final-answer exact match, not symbolic equivalence.",
+      "prohibited_stronger_claim": "Do not describe 29.80% as canonical MATH-500 accuracy or claim symbolic-equivalence evaluation."
+    }
+  ]
 }

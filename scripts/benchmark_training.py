@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import random
 import subprocess
 import time
@@ -23,11 +24,11 @@ from scaleforge.benchmarks.training import (
     validate_training_system_config,
 )
 from scaleforge.protocol import canonical_sha256
+from scaleforge.training.cache import tensor_cache
 from scaleforge.training.examples import (
     right_padded_batch_width,
     validate_right_padded_attention_mask,
 )
-from scripts.train_lora import tensor_cache
 
 
 def parse_args() -> argparse.Namespace:
@@ -138,7 +139,11 @@ def main() -> None:
         model = get_peft_model(model, lora)
         model.train()
         compile_prepare_started = time.perf_counter()
+        compile_cache_path = None
         if selected["compile"]:
+            compile_cache_path = Path("artifacts/cache/torchinductor") / args.run_id
+            compile_cache_path.mkdir(parents=True, exist_ok=False)
+            os.environ["TORCHINDUCTOR_CACHE_DIR"] = str(compile_cache_path.resolve())
             model = torch.compile(model, dynamic=bool(selected["dynamic_batch_padding"]))
         compile_prepare_s = time.perf_counter() - compile_prepare_started
         optimizer = torch.optim.AdamW(
@@ -155,8 +160,8 @@ def main() -> None:
             profiler = profile(
                 activities=[ProfilerActivity.CPU, ProfilerActivity.CUDA],
                 schedule=schedule(wait=0, warmup=workload.warmup_steps, active=active, repeat=1),
-                record_shapes=True,
-                profile_memory=True,
+                record_shapes=False,
+                profile_memory=False,
                 with_stack=False,
             )
             profiler.start()
@@ -236,6 +241,7 @@ def main() -> None:
             "hypothesis": selected["hypothesis"],
             "dynamic_batch_padding": bool(selected["dynamic_batch_padding"]),
             "compile": bool(selected["compile"]),
+            "compile_cache_path": str(compile_cache_path) if compile_cache_path else None,
             "compile_prepare_s": compile_prepare_s,
             "warmup_step_times_s": [row["step_time_s"] for row in records if not row["measured"]],
             **summarize_training_steps(records),

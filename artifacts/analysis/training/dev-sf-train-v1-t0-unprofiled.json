@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.0.0",
+  "created_at": "2026-09-05T17:05:55.640110+00:00",
+  "started_at": "2026-09-05T17:03:37.270022+00:00",
+  "run_id": "dev-sf-train-v1-t0-unprofiled",
+  "protocol_identity": "SF-TRAIN-v1",
+  "state": "DEVELOPMENT",
+  "status": "COMPLETED",
+  "config_id": "t0_eager_fixed",
+  "replicate": 0,
+  "run_order": 4,
+  "config_hash": "bce3802dea5ff585b1d85ddf79c096eb5a726ee3cd1686ca1ecfe603a0bfe4ca",
+  "hypothesis": "Competent fixed-width BF16 eager baseline.",
+  "dynamic_batch_padding": false,
+  "compile": false,
+  "compile_cache_path": null,
+  "compile_prepare_s": 1.9529834389686584e-06,
+  "warmup_step_times_s": [
+    16.218812450999394,
+    2.4139045129995793
+  ],
+  "measured_steps": 10.0,
+  "tokens": 35382.0,
+  "elapsed_s": 68.78101534201414,
+  "tokens_per_s": 514.4152034404076,
+  "step_p50_s": 7.23637241301185,
+  "step_p95_s": 10.3317334059524,
+  "peak_allocated_mib": 12108.4912109375,
+  "peak_reserved_mib": 12776.0,
+  "telemetry_path": "artifacts/raw/training/dev-sf-train-v1-t0-unprofiled-gpu.csv",
+  "profile_trace": null,
+  "protected_data_used": false
+}

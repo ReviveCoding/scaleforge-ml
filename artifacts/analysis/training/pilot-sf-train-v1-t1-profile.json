@@ -1,0 +1,32 @@
+{
+  "schema_version": "1.0.0",
+  "created_at": "2026-09-05T16:48:43.033831+00:00",
+  "started_at": "2026-09-05T16:46:33.801025+00:00",
+  "run_id": "pilot-sf-train-v1-t1-profile",
+  "protocol_identity": "SF-TRAIN-v1",
+  "state": "DEVELOPMENT",
+  "status": "COMPLETED",
+  "config_id": "t1_dynamic_padding",
+  "replicate": 0,
+  "run_order": 2,
+  "config_hash": "bce3802dea5ff585b1d85ddf79c096eb5a726ee3cd1686ca1ecfe603a0bfe4ca",
+  "hypothesis": "Removing only trailing pad tokens reduces wasted attention and MLP work.",
+  "dynamic_batch_padding": true,
+  "compile": false,
+  "compile_prepare_s": 1.1649972293525934e-06,
+  "warmup_step_times_s": [
+    10.396956262993626,
+    2.5930936469812877
+  ],
+  "measured_steps": 10.0,
+  "tokens": 35382.0,
+  "elapsed_s": 27.954250442009652,
+  "tokens_per_s": 1265.7109183950047,
+  "step_p50_s": 2.737878770509269,
+  "step_p95_s": 3.408211682888213,
+  "peak_allocated_mib": 9699.99462890625,
+  "peak_reserved_mib": 10240.0,
+  "telemetry_path": "artifacts/raw/training/pilot-sf-train-v1-t1-profile-gpu.csv",
+  "profile_trace": "artifacts/profiles/training/pilot-sf-train-v1-t1-profile-trace.json",
+  "protected_data_used": false
+}

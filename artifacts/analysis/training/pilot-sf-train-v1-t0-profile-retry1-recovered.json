@@ -1,0 +1,20 @@
+{
+  "schema_version": "1.0.0",
+  "run_id": "pilot-sf-train-v1-t0-profile-retry1",
+  "protocol_identity": "SF-TRAIN-v1",
+  "state": "DEVELOPMENT",
+  "status": "COMPLETED_MEASUREMENT_POSTPROCESS_CANCELLED",
+  "config_id": "t0_eager_fixed",
+  "replicate": 0,
+  "run_order": 1,
+  "measured_steps": 10,
+  "tokens": 35382,
+  "elapsed_s": 49.770977741951356,
+  "tokens_per_s": 710.8962211561486,
+  "step_p50_s": 4.808732502002385,
+  "step_p95_s": 6.724888928991277,
+  "peak_allocated_mib": 12108.4912109375,
+  "peak_reserved_mib": 12776.0,
+  "measurement_qualification": "DIAGNOSTIC_ONLY_PROFILER_OVERHEAD_PRESENT",
+  "protected_data_used": false
+}

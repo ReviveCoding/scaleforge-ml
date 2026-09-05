@@ -1,0 +1,13 @@
+{
+  "schema_version": "1.0.0",
+  "created_at": "2026-09-05T12:28:00-04:00",
+  "protocol_identity": "SF-TRAIN-v1",
+  "state": "DEVELOPMENT",
+  "run_id": "pilot-sf-train-v1-t0-profile",
+  "config_id": "t0_eager_fixed",
+  "failure_type": "artifact_integrity_failure",
+  "failure_message": "ModuleNotFoundError: No module named 'scripts' before GPU/model/data access",
+  "scientific_outcomes_exposed": false,
+  "partial_steps": 0,
+  "disposition": "IMPLEMENTATION_DEFECT_FIXED_RETRY_NEW_RUN_ID"
+}

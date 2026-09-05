@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.0.0",
+  "created_at": "2026-09-05T17:11:12.722702+00:00",
+  "started_at": "2026-09-05T17:09:40.280957+00:00",
+  "run_id": "dev-sf-train-v1-t1-unprofiled",
+  "protocol_identity": "SF-TRAIN-v1",
+  "state": "DEVELOPMENT",
+  "status": "COMPLETED",
+  "config_id": "t1_dynamic_padding",
+  "replicate": 0,
+  "run_order": 5,
+  "config_hash": "bce3802dea5ff585b1d85ddf79c096eb5a726ee3cd1686ca1ecfe603a0bfe4ca",
+  "hypothesis": "Removing only trailing pad tokens reduces wasted attention and MLP work.",
+  "dynamic_batch_padding": true,
+  "compile": false,
+  "compile_cache_path": null,
+  "compile_prepare_s": 9.999785106629133e-07,
+  "warmup_step_times_s": [
+    10.250088557018898,
+    1.9496762810158543
+  ],
+  "measured_steps": 10.0,
+  "tokens": 35382.0,
+  "elapsed_s": 25.455571535945637,
+  "tokens_per_s": 1389.9511134541733,
+  "step_p50_s": 2.4281991555035347,
+  "step_p95_s": 3.423965719096304,
+  "peak_allocated_mib": 9699.99462890625,
+  "peak_reserved_mib": 10240.0,
+  "telemetry_path": "artifacts/raw/training/dev-sf-train-v1-t1-unprofiled-gpu.csv",
+  "profile_trace": null,
+  "protected_data_used": false
+}

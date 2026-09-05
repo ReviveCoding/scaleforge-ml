@@ -1,5 +1,5 @@
 protocol_identity: SF-TRAIN-v1
-state: DEVELOPMENT
+state: FROZEN
 model:
   repository: Qwen/Qwen2.5-1.5B-Instruct
   revision: 989aa7980e4cf806f80c7fef2b1adb7bc71aa306
@@ -16,6 +16,7 @@ workload:
   warmup_steps: 2
   measured_steps: 10
   examples: 192
+  target_training_steps: 378
   seed: 20260905
   learning_rate: 0.0001
   weight_decay: 0.01
@@ -28,16 +29,20 @@ configs:
     dynamic_batch_padding: false
     compile: false
     hypothesis: Competent fixed-width BF16 eager baseline.
-  t1_dynamic_padding:
-    dynamic_batch_padding: true
-    compile: false
-    hypothesis: Removing only trailing pad tokens reduces wasted attention and MLP work.
   t4_dynamic_compile:
     dynamic_batch_padding: true
     compile: true
-    hypothesis: Compilation may reduce steady-state launch overhead after dynamic padding.
+    hypothesis: Dynamic padding plus compilation may amortize cold cost over the 378-step target.
 qualification:
-  replicates: 3
-  balanced_order: [t0_eager_fixed, t1_dynamic_padding, t1_dynamic_padding, t0_eager_fixed, t0_eager_fixed, t1_dynamic_padding]
-  profiler_active_steps: 1
+  replicates_per_config: 3
+  balanced_order: [t0_eager_fixed, t4_dynamic_compile, t4_dynamic_compile, t0_eager_fixed, t0_eager_fixed, t4_dynamic_compile]
+  fresh_compiler_cache_per_run: true
   preserve_failures: true
+  report_compile_cold_and_steady_separately: true
+release_criteria:
+  artifact_integrity: complete_six_run_matrix_with_unique_ids
+  useful_gain: paired_median_tokens_per_s_improvement_gt_0
+  memory_non_regression: candidate_peak_allocated_mib_lte_baseline
+  reliability: zero_failed_measured_runs
+  adoption_target: projected_378_step_wall_time_including_cold_compile_lt_eager_baseline
+

@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "updated_at": "2026-09-05T15:57:30.269984+00:00",
+  "updated_at": "2026-09-05T16:22:26.255241+00:00",
   "entries": [
     {
       "access_id": "access-20260904-gsm8k-builder-001",
@@ -184,6 +184,50 @@
         "artifacts/raw/model/qual-sf-model-v2-math500-mstar.jsonl",
         "artifacts/analysis/model/qual-sf-model-v2-math500-mstar.json",
         "artifacts/data/protected/math500-6e4ed1a2a79af7d8630a6b768ec859cb5af4d3be.jsonl"
+      ],
+      "disposition": "QUALIFICATION_COMPLETED"
+    },
+    {
+      "access_id": "access-rescore-sf-model-v3-gsm8k",
+      "timestamp": "2026-09-05T16:22:25.613817+00:00",
+      "protocol_identity": "SF-MODEL-v3",
+      "dataset": "openai/gsm8k",
+      "revision": "740312add88f781978c0658806c59bc2815b9866",
+      "requested_split": "test",
+      "purpose": "Protected evaluator-only rescore of frozen SF-MODEL-v2 predictions",
+      "run_id": "rescore-sf-model-v3-gsm8k",
+      "outcome_exposed": true,
+      "scientific_outcomes_exposed": [
+        "rescored_predictions",
+        "aggregate_exact_match"
+      ],
+      "artifacts": [
+        "artifacts/raw/model/qual-sf-model-v3-gsm8k-m0.jsonl",
+        "artifacts/analysis/model/qual-sf-model-v3-gsm8k-m0.json",
+        "artifacts/raw/model/qual-sf-model-v3-gsm8k-mstar.jsonl",
+        "artifacts/analysis/model/qual-sf-model-v3-gsm8k-mstar.json"
+      ],
+      "disposition": "QUALIFICATION_COMPLETED"
+    },
+    {
+      "access_id": "access-rescore-sf-model-v3-math500",
+      "timestamp": "2026-09-05T16:22:25.994257+00:00",
+      "protocol_identity": "SF-MODEL-v3",
+      "dataset": "HuggingFaceH4/MATH-500",
+      "revision": "6e4ed1a2a79af7d8630a6b768ec859cb5af4d3be",
+      "requested_split": "test",
+      "purpose": "Protected evaluator-only rescore of frozen SF-MODEL-v2 predictions",
+      "run_id": "rescore-sf-model-v3-math500",
+      "outcome_exposed": true,
+      "scientific_outcomes_exposed": [
+        "rescored_predictions",
+        "aggregate_exact_match"
+      ],
+      "artifacts": [
+        "artifacts/raw/model/qual-sf-model-v3-math500-m0.jsonl",
+        "artifacts/analysis/model/qual-sf-model-v3-math500-m0.json",
+        "artifacts/raw/model/qual-sf-model-v3-math500-mstar.jsonl",
+        "artifacts/analysis/model/qual-sf-model-v3-math500-mstar.json"
       ],
       "disposition": "QUALIFICATION_COMPLETED"
     }

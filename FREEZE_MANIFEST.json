@@ -1,96 +1,34 @@
 {
   "schema_version": "1.0.0",
-  "created_at": "2026-09-05T12:38:06.009699+00:00",
-  "protocol_identity": "SF-MODEL-v2",
+  "created_at": "2026-09-05T16:21:49.051879+00:00",
+  "protocol_identity": "SF-MODEL-v3",
   "state": "FROZEN",
-  "git_sha": "3d3e9276bff6522d6caf0d7d9bb3fc09a4a1d7b9",
-  "git_tree": "eb9bdbb1146cc018e522be612b2c973b1dfd5591",
-  "configuration_sha256": "794a98eae18fe4e2af458c46e4bc4809ae1ae435b146b95c71c5e4fe1cda284a",
+  "git_sha": "553796b07574c906bedd84045fe3d3fa3e2b4cf4",
+  "configuration_path": "configs/model/qualification_v3.yaml",
+  "configuration_sha256": "aff04ebeb77e704c54cba1a4edd46ba0130809374f4621bf3470be80a79aa492",
   "file_sha256": {
-    "configs/model/baselines.yaml": "e9ead38e174383c01d7a00dee17d4a63da73628382ee109a5debe26b1be85381",
-    "configs/model/lora_candidates.yaml": "db3b7c903a70a51419305372c7be336ad00ce67fe145bc65494a56c5d8eeaa06",
-    "src/scaleforge/evaluation/answers.py": "555e5905a5809ee5025b1f30ec79206a2b597e7058cebb6be9f6e79f09595eb0",
-    "src/scaleforge/modeling/prompts.py": "a63c1a61c3c1c38843507c81db9f80c547e6838c24d6206d345196c644ed9bef",
+    "configs/model/qualification_v3.yaml": "39567087e667bce69147bee69d95ef83164d36adbd32655f5fa128818a44def6",
+    "src/scaleforge/evaluation/answers.py": "78121a5f7e639a70b5a84d47ead9e0799d8ecce3ca48868e937c4f1e53cc9cd3",
     "src/scaleforge/analysis/quality.py": "3367093043812298aa9bbe90907366c1ea98bfdca53a13074d583a59e37c2bea",
     "src/scaleforge/protocol.py": "b1e5441cf3b7fd32c005afee0becc06c8f92806d87453e3a59617e10cb196fce",
-    "scripts/qualify_model.py": "ae8bdc883a2049bb1ecbd6f07a917efe90188fed9c7057554c43b17a1d9699d6",
-    "configs/model/qualification_v2.yaml": "35c32385fd5714ca01363f190bdcb6896a6f24db93eacf5c99fb4bc7b0e73056",
-    "artifacts/models/lora/finalist-lora-r32-dynamic-378s-retry1/adapter_config.json": "1859531548ed6818bb0ce4d21c12c170fd6429f32b292d19f214f0cc89efca9e",
-    "artifacts/models/lora/finalist-lora-r32-dynamic-378s-retry1/adapter_model.safetensors": "cdaf2041f49dc055d138375298213e5d4bd2536a0d8a3d21fa986b5222bdc114",
-    "artifacts/models/lora/finalist-lora-r32-dynamic-378s-retry1/tokenizer.json": "3fd169731d2cbde95e10bf356d66d5997fd885dd8dbb6fb4684da3f23b2585d8",
-    "artifacts/models/lora/finalist-lora-r32-dynamic-378s-retry1/tokenizer_config.json": "04b1682c59acbd057f4c9072297faa73d56fc9de053094c659cdb4c464f58f86",
-    "artifacts/models/lora/finalist-lora-r32-dynamic-378s-retry1/chat_template.jinja": "cd8e9439f0570856fd70470bf8889ebd8b5d1107207f67a5efb46e342330527f"
+    "scripts/rescore_model_v3.py": "987ce07427c95e257d67a03d65ad233c4ce7fae111821430cbf4272197d05af4",
+    "scripts/analyze_model_qualification.py": "7a819bb46cabf104c7aef8f9d9f81c0a0fdb415b6bfc3905b829e4605f6d2a96"
   },
-  "model": {
-    "repository": "Qwen/Qwen2.5-1.5B-Instruct",
-    "revision": "989aa7980e4cf806f80c7fef2b1adb7bc71aa306",
-    "dtype": "bfloat16"
+  "source_prediction_sha256": {
+    "artifacts/raw/model/qual-sf-model-v2-gsm8k-m0.jsonl": "6995ed5fec541062c72ceca188e3960b4d96cb3f0831004be193e65a679d0577",
+    "artifacts/raw/model/qual-sf-model-v2-gsm8k-mstar.jsonl": "983d875bc77671eddd92d226e570d9401d7b3041f22752a378afc09d4c9d831b",
+    "artifacts/raw/model/qual-sf-model-v2-math500-m0.jsonl": "f9404b0b7a33cc61485a75297cbde50f773874c168dbd5feaf26aedf05226c74",
+    "artifacts/raw/model/qual-sf-model-v2-math500-mstar.jsonl": "8785beecd80c94ba8559aaed145cf29c71024307ff4c7287a725702a5f88d73e"
   },
-  "tokenizer": {
-    "repository": "Qwen/Qwen2.5-1.5B-Instruct",
-    "revision": "989aa7980e4cf806f80c7fef2b1adb7bc71aa306"
+  "protected_dataset_sha256": {
+    "gsm8k": "ee7b8da9e381df27b9e3f7758a159ab2bdaa4dbaa910546cbbc47e0cb44e4f59",
+    "math500": "35dc41080a3680858b27fa7e0533d2d547825316fc5dafe5d316f4ccc5a06132"
   },
-  "baseline": {
-    "config_id": "m0",
-    "prompt_id": "m0"
+  "source_config_hashes_by_id": {
+    "gsm8k:m0": "6995ed5fec541062c72ceca188e3960b4d96cb3f0831004be193e65a679d0577",
+    "gsm8k:mstar_lora_r32_attn_mlp": "983d875bc77671eddd92d226e570d9401d7b3041f22752a378afc09d4c9d831b",
+    "math500:m0": "f9404b0b7a33cc61485a75297cbde50f773874c168dbd5feaf26aedf05226c74",
+    "math500:mstar_lora_r32_attn_mlp": "8785beecd80c94ba8559aaed145cf29c71024307ff4c7287a725702a5f88d73e"
   },
-  "challenger": {
-    "config_id": "mstar_lora_r32_attn_mlp",
-    "adapter_path": "artifacts/models/lora/finalist-lora-r32-dynamic-378s-retry1"
-  },
-  "datasets": {
-    "gsm8k": {
-      "repository": "openai/gsm8k",
-      "configuration": "main",
-      "revision": "740312add88f781978c0658806c59bc2815b9866",
-      "split": "test",
-      "expected_rows": 1319,
-      "split_role": "FINAL",
-      "source_url": "https://huggingface.co/datasets/openai/gsm8k/resolve/740312add88f781978c0658806c59bc2815b9866/main/test-00000-of-00001.parquet",
-      "license": "MIT"
-    },
-    "math500": {
-      "repository": "HuggingFaceH4/MATH-500",
-      "configuration": "default",
-      "revision": "6e4ed1a2a79af7d8630a6b768ec859cb5af4d3be",
-      "split": "test",
-      "expected_rows": 500,
-      "split_role": "OOD",
-      "source_url": "https://huggingface.co/datasets/HuggingFaceH4/MATH-500/resolve/6e4ed1a2a79af7d8630a6b768ec859cb5af4d3be/test.jsonl",
-      "license": "repository_metadata_unspecified_upstream_prm800k_mit"
-    }
-  },
-  "generation": {
-    "do_sample": false,
-    "max_new_tokens": 512,
-    "use_cache": true,
-    "eos_handling": "tokenizer_eos_token_id",
-    "pad_handling": "tokenizer_pad_token_id_or_eos",
-    "padding_side": "left",
-    "batch_size": 16
-  },
-  "parser": {
-    "generated": "scaleforge.evaluation.answers.parse_generated_answer",
-    "gsm8k_reference": "scaleforge.evaluation.answers.parse_reference_gsm8k",
-    "math500_reference": "scaleforge.evaluation.answers.normalize_numeric_answer"
-  },
-  "release_criteria": {
-    "primary_metric": "exact_match",
-    "bootstrap_samples": 20000,
-    "bootstrap_seed": 20260905,
-    "candidate_adoption": "delta_pp_gt_0_and_paired_ci_low_pp_gt_0",
-    "parse_failure_rate_max": 0.01,
-    "math500_candidate_non_regression": {
-      "delta_pp_min": -2.0,
-      "paired_ci_low_pp_min": -5.0
-    },
-    "integrity": {
-      "complete_expected_rows": true,
-      "exact_pairing": true,
-      "duplicate_run_or_example_ids": "forbidden",
-      "failed_generations_count_as_incorrect": true
-    },
-    "interpretation": "Protected results are confirmatory and cannot trigger tuning under SF-MODEL-v2."
-  },
-  "protected_outcomes_observed": false
+  "freeze_scope": "Corrected answer parser, immutable complete v2 prediction texts, raw protected references, paired statistics, and unchanged release criteria."
 }
