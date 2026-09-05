@@ -23,8 +23,10 @@ def normalize_numeric_answer(value: str) -> str:
         number = Decimal(cleaned)
     except InvalidOperation:
         return cleaned.casefold()
+    if number == 0:
+        return "0"
     if number == number.to_integral():
-        return format(number, "f")
+        return format(number.to_integral_value(), "f")
     return format(number.normalize(), "f")
 
 

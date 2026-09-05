@@ -14,18 +14,18 @@ Statuses: `NOT_STARTED`, `IN_PROGRESS`, `PASS`, `PASS_WITH_LIMITATIONS`, `BLOCKE
 | R008 | Compact controlled LoRA selection and exactly one M* | src/scaleforge/training; configs/model | artifacts/model/candidate_selection.json; artifacts/warehouse/model_predictions_candidate_selection.parquet | PASS |
 | R009 | Freeze manifest and protected-access ledger | src/scaleforge/protocol | FREEZE_MANIFEST.json; FINAL_ACCESS_LEDGER.json | PASS_WITH_LIMITATIONS |
 | R010 | Protected GSM8K/MATH-500 qualification without tuning | scripts/qualify_model.py | artifacts/raw/model; artifacts/analysis/model_quality.parquet | IN_PROGRESS |
-| R011 | Paired quality statistics, transitions, slices, OOD check | src/scaleforge/analysis/quality.py | artifacts/analysis/model_statistics.json; reports/figures/F01-F03* | NOT_STARTED |
+| R011 | Paired quality statistics, transitions, slices, OOD check | src/scaleforge/analysis/quality.py | artifacts/analysis/model/model_qualification_sf_model_v2.json; reports/figures/F01-F03* | IN_PROGRESS |
 | R012 | Competent BF16 eager T0 and fixed systems workload | src/scaleforge/benchmarks/training.py | artifacts/raw/training | NOT_STARTED |
 | R013 | Profile-led controlled training interventions | src/scaleforge/profiling | artifacts/profiles; reports/figures/F04-F06* | NOT_STARTED |
 | R014 | Replicated synchronized training qualification with telemetry | src/scaleforge/benchmarks | artifacts/warehouse/training_runs.parquet; gpu_telemetry.parquet | NOT_STARTED |
 | R015 | Separate WSL vLLM installation and inventory | requirements-serve.lock; scripts/setup_serve.sh | artifacts/manifests/serve_environment.txt | NOT_STARTED |
 | R016 | HF/vLLM candidates with apples-to-apples serving corpus | src/scaleforge/serving | artifacts/raw/serving | NOT_STARTED |
-| R017 | FastAPI health/generate/metrics and structured logging | api/ | tests/test_api.py; artifacts/logs | IN_PROGRESS |
+| R017 | FastAPI health/generate/metrics and structured logging | api/ | tests/test_api.py; tests/test_hf_server_api.py | PASS |
 | R018 | Development SLO proposal frozen before qualification | configs/serving/slo.yaml | artifacts/serving/slo_freeze.json | NOT_STARTED |
 | R019 | Load test request telemetry, failures, tails, Pareto and knee | src/scaleforge/loadtest; analysis | artifacts/warehouse/serving_requests.parquet; reports/figures/F07-F10* | NOT_STARTED |
 | R020 | Detect GPU count; real distributed metrics or honest external block | src/scaleforge/distributed | artifacts/manifests/gpu_topology.json; DISTRIBUTED_QUALIFICATION_PENDING.md | IN_PROGRESS |
 | R021 | DDP launch/test; justified FSDP2 only | scripts/distributed; tests | artifacts/raw/distributed; distributed runbook | NOT_STARTED |
-| R022 | Validated Parquet/DuckDB canonical result warehouse | src/scaleforge/warehouse | artifacts/warehouse/*.parquet; artifacts/warehouse/results.duckdb | NOT_STARTED |
+| R022 | Validated Parquet/DuckDB canonical result warehouse | src/scaleforge/warehouse | artifacts/warehouse/*.parquet; artifacts/warehouse/results.duckdb | IN_PROGRESS |
 | R023 | Correct uncertainty, failure, thermal, and order analysis | src/scaleforge/analysis | artifacts/analysis; reports/figures/F13* | NOT_STARTED |
 | R024 | Independent critical release gates | src/scaleforge/release | artifacts/warehouse/release_gate_results.parquet; F14* | NOT_STARTED |
 | R025 | Professional typed package and configuration | pyproject.toml; src/scaleforge; configs | dist/*; mypy/ruff evidence | IN_PROGRESS |

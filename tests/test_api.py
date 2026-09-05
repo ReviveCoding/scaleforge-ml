@@ -11,8 +11,10 @@ def test_health_and_generation() -> None:
     )
     assert response.status_code == 200
     assert response.json()["text"] == "hello:3"
+    assert client.get("/metrics").json()["successes_total"] == 1
 
 
 def test_unavailable_generator_returns_503() -> None:
     client = TestClient(create_app())
     assert client.post("/generate", json={"request_id": "r", "prompt": "x"}).status_code == 503
+    assert client.get("/metrics").json()["failures_total"] == 1

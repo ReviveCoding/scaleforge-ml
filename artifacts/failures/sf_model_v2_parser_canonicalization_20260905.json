@@ -1,0 +1,14 @@
+{
+  "schema_version": "1.0.0",
+  "protocol_identity": "SF-MODEL-v2",
+  "state": "ANALYSIS",
+  "failure_type": "artifact_integrity_failure",
+  "protected_data_used": true,
+  "scientifically_meaningful_outcomes_exposed": true,
+  "complete_prediction_rows": 3638,
+  "root_cause": "Overflow-safe integral formatting used format(number, 'f'), which preserved trailing decimal zeros such as 28.00 instead of canonicalizing to 28.",
+  "observed_effect": "Generation text was byte-for-byte identical across v1/v2, but 25 M0 GSM8K parsed answers and 19 correctness outcomes changed under the flawed v2 parser.",
+  "disposition": "CASE_C_NEW_PROTOCOL_IDENTITY_REQUIRED",
+  "recovery_rule": "Do not reinterpret SF-MODEL-v2 in place. Freeze v2 raw prediction hashes and corrected evaluator under SF-MODEL-v3, then re-score exact immutable outputs against raw references.",
+  "v2_results_claimable_as_final": false
+}

@@ -1,0 +1,16 @@
+{
+  "schema_version": "1.0.0",
+  "created_at": "2026-09-05T15:57:30.229863+00:00",
+  "run_id": "qual-sf-model-v2-math500-mstar",
+  "protocol_identity": "SF-MODEL-v2",
+  "state": "QUALIFICATION",
+  "dataset_id": "math500",
+  "config_id": "mstar_lora_r32_attn_mlp",
+  "examples": 500,
+  "exact_match": 0.188,
+  "parse_failures": 0,
+  "elapsed_s": 2316.72257819699,
+  "peak_allocated_mib": 5120.48876953125,
+  "peak_reserved_mib": 7132.0,
+  "freeze_manifest_sha256": "210cd80c10342720515adb2880121f6d053cbd0bb82b6d2ade989b1aeacac048"
+}

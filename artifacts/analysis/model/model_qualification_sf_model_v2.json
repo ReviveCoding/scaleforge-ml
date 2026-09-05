@@ -1,0 +1,116 @@
+{
+  "schema_version": "1.0.0",
+  "created_at": "2026-09-05T15:58:10.772899+00:00",
+  "protocol_identity": "SF-MODEL-v2",
+  "state": "ANALYSIS",
+  "integrity": {
+    "complete_expected_rows": true,
+    "exact_pairing": true,
+    "duplicate_run_or_example_ids": false,
+    "failed_generations_counted_as_incorrect": true
+  },
+  "gsm8k_final": {
+    "paired_statistics_m0_vs_mstar": {
+      "n": 1319,
+      "baseline_em": 0.6520090978013646,
+      "candidate_em": 0.4943138741470811,
+      "delta_pp": -15.769522365428355,
+      "candidate_only": 130,
+      "baseline_only": 338,
+      "both_correct": 522,
+      "both_wrong": 329,
+      "ci_low_pp": -18.877937831690677,
+      "ci_high_pp": -12.661106899166036,
+      "mcnemar_exact_p": 2.138859044361755e-22
+    },
+    "parse_failures": {
+      "m0": 0,
+      "mstar_lora_r32_attn_mlp": 0
+    }
+  },
+  "math500_ood": {
+    "paired_statistics_m0_vs_mstar": {
+      "n": 500,
+      "baseline_em": 0.298,
+      "candidate_em": 0.188,
+      "delta_pp": -11.0,
+      "candidate_only": 26,
+      "baseline_only": 81,
+      "both_correct": 68,
+      "both_wrong": 325,
+      "ci_low_pp": -14.799999999999999,
+      "ci_high_pp": -7.000000000000001,
+      "mcnemar_exact_p": 9.37450912824547e-08
+    },
+    "parse_failures": {
+      "m0": 1,
+      "mstar_lora_r32_attn_mlp": 0
+    }
+  },
+  "release_gates": {
+    "artifact_integrity": "PASS",
+    "parse_failure_rate": "PASS",
+    "challenger_primary_quality": "BLOCK",
+    "challenger_ood_non_regression": "BLOCK"
+  },
+  "decision": {
+    "challenger": "REJECT",
+    "selected_model_configuration": "m0",
+    "rationale": "Adopt the LoRA challenger only when GSM8K delta is positive with a paired 95% bootstrap interval above zero and MATH-500 is non-regressive."
+  },
+  "reproducibility_diagnostic_v1_vs_v2": {
+    "gsm8k": {
+      "m0": {
+        "available": true,
+        "paired_examples": 1319,
+        "prediction_text_equal": 1319,
+        "parsed_answer_equal": 1294,
+        "correctness_equal": 1300,
+        "v1_exact_match": 0.6664139499620925,
+        "v2_exact_match": 0.6520090978013646,
+        "absolute_delta_pp": -1.4404852160727843,
+        "interpretation": "Diagnostic only: the parser fix can change parsed outcomes, while differing generation text under identical decoding indicates GPU numerical nondeterminism."
+      },
+      "mstar_lora_r32_attn_mlp": {
+        "available": true,
+        "paired_examples": 1319,
+        "prediction_text_equal": 1319,
+        "parsed_answer_equal": 1319,
+        "correctness_equal": 1319,
+        "v1_exact_match": 0.4943138741470811,
+        "v2_exact_match": 0.4943138741470811,
+        "absolute_delta_pp": 0.0,
+        "interpretation": "Diagnostic only: the parser fix can change parsed outcomes, while differing generation text under identical decoding indicates GPU numerical nondeterminism."
+      }
+    },
+    "math500": {
+      "m0": {
+        "available": true,
+        "paired_examples": 500,
+        "prediction_text_equal": 500,
+        "parsed_answer_equal": 500,
+        "correctness_equal": 500,
+        "v1_exact_match": 0.298,
+        "v2_exact_match": 0.298,
+        "absolute_delta_pp": 0.0,
+        "interpretation": "Diagnostic only: the parser fix can change parsed outcomes, while differing generation text under identical decoding indicates GPU numerical nondeterminism."
+      },
+      "mstar_lora_r32_attn_mlp": {
+        "available": true,
+        "paired_examples": 208,
+        "prediction_text_equal": 208,
+        "parsed_answer_equal": 208,
+        "correctness_equal": 208,
+        "v1_exact_match": 0.20192307692307693,
+        "v2_exact_match": 0.20192307692307693,
+        "absolute_delta_pp": 0.0,
+        "interpretation": "Diagnostic only: the parser fix can change parsed outcomes, while differing generation text under identical decoding indicates GPU numerical nondeterminism."
+      }
+    }
+  },
+  "limitations": [
+    "MATH-500 exact match uses a deliberately conservative numeric final-answer parser, not symbolic equivalence.",
+    "Structural slice associations are descriptive and not causal.",
+    "Batched BF16 GPU generation may exhibit numerical output drift despite deterministic decoding settings."
+  ]
+}

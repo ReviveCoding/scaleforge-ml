@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "updated_at": "2026-09-05T12:30:59.542513+00:00",
+  "updated_at": "2026-09-05T15:57:30.269984+00:00",
   "entries": [
     {
       "access_id": "access-20260904-gsm8k-builder-001",
@@ -102,6 +102,90 @@
         "artifacts/raw/model/qual-sf-model-v1-math500-mstar.jsonl"
       ],
       "disposition": "QUALIFICATION_INCOMPLETE_OUTCOMES_EXPOSED"
+    },
+    {
+      "access_id": "access-qual-sf-model-v2-gsm8k-m0",
+      "timestamp": "2026-09-05T12:40:00.232466+00:00",
+      "protocol_identity": "SF-MODEL-v2",
+      "dataset": "openai/gsm8k",
+      "revision": "740312add88f781978c0658806c59bc2815b9866",
+      "requested_split": "test",
+      "purpose": "Protected gsm8k qualification for m0",
+      "run_id": "qual-sf-model-v2-gsm8k-m0",
+      "outcome_exposed": true,
+      "scientific_outcomes_exposed": [
+        "predictions",
+        "aggregate_exact_match"
+      ],
+      "artifacts": [
+        "artifacts/raw/model/qual-sf-model-v2-gsm8k-m0.jsonl",
+        "artifacts/analysis/model/qual-sf-model-v2-gsm8k-m0.json",
+        "artifacts/data/protected/gsm8k-740312add88f781978c0658806c59bc2815b9866.parquet"
+      ],
+      "disposition": "QUALIFICATION_COMPLETED"
+    },
+    {
+      "access_id": "access-qual-sf-model-v2-gsm8k-mstar",
+      "timestamp": "2026-09-05T13:43:35.682557+00:00",
+      "protocol_identity": "SF-MODEL-v2",
+      "dataset": "openai/gsm8k",
+      "revision": "740312add88f781978c0658806c59bc2815b9866",
+      "requested_split": "test",
+      "purpose": "Protected gsm8k qualification for mstar_lora_r32_attn_mlp",
+      "run_id": "qual-sf-model-v2-gsm8k-mstar",
+      "outcome_exposed": true,
+      "scientific_outcomes_exposed": [
+        "predictions",
+        "aggregate_exact_match"
+      ],
+      "artifacts": [
+        "artifacts/raw/model/qual-sf-model-v2-gsm8k-mstar.jsonl",
+        "artifacts/analysis/model/qual-sf-model-v2-gsm8k-mstar.json",
+        "artifacts/data/protected/gsm8k-740312add88f781978c0658806c59bc2815b9866.parquet"
+      ],
+      "disposition": "QUALIFICATION_COMPLETED"
+    },
+    {
+      "access_id": "access-qual-sf-model-v2-math500-m0",
+      "timestamp": "2026-09-05T14:40:25.715503+00:00",
+      "protocol_identity": "SF-MODEL-v2",
+      "dataset": "HuggingFaceH4/MATH-500",
+      "revision": "6e4ed1a2a79af7d8630a6b768ec859cb5af4d3be",
+      "requested_split": "test",
+      "purpose": "Protected math500 qualification for m0",
+      "run_id": "qual-sf-model-v2-math500-m0",
+      "outcome_exposed": true,
+      "scientific_outcomes_exposed": [
+        "predictions",
+        "aggregate_exact_match"
+      ],
+      "artifacts": [
+        "artifacts/raw/model/qual-sf-model-v2-math500-m0.jsonl",
+        "artifacts/analysis/model/qual-sf-model-v2-math500-m0.json",
+        "artifacts/data/protected/math500-6e4ed1a2a79af7d8630a6b768ec859cb5af4d3be.jsonl"
+      ],
+      "disposition": "QUALIFICATION_COMPLETED"
+    },
+    {
+      "access_id": "access-qual-sf-model-v2-math500-mstar",
+      "timestamp": "2026-09-05T15:16:27.808796+00:00",
+      "protocol_identity": "SF-MODEL-v2",
+      "dataset": "HuggingFaceH4/MATH-500",
+      "revision": "6e4ed1a2a79af7d8630a6b768ec859cb5af4d3be",
+      "requested_split": "test",
+      "purpose": "Protected math500 qualification for mstar_lora_r32_attn_mlp",
+      "run_id": "qual-sf-model-v2-math500-mstar",
+      "outcome_exposed": true,
+      "scientific_outcomes_exposed": [
+        "predictions",
+        "aggregate_exact_match"
+      ],
+      "artifacts": [
+        "artifacts/raw/model/qual-sf-model-v2-math500-mstar.jsonl",
+        "artifacts/analysis/model/qual-sf-model-v2-math500-mstar.json",
+        "artifacts/data/protected/math500-6e4ed1a2a79af7d8630a6b768ec859cb5af4d3be.jsonl"
+      ],
+      "disposition": "QUALIFICATION_COMPLETED"
     }
   ]
 }

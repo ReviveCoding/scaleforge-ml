@@ -1,0 +1,45 @@
+protocol_identity: SF-MODEL-v3
+state: FROZEN
+method: frozen_prediction_rescore
+source_protocol_identity: SF-MODEL-v2
+source_predictions:
+  gsm8k:
+    m0: artifacts/raw/model/qual-sf-model-v2-gsm8k-m0.jsonl
+    mstar_lora_r32_attn_mlp: artifacts/raw/model/qual-sf-model-v2-gsm8k-mstar.jsonl
+  math500:
+    m0: artifacts/raw/model/qual-sf-model-v2-math500-m0.jsonl
+    mstar_lora_r32_attn_mlp: artifacts/raw/model/qual-sf-model-v2-math500-mstar.jsonl
+datasets:
+  gsm8k:
+    repository: openai/gsm8k
+    revision: 740312add88f781978c0658806c59bc2815b9866
+    protected_path: artifacts/data/protected/gsm8k-740312add88f781978c0658806c59bc2815b9866.parquet
+    expected_rows: 1319
+    split_role: FINAL
+  math500:
+    repository: HuggingFaceH4/MATH-500
+    revision: 6e4ed1a2a79af7d8630a6b768ec859cb5af4d3be
+    protected_path: artifacts/data/protected/math500-6e4ed1a2a79af7d8630a6b768ec859cb5af4d3be.jsonl
+    expected_rows: 500
+    split_role: OOD
+parser:
+  generated: scaleforge.evaluation.answers.parse_generated_answer
+  gsm8k_reference: scaleforge.evaluation.answers.parse_reference_gsm8k
+  math500_reference: scaleforge.evaluation.answers.normalize_numeric_answer
+release_criteria:
+  primary_metric: exact_match
+  bootstrap_samples: 20000
+  bootstrap_seed: 20260905
+  candidate_adoption: delta_pp_gt_0_and_paired_ci_low_pp_gt_0
+  parse_failure_rate_max: 0.01
+  math500_candidate_non_regression:
+    delta_pp_min: -2.0
+    paired_ci_low_pp_min: -5.0
+  integrity:
+    source_prediction_hashes_frozen: true
+    complete_expected_rows: true
+    exact_pairing: true
+    duplicate_run_or_example_ids: forbidden
+    failed_generations_count_as_incorrect: true
+  interpretation: V3 changes only evaluator canonicalization and reuses immutable complete V2 generation text.
+

@@ -1,0 +1,36 @@
+protocol_identity: SF-SERVE-v1
+state: DEVELOPMENT
+model:
+  repository: Qwen/Qwen2.5-1.5B-Instruct
+  revision: 989aa7980e4cf806f80c7fef2b1adb7bc71aa306
+  dtype: bfloat16
+  selected_quality_config: m0
+tokenizer:
+  repository: Qwen/Qwen2.5-1.5B-Instruct
+  revision: 989aa7980e4cf806f80c7fef2b1adb7bc71aa306
+corpus:
+  source: artifacts/data/split_manifest.parquet
+  split_role: POLICY
+  output: artifacts/data/serving_request_corpus.parquet
+  examples: 128
+  selection_seed: 20260905
+generation:
+  do_sample: false
+  temperature: 0.0
+  max_new_tokens: 128
+  use_cache: true
+  eos_handling: tokenizer_eos_token_id
+runtimes:
+  s0_hf_bf16:
+    engine: transformers
+  s2_vllm:
+    engine: vllm
+    gpu_memory_utilization: 0.85
+    max_model_len: 1024
+development_concurrency: [1, 2, 4, 8, 16, 32]
+load_test:
+  request_timeout_s: 180
+  replicates: 3
+  warmup_requests: 8
+  measured_requests: 64
+

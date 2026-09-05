@@ -1,0 +1,17 @@
+{
+  "schema_version": "1.0.0",
+  "dataset": {
+    "repository": "HuggingFaceH4/MATH-500",
+    "configuration": "default",
+    "revision": "6e4ed1a2a79af7d8630a6b768ec859cb5af4d3be",
+    "split": "test",
+    "expected_rows": 500,
+    "split_role": "OOD",
+    "source_url": "https://huggingface.co/datasets/HuggingFaceH4/MATH-500/resolve/6e4ed1a2a79af7d8630a6b768ec859cb5af4d3be/test.jsonl",
+    "license": "repository_metadata_unspecified_upstream_prm800k_mit"
+  },
+  "rows": 500,
+  "raw_sha256": "35dc41080a3680858b27fa7e0533d2d547825316fc5dafe5d316f4ccc5a06132",
+  "retrieved_or_verified_at": "2026-09-05T15:16:27.952274+00:00",
+  "raw_data_committed": false
+}

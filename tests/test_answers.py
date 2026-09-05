@@ -1,4 +1,8 @@
-from scaleforge.evaluation.answers import parse_generated_answer, parse_reference_gsm8k
+from scaleforge.evaluation.answers import (
+    normalize_numeric_answer,
+    parse_generated_answer,
+    parse_reference_gsm8k,
+)
 
 
 def test_reference_parser_requires_exact_marker() -> None:
@@ -22,3 +26,8 @@ def test_numeric_normalization_handles_extreme_integral_exponent() -> None:
     result = parse_generated_answer("reasoning\n#### 1e1000")
     assert result.failure is None
     assert result.normalized == "1" + ("0" * 1000)
+
+
+def test_numeric_normalization_canonicalizes_integral_decimals() -> None:
+    assert normalize_numeric_answer("28.00") == "28"
+    assert normalize_numeric_answer("-0.000") == "0"

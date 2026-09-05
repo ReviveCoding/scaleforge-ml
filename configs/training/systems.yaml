@@ -1,0 +1,44 @@
+protocol_identity: SF-TRAIN-v1
+state: DEVELOPMENT
+model:
+  repository: Qwen/Qwen2.5-1.5B-Instruct
+  revision: 989aa7980e4cf806f80c7fef2b1adb7bc71aa306
+  dtype: bfloat16
+data:
+  path: artifacts/data/split_manifest.parquet
+  split_role: FIT
+  fingerprint: 88699af7cc17fb3d596dff57434b13e2f5e01ce1c94a5e7d6a9901c20136ec8
+  sequence_length: 640
+workload:
+  global_batch_size: 16
+  micro_batch_size: 2
+  gradient_accumulation_steps: 8
+  warmup_steps: 2
+  measured_steps: 10
+  examples: 192
+  seed: 20260905
+  learning_rate: 0.0001
+  weight_decay: 0.01
+  lora_rank: 32
+  lora_alpha: 64
+  lora_dropout: 0.05
+  target_modules: [q_proj, k_proj, v_proj, o_proj, gate_proj, up_proj, down_proj]
+configs:
+  t0_eager_fixed:
+    dynamic_batch_padding: false
+    compile: false
+    hypothesis: Competent fixed-width BF16 eager baseline.
+  t1_dynamic_padding:
+    dynamic_batch_padding: true
+    compile: false
+    hypothesis: Removing only trailing pad tokens reduces wasted attention and MLP work.
+  t4_dynamic_compile:
+    dynamic_batch_padding: true
+    compile: true
+    hypothesis: Compilation may reduce steady-state launch overhead after dynamic padding.
+qualification:
+  replicates: 3
+  balanced_order: [t0_eager_fixed, t1_dynamic_padding, t1_dynamic_padding, t0_eager_fixed, t0_eager_fixed, t1_dynamic_padding]
+  profiler_active_steps: 3
+  preserve_failures: true
+

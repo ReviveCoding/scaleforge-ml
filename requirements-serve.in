@@ -1,0 +1,6 @@
+# Isolated Linux/WSL serving environment. vLLM's wheel owns its compatible PyTorch stack.
+vllm==0.28.0
+httpx>=0.28,<1
+pandas>=2.2,<3
+pyarrow>=17,<22
+pyyaml>=6,<7
