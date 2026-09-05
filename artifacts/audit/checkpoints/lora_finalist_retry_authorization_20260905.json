@@ -1,0 +1,29 @@
+{
+  "schema_version": "1.0.0",
+  "protocol_identity": "SF-MODEL-v1",
+  "state": "CANDIDATE_SELECTION",
+  "failed_run_id": "finalist-lora-r32-dynamic-378s",
+  "failed_run_completed_steps": 26,
+  "failed_run_disposition": "PRESERVED_INCOMPLETE_AND_EXCLUDED",
+  "failure_artifact": "artifacts/failures/finalist_dynamic_mask_validation_cancelled_20260905.json",
+  "retry_run_id": "finalist-lora-r32-dynamic-378s-retry1",
+  "retry_from_step": 0,
+  "scientific_configuration_changed": false,
+  "instrumentation_change": "Right-padding validation moved from each CUDA microbatch to the complete CPU tensor-cache boundary.",
+  "instrumentation_check": {
+    "run_id": "instrumentation-check-r32-dynamic-2s",
+    "steps": 2,
+    "first_step_time_s": 14.832681025000056,
+    "second_step_time_s": 3.0615203820052557,
+    "protected_data_used": false
+  },
+  "quality_gate": {
+    "ruff_format": "PASS",
+    "ruff_check": "PASS",
+    "mypy": "PASS",
+    "pytest": "26 passed",
+    "coverage_percent": 85.22,
+    "coverage_gate_percent": 80
+  },
+  "authorized": true
+}

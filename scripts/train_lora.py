@@ -18,7 +18,11 @@ from torch.utils.data import DataLoader, TensorDataset
 from transformers import AutoModelForCausalLM, AutoTokenizer
 
 from scaleforge.protocol import canonical_sha256
-from scaleforge.training.examples import format_response_only_example, right_padded_batch_width
+from scaleforge.training.examples import (
+    format_response_only_example,
+    right_padded_batch_width,
+    validate_right_padded_attention_mask,
+)
 
 
 def parse_args() -> argparse.Namespace:
@@ -129,6 +133,7 @@ def main() -> None:
         sequence_length=int(config["data"]["sequence_length"]),
         fingerprint=config["data"]["fingerprint"],
     )
+    validate_right_padded_attention_mask(tensors[1])
     generator = torch.Generator().manual_seed(seed)
     loader = DataLoader(
         TensorDataset(*tensors),

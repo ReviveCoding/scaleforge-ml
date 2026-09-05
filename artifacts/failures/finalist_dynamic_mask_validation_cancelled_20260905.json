@@ -1,0 +1,23 @@
+{
+  "schema_version": "1.0.0",
+  "run_id": "finalist-lora-r32-dynamic-378s",
+  "protocol_identity": "SF-MODEL-v1",
+  "state": "CANDIDATE_SELECTION",
+  "failure_type": "operator_monitoring_path_error",
+  "protected_data_used": false,
+  "scientifically_meaningful_outcomes_exposed": true,
+  "completed_step_records": 26,
+  "raw_artifact": "artifacts/raw/training/finalist-lora-r32-dynamic-378s-steps.jsonl",
+  "observed_condition": "The operator incorrectly concluded no step had completed because monitoring queried a dot-delimited filename instead of the script's hyphen-delimited filename.",
+  "root_cause": "Monitoring path contract mismatch: expected finalist-lora-r32-dynamic-378s.steps.jsonl, actual finalist-lora-r32-dynamic-378s-steps.jsonl.",
+  "corrective_action": "Audit the actual raw directory and monitor the hyphen-delimited append-only path. The mask validation was independently moved to the CPU cache boundary to avoid unnecessary timed-region synchronization, but it did not cause this cancellation.",
+  "partial_run_observation": {
+    "first_step_time_s": 12.881527125020511,
+    "second_step_time_s": 2.8641545409918763,
+    "last_step": 26,
+    "last_step_time_s": 7.071302714000922,
+    "interpretation": "Valid incomplete development evidence; excluded from candidate qualification and public claims."
+  },
+  "retry_run_id": "finalist-lora-r32-dynamic-378s-retry1",
+  "disposition": "PRESERVED_INCOMPLETE_AND_EXCLUDED"
+}

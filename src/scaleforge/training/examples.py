@@ -94,14 +94,22 @@ def formatted_length(tokenizer: Any, *, system: str, question: str, response: st
     return len(extract_input_ids(rendered))
 
 
-def right_padded_batch_width(attention_mask: torch.Tensor) -> int:
-    """Return the shortest safe width after removing batch-level trailing padding."""
+def validate_right_padded_attention_mask(attention_mask: torch.Tensor) -> None:
+    """Fail closed unless a complete cached attention-mask tensor is right padded."""
     if attention_mask.ndim != 2 or attention_mask.shape[1] == 0:
         raise ValueError("attention mask must be a non-empty rank-2 tensor")
     if bool(torch.any((attention_mask != 0) & (attention_mask != 1)).item()):
         raise ValueError("attention mask must be binary")
     if bool(torch.any(attention_mask[:, 1:] > attention_mask[:, :-1]).item()):
         raise ValueError("attention mask must use right padding")
+    if bool(torch.any(attention_mask.sum(dim=1) == 0).item()):
+        raise ValueError("an all-padding example is invalid")
+
+
+def right_padded_batch_width(attention_mask: torch.Tensor) -> int:
+    """Return the shortest safe width for a previously validated mask batch."""
+    if attention_mask.ndim != 2 or attention_mask.shape[1] == 0:
+        raise ValueError("attention mask must be a non-empty rank-2 tensor")
     width = int(attention_mask.sum(dim=1).max().item())
     if width == 0:
         raise ValueError("an all-padding batch is invalid")

@@ -5,6 +5,7 @@ from scaleforge.training.examples import (
     extract_input_ids,
     format_response_only_example,
     right_padded_batch_width,
+    validate_right_padded_attention_mask,
 )
 
 
@@ -40,6 +41,7 @@ def test_extract_input_ids_supports_transformers_mapping_contract() -> None:
 
 def test_right_padded_batch_width_removes_only_shared_trailing_padding() -> None:
     mask = torch.tensor([[1, 1, 0, 0], [1, 1, 1, 0]])
+    validate_right_padded_attention_mask(mask)
     assert right_padded_batch_width(mask) == 3
     assert int(mask[:, :3].sum()) == int(mask.sum())
 
@@ -55,4 +57,4 @@ def test_right_padded_batch_width_removes_only_shared_trailing_padding() -> None
 )
 def test_right_padded_batch_width_rejects_invalid_masks(mask: torch.Tensor) -> None:
     with pytest.raises(ValueError):
-        right_padded_batch_width(mask)
+        validate_right_padded_attention_mask(mask)
