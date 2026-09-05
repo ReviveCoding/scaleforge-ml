@@ -1,0 +1,15 @@
+{
+  "schema_version": "1.0.0",
+  "protocol_identity": "SF-MODEL-v1",
+  "state": "PILOT",
+  "candidate": "lora_r8_lr2e4_attn",
+  "diagnostic_subset": "64 lexicographically smallest VALIDATION example_ids",
+  "matched_baseline_em": 0.734375,
+  "candidate_em": 0.359375,
+  "delta_pp": -37.5,
+  "baseline_parse_failures": 0,
+  "candidate_parse_failures": 0,
+  "decision": "ELIMINATE",
+  "protected_data_used": false,
+  "claimable_result": false
+}

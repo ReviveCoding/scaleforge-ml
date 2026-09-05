@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0.0",
+  "run_id": "pilot-lora-r16-attn-20s",
+  "protocol_identity": "SF-MODEL-v1",
+  "state": "PILOT",
+  "candidate": "lora_r16_lr2e4_attn",
+  "config_hash": "9876a9021c2b5b5c5e2bfcc792c5ec8074d31bf216925c373ea6b86336212c3f",
+  "steps": 20,
+  "fit_examples_available": 512,
+  "global_batch_size": 16,
+  "sequence_length": 640,
+  "elapsed_s": 72.65707565599587,
+  "mean_step_time_s": 3.621444556748611,
+  "p95_step_time_s": 7.571649153823094,
+  "mean_tokens_per_s": 963.3034401973764,
+  "initial_loss": 0.5336967557668686,
+  "final_loss": 0.41394429840147495,
+  "peak_allocated_mib": 9455.4912109375,
+  "peak_reserved_mib": 10518.0,
+  "adapter_path": "artifacts/models/lora/pilot-lora-r16-attn-20s",
+  "protected_data_used": false
+}

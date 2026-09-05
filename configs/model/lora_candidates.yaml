@@ -1,0 +1,38 @@
+protocol_identity: SF-MODEL-v1
+state: DEVELOPMENT
+model:
+  repository: Qwen/Qwen2.5-1.5B-Instruct
+  revision: 989aa7980e4cf806f80c7fef2b1adb7bc71aa306
+  dtype: bfloat16
+data:
+  split_role: FIT
+  fingerprint: 88699b5b035e2102ea2523632fe460cd30dd0c5470aa3102ca55c11df4cf4ec8
+  sequence_length: 640
+  response_only_loss: true
+runtime:
+  micro_batch_size: 2
+  gradient_accumulation_steps: 8
+  global_batch_size: 16
+  pilot_steps: 20
+  pilot_train_examples: 512
+  seed: 20260905
+  weight_decay: 0.01
+  warmup_ratio: 0.05
+  gradient_checkpointing: false
+candidates:
+  lora_r8_lr2e4_attn:
+    rank: 8
+    learning_rate: 0.0002
+    target_modules: [q_proj, k_proj, v_proj, o_proj]
+  lora_r16_lr2e4_attn:
+    rank: 16
+    learning_rate: 0.0002
+    target_modules: [q_proj, k_proj, v_proj, o_proj]
+  lora_r16_lr1e4_attn_mlp:
+    rank: 16
+    learning_rate: 0.0001
+    target_modules: [q_proj, k_proj, v_proj, o_proj, gate_proj, up_proj, down_proj]
+  lora_r32_lr1e4_attn_mlp:
+    rank: 32
+    learning_rate: 0.0001
+    target_modules: [q_proj, k_proj, v_proj, o_proj, gate_proj, up_proj, down_proj]

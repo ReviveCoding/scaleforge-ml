@@ -1,0 +1,14 @@
+{
+  "schema_version": "1.0.0",
+  "failure_id": "training-length-scan-20260905-001",
+  "protocol_identity": "SF-MODEL-v1",
+  "state": "DEVELOPMENT",
+  "failure_type": "artifact_integrity_failure",
+  "observed_invalid_result": {
+    "all_length_quantiles": 2,
+    "selected_sequence_length": 128
+  },
+  "root_cause": "Transformers 5 returned a mapping containing input_ids and attention_mask; the scanner measured mapping field count rather than input_ids length.",
+  "outcome_used": false,
+  "corrective_action": "Normalize list/mapping chat-template results and rerun all 6,046 FIT examples."
+}

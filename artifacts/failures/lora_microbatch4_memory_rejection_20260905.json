@@ -1,0 +1,18 @@
+{
+  "schema_version": "1.0.0",
+  "protocol_identity": "SF-MODEL-v1",
+  "state": "PILOT",
+  "run_id": "pilot-lora-r8-attn-20s",
+  "classification": "memory_reliability_candidate_rejected",
+  "micro_batch_size": 4,
+  "gradient_accumulation_steps": 4,
+  "global_batch_size": 16,
+  "steps_completed": 20,
+  "oom": false,
+  "peak_allocated_mib": 15983.98828125,
+  "peak_reserved_mib": 17772.0,
+  "nvidia_smi_sampled_used_mib": 16038,
+  "peak_temperature_c": 86,
+  "reason": "Insufficient physical VRAM headroom for reliable comparison across larger LoRA target sets.",
+  "next_intervention": "microbatch 2 with accumulation 8, preserving global batch 16"
+}

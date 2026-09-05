@@ -1,0 +1,24 @@
+{
+  "schema_version": "1.0.0",
+  "protocol_identity": "SF-MODEL-v1",
+  "state": "PILOT",
+  "global_batch_size": 16,
+  "microbatch_4": {
+    "run_id": "pilot-lora-r8-attn-20s",
+    "mean_step_time_s": 4.705028555852186,
+    "mean_tokens_per_s": 741.4513979220993,
+    "peak_allocated_mib": 15983.98828125
+  },
+  "microbatch_2": {
+    "run_id": "pilot-lora-r8-attn-mb2-20s",
+    "mean_step_time_s": 3.658100610251131,
+    "mean_tokens_per_s": 953.6506432392817,
+    "peak_allocated_mib": 9417.8662109375
+  },
+  "selected_micro_batch_size": 2,
+  "selected_gradient_accumulation_steps": 8,
+  "throughput_improvement_percent": 28.618097,
+  "allocated_memory_reduction_percent": 41.078716,
+  "quality_outcomes_used": false,
+  "protected_data_used": false
+}

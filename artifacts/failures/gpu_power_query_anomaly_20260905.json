@@ -1,0 +1,13 @@
+{
+  "schema_version": "1.0.0",
+  "failure_id": "gpu-power-query-20260905-001",
+  "classification": "telemetry_integrity_failure",
+  "driver": "610.62",
+  "observed_csv_power_draw": 593.51,
+  "simultaneous_gpu_utilization_percent": 0,
+  "simultaneous_memory_used_mib": 0,
+  "detailed_query_instantaneous_power_w": 35.76,
+  "gpu_power_limit_w": 175.0,
+  "disposition": "Quarantine CSV power.draw samples after the anomaly; do not use them in performance claims. Prefer detailed POWER query or another validated telemetry source.",
+  "temperature_and_memory_fields_affected": false
+}

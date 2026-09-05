@@ -1,0 +1,46 @@
+{
+  "schema_version": "1.0.0",
+  "protocol_identity": "SF-MODEL-v1",
+  "state": "CANDIDATE_SELECTION",
+  "diagnostic_subset": "64 lexicographically smallest VALIDATION example_ids",
+  "matched_m0_em": 0.734375,
+  "candidates": [
+    {
+      "candidate": "lora_r8_lr2e4_attn",
+      "final_pilot_loss": 0.4159971084445715,
+      "training_tokens_per_s": 953.6506432392817,
+      "diagnostic_em": 0.359375,
+      "delta_vs_m0_pp": -37.5,
+      "decision": "ELIMINATE"
+    },
+    {
+      "candidate": "lora_r16_lr2e4_attn",
+      "final_pilot_loss": 0.41394429840147495,
+      "training_tokens_per_s": 963.3034401973764,
+      "diagnostic_em": 0.328125,
+      "delta_vs_m0_pp": -40.625,
+      "decision": "ELIMINATE"
+    },
+    {
+      "candidate": "lora_r16_lr1e4_attn_mlp",
+      "final_pilot_loss": 0.41145409643650055,
+      "training_tokens_per_s": 423.5827090816645,
+      "diagnostic_em": 0.421875,
+      "delta_vs_m0_pp": -31.25,
+      "decision": "ELIMINATE"
+    },
+    {
+      "candidate": "lora_r32_lr1e4_attn_mlp",
+      "final_pilot_loss": 0.40746293403208256,
+      "training_tokens_per_s": 533.1653123821039,
+      "diagnostic_em": 0.5,
+      "delta_vs_m0_pp": -23.4375,
+      "decision": "SOLE_FULL_TRAINING_FINALIST"
+    }
+  ],
+  "selection_rule": "Eliminate clearly poor 64-example diagnostics; among undertrained pilots retain only the highest diagnostic EM, then lower final loss, for one-epoch-equivalent training.",
+  "selected_finalist": "lora_r32_lr1e4_attn_mlp",
+  "pilot_beats_baseline": false,
+  "protected_data_used": false,
+  "claimable_result": false
+}

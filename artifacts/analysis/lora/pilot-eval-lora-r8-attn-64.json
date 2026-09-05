@@ -1,0 +1,18 @@
+{
+  "schema_version": "1.0.0",
+  "created_at": "2026-09-05T06:33:34.933699+00:00",
+  "run_id": "pilot-eval-lora-r8-attn-64",
+  "protocol_identity": "SF-MODEL-v1",
+  "state": "PILOT",
+  "candidate": "lora_r8_lr2e4_attn",
+  "adapter_path": "artifacts/models/lora/pilot-lora-r8-attn-mb2-20s",
+  "adapter_config_hash": "17c4ff47f2ce015922c006548c3ec0535f720f7fb5d3d151add0578f27a9fc31",
+  "examples": 64,
+  "exact_match": 0.359375,
+  "parse_failures": 0,
+  "elapsed_s": 125.92946738700266,
+  "peak_allocated_mib": 3330.96484375,
+  "peak_reserved_mib": 3690.0,
+  "protected_data_used": false,
+  "claimable_result": false
+}
