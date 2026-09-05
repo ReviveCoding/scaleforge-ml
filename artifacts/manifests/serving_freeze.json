@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.0.0",
+  "created_at": "2026-09-05T22:40:15.785857+00:00",
+  "protocol_identity": "SF-SERVE-v2",
+  "state": "FROZEN",
+  "git_sha": "04f740ba7f5d872542bcf3d6137e21d6a6b3a20f",
+  "configuration_path": "configs/serving/qualification.yaml",
+  "configuration_sha256": "7ded1bea46da6891e2e26cc4ce9a6a1328fde0c8302103eecf86ee4131c15c1c",
+  "slo_path": "configs/serving/slo.yaml",
+  "slo_sha256": "655b9b3a305f5db0ca36342d8b751b0aaa9f4a41e18af4e61f9710381b81d6ec",
+  "file_sha256": {
+    "configs/serving/qualification.yaml": "13010325f8e90b7c74df668c5546d8fe5fabebe62cef81aadb8e62e25d4a24bf",
+    "configs/serving/slo.yaml": "655b9b3a305f5db0ca36342d8b751b0aaa9f4a41e18af4e61f9710381b81d6ec",
+    "scripts/load_test.py": "4a8224fc52ecc3618d1989c7c9b13bbe6759579cdc50c73d75bb07713006d6bf",
+    "scripts/run_serving_grid.py": "aa18de39fa19a7d252536a3f79794c59c1b2c778dab327decf2ff4198a606198",
+    "scripts/analyze_serving_development.py": "ba4fa27b477b7603b5fce2c0c853e75518ab590e4ec2ecd616550d986a2ddec3",
+    "api/hf_server.py": "3e8c8f30220a417bdb2f1c746ad739135a9b9ffb5e704dd8144b814fc075c1fc",
+    "src/scaleforge/evaluation/answers.py": "78121a5f7e639a70b5a84d47ead9e0799d8ecce3ca48868e937c4f1e53cc9cd3",
+    "src/scaleforge/analysis/serving.py": "6601df102a67564b6becb5d1de450c7471e56001ee8f79406707223b1e183455",
+    "requirements-serve.lock": "14705e6176702ec7ed3ec85733557206f6385872effccf8875b1ccb16d531c45",
+    "artifacts/manifests/serve_environment.json": "dfe6197f0ba51bb570b801558a13ba6dcaa8a45fa2b3e7cfd4b8931699ea0123",
+    "artifacts/manifests/serving_corpus.json": "9fb8870bad94ac7b7f941fb4b5898a8528f8cc55839f8c476c1b75ed1a40f4f4"
+  },
+  "data_sha256": "c190e273f6a9028ab5566ccc7a930c63da175e6fec492b789233f1a5ac149794",
+  "development_selection_path": "artifacts/analysis/serving/serving_development_selection.json",
+  "pilot_runtime_estimate": {
+    "hf_grid_wall_minutes": 54,
+    "vllm_grid_wall_minutes_excluding_cold_start": 31,
+    "vllm_project_local_cold_start_minutes": 16,
+    "six_fresh_server_qualification_runs_total_hours": 5.2
+  },
+  "unresolved_requirement": "Replicated, restart-isolated serving qualification with tail uncertainty, failure accounting, Pareto analysis, and release decision."
+}
