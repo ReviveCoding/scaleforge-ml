@@ -11,7 +11,7 @@ Statuses: `NOT_STARTED`, `IN_PROGRESS`, `PASS`, `PASS_WITH_LIMITATIONS`, `BLOCKE
 | R005 | Deterministic FIT/VALIDATION/POLICY partition and leakage controls | src/scaleforge/data/splits.py | artifacts/data/split_manifest.parquet | PASS |
 | R006 | Schema, parser, quality, duplicate, token-length, sequence validation | src/scaleforge/data; src/scaleforge/evaluation | artifacts/data/data_quality.json; DATA_CARD.md | PASS |
 | R007 | Strong deterministic M0/M1 baselines and development-only selection | src/scaleforge/modeling; configs/model | artifacts/model/baseline_selection.json | PASS |
-| R008 | Compact controlled LoRA selection and exactly one M* | src/scaleforge/training; configs/model | artifacts/model/lora_pilot_selection.json; artifacts/audit/checkpoints/lora_dynamic_padding_selection_20260905.json | IN_PROGRESS |
+| R008 | Compact controlled LoRA selection and exactly one M* | src/scaleforge/training; configs/model | artifacts/model/candidate_selection.json; artifacts/warehouse/model_predictions_candidate_selection.parquet | PASS |
 | R009 | Freeze manifest and protected-access ledger | src/scaleforge/protocol | FREEZE_MANIFEST.json; FINAL_ACCESS_LEDGER.json | NOT_STARTED |
 | R010 | Protected GSM8K/MATH-500 qualification without tuning | scripts/qualify_model.py | artifacts/raw/model; artifacts/analysis/model_quality.parquet | NOT_STARTED |
 | R011 | Paired quality statistics, transitions, slices, OOD check | src/scaleforge/analysis/quality.py | artifacts/analysis/model_statistics.json; reports/figures/F01-F03* | NOT_STARTED |

@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.0.0",
+  "created_at": "2026-09-05T09:33:35.486591+00:00",
+  "protocol_identity": "SF-MODEL-v1",
+  "state": "CANDIDATE_SELECTION",
+  "expected_examples_per_config": 723,
+  "counts": {
+    "m0": 723,
+    "mstar_lora_r32_attn_mlp": 723
+  },
+  "parse_failures": {
+    "m0": 0,
+    "mstar_lora_r32_attn_mlp": 0
+  },
+  "paired_statistics_m0_vs_mstar": {
+    "n": 723,
+    "baseline_em": 0.7869986168741355,
+    "candidate_em": 0.5850622406639004,
+    "delta_pp": -20.193637621023512,
+    "candidate_only": 53,
+    "baseline_only": 199,
+    "both_correct": 370,
+    "both_wrong": 101,
+    "ci_low_pp": -24.20470262793914,
+    "ci_high_pp": -16.182572614107883,
+    "mcnemar_exact_p": 4.5473350301633e-21
+  },
+  "selection_rule": "Adopt LoRA only when delta is positive and the paired 95% bootstrap CI excludes zero; otherwise retain M0.",
+  "robust_improvement": false,
+  "frozen_mstar_challenger": "lora_r32_lr1e4_attn_mlp",
+  "challenger_adapter": "artifacts/models/lora/finalist-lora-r32-dynamic-378s-retry1",
+  "model_release_recommendation": "m0",
+  "challenger_decision": "REJECT_RETAIN_M0",
+  "protected_data_used": false,
+  "claimable_as_protected_result": false
+}
