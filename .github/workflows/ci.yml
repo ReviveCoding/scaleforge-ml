@@ -4,25 +4,39 @@ on:
   push:
   pull_request:
 
+permissions:
+  contents: read
+
+env:
+  UV_VERSION: "0.12.10"
+
 jobs:
   quality:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: astral-sh/setup-uv@v6
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: astral-sh/setup-uv@20cfd1bf945f4377ade1205e4dbc17946fc9a30d # v10.0.1
         with:
+          version: ${{ env.UV_VERSION }}
           enable-cache: true
-      - run: uv sync --frozen --extra dev
-      - run: uv run ruff format --check .
-      - run: uv run ruff check .
-      - run: uv run mypy src api
-      - run: uv run pytest
-      - run: uv run python -m build
+      - name: Create Python 3.12 environment
+        run: uv venv --python 3.12
+      - name: Install locked CPU qualification dependencies
+        run: uv pip sync --python .venv/bin/python --torch-backend cpu requirements-ci.lock
+      - run: uv run --no-sync ruff format --check .
+      - run: uv run --no-sync ruff check .
+      - run: uv run --no-sync mypy src api
+      - run: uv run --no-sync pytest
+      - run: uv run --no-sync python -m build
 
   fixture-smoke:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: astral-sh/setup-uv@v6
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: astral-sh/setup-uv@20cfd1bf945f4377ade1205e4dbc17946fc9a30d # v10.0.1
+        with:
+          version: ${{ env.UV_VERSION }}
+          enable-cache: true
       - run: uv sync --frozen --extra dev
-      - run: uv run pytest tests/test_answers.py tests/test_splits.py tests/test_protocol.py
+      - name: Run focused fixture smoke without repository-wide coverage
+        run: uv run pytest --no-cov tests/test_answers.py tests/test_splits.py tests/test_protocol.py
