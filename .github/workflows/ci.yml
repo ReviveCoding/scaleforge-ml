@@ -19,6 +19,8 @@ jobs:
         with:
           version: ${{ env.UV_VERSION }}
           enable-cache: true
+          cache-dependency-glob: requirements-ci.lock
+          cache-suffix: quality
       - name: Create Python 3.12 environment
         run: uv venv --python 3.12
       - name: Install locked CPU qualification dependencies
@@ -37,6 +39,8 @@ jobs:
         with:
           version: ${{ env.UV_VERSION }}
           enable-cache: true
+          cache-dependency-glob: uv.lock
+          cache-suffix: fixture-smoke
       - run: uv sync --frozen --extra dev
       - name: Run focused fixture smoke without repository-wide coverage
         run: uv run pytest --no-cov tests/test_answers.py tests/test_splits.py tests/test_protocol.py

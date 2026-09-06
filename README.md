@@ -1,5 +1,7 @@
 # ScaleForge-ML
 
+[![CPU CI](https://github.com/ReviveCoding/scaleforge-ml/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/ReviveCoding/scaleforge-ml/actions/workflows/ci.yml)
+
 ScaleForge-ML is an evidence-first Transformer training and serving project built around one question: can model quality and systems performance improve together without sacrificing reproducibility, reliability, or honest release decisions? It exercises the complete local lifecycle for `Qwen/Qwen2.5-1.5B-Instruct` on GSM8K and MATH-500: provenance-controlled data, deterministic baselines, LoRA adaptation, protected evaluation, PyTorch profiling and compilation, FastAPI/vLLM serving, load testing, statistical analysis, and fail-closed evidence release.
 
 ## Strongest verified results
