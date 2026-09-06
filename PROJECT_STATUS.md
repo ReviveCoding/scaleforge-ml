@@ -15,6 +15,6 @@
 - DISTRIBUTED status: BLOCKED_EXTERNAL on one physical CUDA GPU; CPU/Gloo launch passes; FSDP2 NOT_APPLICABLE; no numeric scaling claim
 - REPRODUCIBILITY decision: REVIEW because protected evaluator recovery was required, despite passing locks, hashes, canonicalization, tests, and CI
 - Local quality status: Ruff PASS; strict mypy PASS; pytest 60 PASS with 81.56% coverage (80% gate); wheel/sdist build PASS; Streamlit 1.63.0 smoke PASS
-- GitHub-hosted CPU CI status: GREEN in run `34015002898` for commit `94619f7`; fixture smoke 9 PASS with `--no-cov`, quality 60 PASS at 81.56% coverage, strict mypy/Ruff/build PASS; final badge/documentation commit is requalified by the next push
+- GitHub-hosted CPU CI status: GREEN; repair run `34015002898` passed, final main documentation/badge commit `724c86f` was requalified by run `34015106217`, and release-tag run `34015260815` also passed; fixture smoke 9 PASS, quality 60 PASS at 81.56% coverage, strict mypy/Ruff/build PASS
 - Warehouse status: PASS; 47 unique runs, 3,638 protected predictions, 6 training runs, 36 serving runs, 2,304 measured serving requests, 29,441 telemetry rows, 21 preserved failure events, and 5 independent gates
 - Next action: optional authorized execution of `DISTRIBUTED_QUALIFICATION_PENDING.md` on a real two-GPU CUDA host; otherwise no local work remains

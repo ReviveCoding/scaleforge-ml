@@ -86,4 +86,5 @@ Protected model generation is CLOSED and must not be rerun for tuning. Exact sta
 - [Final audit](FINAL_AUDIT.md) and [requirements matrix](REQUIREMENTS_MATRIX.md)
 - `artifacts/analysis/release_decision.json` and `artifacts/analysis/warehouse_integrity.json`
 
-No raw model weights or large raw datasets are committed. No cloud GPU, paid API, remote push, or fabricated distributed result was used.
+No raw model weights or large raw datasets are committed. No cloud GPU, paid API, or fabricated distributed result was used.
+Scientific qualification was completed locally before the repository was published to GitHub.
