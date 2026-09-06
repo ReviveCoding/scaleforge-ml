@@ -1,0 +1,148 @@
+{
+  "schema_version": "1.0.0",
+  "created_at": "2026-09-06T04:53:20.342883+00:00",
+  "source": "CLAIM_LEDGER.json",
+  "policy": "Only claims in this artifact may be used, with qualifications intact.",
+  "claims": [
+    {
+      "claim_id": "CLM-MODEL-001",
+      "claim_text": "The retained frozen M0 baseline achieved 66.64% exact match on all 1,319 protected GSM8K test examples.",
+      "metric": "exact_match",
+      "baseline": null,
+      "candidate": "m0",
+      "artifact_paths": [
+        "artifacts/analysis/model/model_qualification_sf_model_v3.json",
+        "artifacts/warehouse/model_predictions.parquet"
+      ],
+      "protocol_identity": "SF-MODEL-v3",
+      "status": "SUPPORTED_WITH_QUALIFIER",
+      "qualification": "Evaluator-only v3 rescore of complete, hash-frozen v2 generation outputs; exact normalized numeric/string matching.",
+      "prohibited_stronger_claim": "Do not call this symbolic mathematical accuracy or claim independent v3 model generation."
+    },
+    {
+      "claim_id": "CLM-MODEL-002",
+      "claim_text": "A rank-32 attention+MLP LoRA challenger was rejected after protected GSM8K exact match fell from 66.64% to 49.43% (-17.21 pp; paired 95% bootstrap CI [-20.24, -14.18]).",
+      "metric": "paired_exact_match_delta_pp",
+      "baseline": "m0",
+      "candidate": "mstar_lora_r32_attn_mlp",
+      "artifact_paths": [
+        "artifacts/analysis/model/model_qualification_sf_model_v3.json",
+        "artifacts/analysis/figure_tables/F01_model_quality.parquet",
+        "artifacts/analysis/figure_tables/F02_quality_transitions.parquet"
+      ],
+      "protocol_identity": "SF-MODEL-v3",
+      "status": "SUPPORTED_WITH_QUALIFIER",
+      "qualification": "All 1,319 paired GSM8K test examples; 20,000 paired bootstrap resamples; deterministic frozen v2 outputs re-scored by the corrected v3 parser.",
+      "prohibited_stronger_claim": "Do not claim LoRA improved quality or that the result generalizes beyond this checkpoint, prompt, parser, and dataset."
+    },
+    {
+      "claim_id": "CLM-MODEL-003",
+      "claim_text": "The LoRA challenger also regressed on the complete MATH-500 OOD check: 18.80% versus 29.80% for M0 (-11.00 pp; paired 95% CI [-14.80, -7.00]).",
+      "metric": "paired_ood_exact_match_delta_pp",
+      "baseline": "m0",
+      "candidate": "mstar_lora_r32_attn_mlp",
+      "artifact_paths": [
+        "artifacts/analysis/model/model_qualification_sf_model_v3.json",
+        "artifacts/analysis/figure_tables/F01_model_quality.parquet"
+      ],
+      "protocol_identity": "SF-MODEL-v3",
+      "status": "SUPPORTED_WITH_QUALIFIER",
+      "qualification": "All 500 MATH-500 examples; conservative normalized final-answer exact match, not symbolic equivalence.",
+      "prohibited_stronger_claim": "Do not describe 29.80% as canonical MATH-500 accuracy or claim symbolic-equivalence evaluation."
+    },
+    {
+      "claim_id": "CLM-TRAIN-001",
+      "claim_text": "Dynamic padding plus torch.compile increased median paired steady-state training throughput by 348.51% versus the frozen BF16 eager fixed-width baseline (95% paired bootstrap interval 157.26% to 588.82%).",
+      "metric": "median_paired_steady_tokens_per_s_change_pct",
+      "baseline": "t0_eager_fixed",
+      "candidate": "t4_dynamic_compile",
+      "artifact_paths": [
+        "artifacts/analysis/training/training_qualification_sf_train_v1.json",
+        "artifacts/warehouse/training_runs.parquet",
+        "artifacts/analysis/figure_tables/F04_training_throughput.parquet"
+      ],
+      "protocol_identity": "SF-TRAIN-v1",
+      "status": "SUPPORTED_WITH_QUALIFIER",
+      "qualification": "Three paired fresh-process replicates on one RTX 4090 Laptop GPU; 35,382 identical non-padding tokens per run; synchronized BF16 steps; material run-order/thermal association and wide interval must be disclosed.",
+      "prohibited_stronger_claim": "Do not claim a hardware-independent 4.5x speedup, omit the n=3/order qualifier, or apply this result to other models or sequence distributions."
+    },
+    {
+      "claim_id": "CLM-TRAIN-002",
+      "claim_text": "For the fixed 378-step workload, T4 reduced median projected wall time including measured cold overhead by 41.87%; the median paired compile break-even was 173 steps.",
+      "metric": "projected_target_wall_time_change_pct",
+      "baseline": "t0_eager_fixed",
+      "candidate": "t4_dynamic_compile",
+      "artifact_paths": [
+        "artifacts/analysis/training/training_qualification_sf_train_v1.json",
+        "artifacts/warehouse/training_runs.parquet"
+      ],
+      "protocol_identity": "SF-TRAIN-v1",
+      "status": "SUPPORTED_WITH_QUALIFIER",
+      "qualification": "Projection from measured first-step/compiler overhead and measured steady mean step time; not a directly timed 378-step end-to-end run. Pairwise break-even range was 75 to 270 steps.",
+      "prohibited_stronger_claim": "Do not describe the projected wall-time reduction as a directly measured full-training runtime reduction."
+    },
+    {
+      "claim_id": "CLM-MEMORY-001",
+      "claim_text": "T4 reduced median peak allocated training VRAM by 34.29%, from 12,108 MiB to 7,956 MiB, under the frozen workload.",
+      "metric": "peak_allocated_vram_change_pct",
+      "baseline": "t0_eager_fixed",
+      "candidate": "t4_dynamic_compile",
+      "artifact_paths": [
+        "artifacts/analysis/training/training_qualification_sf_train_v1.json",
+        "artifacts/analysis/figure_tables/F05_training_vram.parquet"
+      ],
+      "protocol_identity": "SF-TRAIN-v1",
+      "status": "SUPPORTED_WITH_QUALIFIER",
+      "qualification": "PyTorch peak allocated memory on one RTX 4090 Laptop GPU; three runs per configuration; fixed model, data, global batch, and measured tokens.",
+      "prohibited_stronger_claim": "Do not equate allocated-memory reduction with total system VRAM or generalize to other accelerators."
+    },
+    {
+      "claim_id": "CLM-SERVE-001",
+      "claim_text": "At the frozen ScaleForge SLO-compliant concurrency-2 operating point, vLLM increased median successful serving throughput by 71.39%, from 0.1208 to 0.2070 requests/s (95% paired three-replicate bootstrap interval 51.01% to 89.52%).",
+      "metric": "median_paired_max_slo_compliant_throughput_change_pct",
+      "baseline": "s0_hf_bf16_c2",
+      "candidate": "s2_vllm_v1_runner_c2",
+      "artifact_paths": [
+        "artifacts/analysis/serving/serving_qualification_sf_serve_v2.json",
+        "artifacts/warehouse/serving_runs.parquet",
+        "artifacts/analysis/figure_tables/F07_serving_throughput.parquet"
+      ],
+      "protocol_identity": "SF-SERVE-v2",
+      "status": "SUPPORTED_WITH_QUALIFIER",
+      "qualification": "Three fresh-server replicates per runtime on one RTX 4090 Laptop GPU; identical 64-request POLICY corpus, model, prompt, tokenizer, 512-token cap, and deterministic decoding; all frozen request-path gates passed.",
+      "prohibited_stronger_claim": "Do not call this a production throughput guarantee, omit n=3/laptop/prefix-cache qualifiers, claim vLLM V2, or generalize beyond this workload and hardware."
+    },
+    {
+      "claim_id": "CLM-SERVE-002",
+      "claim_text": "At concurrency 2, vLLM reduced p95 time per output token by 65.19% and p95 end-to-end latency by 34.75%, while increasing p95 TTFT from 86.86 ms to 443.24 ms.",
+      "metric": "selected_operating_point_tail_latency_change_pct",
+      "baseline": "s0_hf_bf16_c2",
+      "candidate": "s2_vllm_v1_runner_c2",
+      "artifact_paths": [
+        "artifacts/analysis/serving/serving_qualification_sf_serve_v2.json",
+        "artifacts/analysis/serving/serving_qualification_points.parquet",
+        "artifacts/analysis/figure_tables/F08_serving_ttft.parquet"
+      ],
+      "protocol_identity": "SF-SERVE-v2",
+      "status": "SUPPORTED_WITH_QUALIFIER",
+      "qualification": "Hierarchical request-within-replicate bootstrap; p95 TTFT point estimate passes the frozen 500 ms bound, but its 95% interval is 404.74 to 527.72 ms and crosses that bound.",
+      "prohibited_stronger_claim": "Do not claim vLLM improved every latency metric or that TTFT met the frozen bound with 95% confidence."
+    },
+    {
+      "claim_id": "CLM-SERVE-003",
+      "claim_text": "All 2,304 measured serving qualification requests succeeded across 36 frozen HF/vLLM operating points.",
+      "metric": "request_success_rate",
+      "baseline": "s0_hf_bf16",
+      "candidate": "s2_vllm_v1_runner",
+      "artifact_paths": [
+        "artifacts/analysis/serving/serving_qualification_sf_serve_v2.json",
+        "artifacts/warehouse/serving_requests.parquet",
+        "artifacts/failures/serve-vllm-qualification-shutdown.json"
+      ],
+      "protocol_identity": "SF-SERVE-v2",
+      "status": "SUPPORTED_WITH_QUALIFIER",
+      "qualification": "Request-path success only. vLLM exhibited a repeatable post-measurement EngineCore force-kill and leaked semaphore during shutdown.",
+      "prohibited_stronger_claim": "Do not claim the service lifecycle was failure-free or production-ready."
+    }
+  ]
+}

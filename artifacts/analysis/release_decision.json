@@ -1,0 +1,53 @@
+{
+  "schema_version": "1.0.0",
+  "created_at": "2026-09-06T04:53:20.346189+00:00",
+  "project_status": "COMPLETE_WITH_EXTERNAL_DISTRIBUTED_PENDING",
+  "gates": [
+    {
+      "subsystem": "MODEL",
+      "protocol_identity": "SF-MODEL-v3",
+      "decision": "PASS",
+      "selected_configuration": "m0",
+      "gates_json": "{\"artifact_integrity\": \"PASS\", \"challenger_ood_non_regression\": \"BLOCK\", \"challenger_primary_quality\": \"BLOCK\", \"parse_failure_rate\": \"PASS\"}",
+      "evidence_path": "artifacts/analysis/model/model_release_decision_sf_model_v3.json"
+    },
+    {
+      "subsystem": "TRAINING_SYSTEM",
+      "protocol_identity": "SF-TRAIN-v1",
+      "decision": "PASS",
+      "selected_configuration": "t4_dynamic_compile",
+      "gates_json": "{\"adoption_target\": true, \"artifact_integrity\": true, \"memory_non_regression\": true, \"reliability\": true, \"useful_gain\": true}",
+      "evidence_path": "artifacts/analysis/training/training_release_decision_sf_train_v1.json"
+    },
+    {
+      "subsystem": "SERVING",
+      "protocol_identity": "SF-SERVE-v2",
+      "decision": "REVIEW",
+      "selected_configuration": "{\"concurrency\": 2, \"config_id\": \"s2_vllm_v1_runner\", \"deployment_status\": \"REVIEW_REQUIRED\", \"runner\": \"V1 compatibility mode\"}",
+      "gates_json": "{\"all_36_points_complete\": true, \"candidate_max_slo_compliant_throughput_gt_baseline\": true, \"candidate_quality_non_regression\": true, \"frozen_critical_gates_pass\": true, \"lifecycle_shutdown_clean_observation\": false, \"service_error_rate_max_0_01\": true}",
+      "evidence_path": "artifacts/analysis/serving/serving_release_decision_sf_serve_v2.json"
+    },
+    {
+      "subsystem": "DISTRIBUTED",
+      "protocol_identity": "SF-DIST-v1",
+      "decision": "BLOCKED_EXTERNAL",
+      "selected_configuration": null,
+      "gates_json": "{\"cpu_gloo_launch_smoke\": true, \"numeric_scaling_claim_allowed\": false, \"physical_cuda_gpu_count_gte_2\": false}",
+      "evidence_path": "artifacts/analysis/distributed/distributed_status.json"
+    },
+    {
+      "subsystem": "REPRODUCIBILITY",
+      "protocol_identity": "SF-RELEASE-v1",
+      "decision": "REVIEW",
+      "selected_configuration": null,
+      "gates_json": "{\"artifact_hashes\": true, \"cpu_ci\": true, \"environment_locks\": true, \"protected_evaluation_first_pass_clean\": false}",
+      "evidence_path": "FINAL_ACCESS_LEDGER.json"
+    }
+  ],
+  "selected_configuration": {
+    "model": "m0",
+    "training_system": "t4_dynamic_compile",
+    "serving": "s2_vllm_v1_runner at concurrency 2",
+    "distributed": null
+  }
+}

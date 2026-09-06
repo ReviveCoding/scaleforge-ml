@@ -1,0 +1,43 @@
+{
+  "schema_version": "1.0.0",
+  "created_at": "2026-09-06T04:58:47.177529+00:00",
+  "status": "PASS",
+  "checks": {
+    "required_documents_present": true,
+    "warehouse_integrity_pass": true,
+    "warehouse_duplicate_runs_zero": true,
+    "release_gates_exact": true,
+    "failures_preserved": true,
+    "claim_artifacts_present": true,
+    "resume_export_matches_supported_ledger": true,
+    "no_supported_distributed_numeric_claim": true,
+    "frozen_and_qualification_hashes_match": true,
+    "recruiter_document_key_numbers_present": true
+  },
+  "details": {
+    "missing_documents": [],
+    "missing_claim_artifacts": [],
+    "hash_mismatches": [],
+    "documentation_mismatches": [],
+    "release_gate_decisions": {
+      "MODEL": "PASS",
+      "TRAINING_SYSTEM": "PASS",
+      "SERVING": "REVIEW",
+      "DISTRIBUTED": "BLOCKED_EXTERNAL",
+      "REPRODUCIBILITY": "REVIEW"
+    },
+    "warehouse_table_rows": {
+      "run_manifest": 47,
+      "model_predictions": 3638,
+      "training_steps": 72,
+      "training_runs": 6,
+      "serving_requests": 2592,
+      "serving_runs": 36,
+      "gpu_telemetry": 29441,
+      "distributed_runs": 2,
+      "failure_events": 21,
+      "release_gate_results": 5
+    },
+    "preserved_failure_events": 21
+  }
+}

@@ -2,7 +2,7 @@
 
 ## Dataset and intended use
 
-The primary dataset is `openai/gsm8k`, configuration `main`, immutable revision `740312add88f781978c0658806c59bc2815b9866`, licensed MIT according to its Hugging Face card. ScaleForge uses the official train set for fitting, development selection, and policy development. The official test set is protected FINAL data. `HuggingFaceH4/MATH-500` is protected OOD/non-regression data and has not been accessed as of this card version.
+The primary dataset is `openai/gsm8k`, configuration `main`, immutable revision `740312add88f781978c0658806c59bc2815b9866`, licensed MIT according to its Hugging Face card. ScaleForge uses the official train set for fitting, development selection, and policy development. The official test set is protected FINAL data. `HuggingFaceH4/MATH-500` is protected OOD/non-regression data. Both protected sets were accessed only under logged frozen qualification identities and are now CLOSED to scientific development.
 
 The model/tokenizer workload is `Qwen/Qwen2.5-1.5B-Instruct`; token counts use tokenizer revision `989aa7980e4cf806f80c7fef2b1adb7bc71aa306` (`Qwen2Tokenizer`, vocabulary size 151,665).
 
@@ -44,6 +44,6 @@ The chosen limit is 640 tokens: `ceil(max_observed * 1.10 / 128) * 128`. The pip
 
 ## Limitations and ethics
 
-GSM8K is English grade-school mathematics with worked solutions; it does not represent broad reasoning, multilingual use, factual reliability, safety, or real production traffic. Exact-match answer normalization can miss semantically equivalent nonnumeric responses and cannot measure reasoning faithfulness. Source solutions may contain annotation artifacts. Structural slices are descriptive, not causal. Protected data must remain unavailable to tuning even though an infrastructure cache incident technically materialized the test shard.
+GSM8K is English grade-school mathematics with worked solutions; it does not represent broad reasoning, multilingual use, factual reliability, safety, or real production traffic. Exact-match answer normalization can miss semantically equivalent nonnumeric responses and cannot measure reasoning faithfulness. Source solutions may contain annotation artifacts. Structural slices are descriptive, not causal. Protected data must remain unavailable to tuning even though an infrastructure cache incident technically materialized the test shard. Subsequent protected qualification covered all 1,319 GSM8K test and 500 MATH-500 rows; the access history and evaluator-recovery identities are preserved in `FINAL_ACCESS_LEDGER.json`.
 
 Canonical machine-readable evidence is in `artifacts/data/data_quality.json` and `artifacts/data/dataset_manifest.json`; row-level data is local-only in `artifacts/data/split_manifest.parquet`.

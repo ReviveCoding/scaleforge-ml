@@ -103,6 +103,7 @@ def main() -> None:
     save_figure(fig, "F06_profiler_before_after.png")
 
     telemetry = telemetry.copy()
+    telemetry = telemetry.loc[telemetry["run_id"].isin(runs["run_id"])].copy()
     telemetry["seconds_from_run_start"] = telemetry.groupby("run_id")["timestamp"].transform(
         lambda values: (values - values.min()).dt.total_seconds()
     )

@@ -51,6 +51,14 @@ scaleforge = "scaleforge.cli:app"
 [tool.hatch.build.targets.wheel]
 packages = ["src/scaleforge", "api"]
 
+[tool.hatch.build.targets.sdist]
+exclude = [
+  "/.venv*",
+  "/artifacts",
+  "/dist",
+  "/reports/figures",
+]
+
 [tool.ruff]
 line-length = 100
 target-version = "py310"

@@ -25,15 +25,15 @@ Statuses: `NOT_STARTED`, `IN_PROGRESS`, `PASS`, `PASS_WITH_LIMITATIONS`, `BLOCKE
 | R019 | Load test request telemetry, failures, tails, Pareto and knee | scripts/load_test.py; scripts/run_serving_grid.py; scripts/analyze_serving_qualification.py | artifacts/warehouse/serving_requests.parquet; artifacts/warehouse/serving_runs.parquet; reports/figures/F07-F10* | PASS |
 | R020 | Detect GPU count; real distributed metrics or honest external block | scripts/detect_gpu_topology.py; src/scaleforge/distributed | artifacts/manifests/gpu_topology.json; artifacts/analysis/distributed/distributed_status.json; DISTRIBUTED_QUALIFICATION_PENDING.md | BLOCKED_EXTERNAL |
 | R021 | DDP launch/test; justified FSDP2 only | scripts/benchmark_ddp_training.py; scripts/distributed_smoke.py; tests/test_distributed_workload.py | artifacts/raw/distributed; DISTRIBUTED_QUALIFICATION_PENDING.md | PASS_WITH_LIMITATIONS |
-| R022 | Validated Parquet/DuckDB canonical result warehouse | src/scaleforge/warehouse | artifacts/warehouse/*.parquet; artifacts/warehouse/results.duckdb | IN_PROGRESS |
+| R022 | Validated Parquet/DuckDB canonical result warehouse | src/scaleforge/warehouse; scripts/build_warehouse.py | artifacts/analysis/warehouse_integrity.json; artifacts/warehouse/*.parquet; artifacts/warehouse/results.duckdb | PASS |
 | R023 | Correct uncertainty, failure, thermal, and order analysis | src/scaleforge/analysis; scripts/analyze_serving_qualification.py | artifacts/analysis/serving/serving_qualification_sf_serve_v2.json; artifacts/failures; reports/figures/F13* | PASS_WITH_LIMITATIONS |
-| R024 | Independent critical release gates | src/scaleforge/release | artifacts/warehouse/release_gate_results.parquet; F14* | NOT_STARTED |
-| R025 | Professional typed package and configuration | pyproject.toml; src/scaleforge; configs | dist/*; mypy/ruff evidence | IN_PROGRESS |
-| R026 | Tests and meaningful non-GPU coverage gate | tests/ | artifacts/quality/foundation_quality.json; coverage.xml | PASS |
+| R024 | Independent critical release gates | src/scaleforge/release; scripts/finalize_release.py | artifacts/warehouse/release_gate_results.parquet; artifacts/analysis/release_decision.json; F14* | PASS |
+| R025 | Professional typed package and configuration | pyproject.toml; src/scaleforge; configs | dist/*; mypy/ruff evidence | PASS |
+| R026 | Tests and meaningful non-GPU coverage gate | tests/ | artifacts/quality/final_quality.json; coverage.xml | PASS |
 | R027 | CPU CI, build/smoke, optional manual GPU workflow | .github/workflows | workflow YAML; local validation | PASS |
-| R028 | Minimal end-to-end Streamlit demonstration | ui/ | ui smoke evidence | NOT_STARTED |
-| R029 | Data/model/system/evaluation cards and final report | *.md; reports/ | FINAL_TECHNICAL_REPORT.md | NOT_STARTED |
-| R030 | Claim ledger, resume evidence, interview explanations | CLAIM_LEDGER.json; reports/ | reports/RESUME_EVIDENCE.md; artifacts/analysis/resume_claims.json; INTERVIEW_GUIDE.md | NOT_STARTED |
-| R031 | Data-supported figures and underlying tables | scripts/plot_model_results.py; scripts/plot_training_results.py | reports/figures; artifacts/analysis/figure_tables | IN_PROGRESS |
-| R032 | Full independent audit and cross-check | audit tooling; root docs | FINAL_AUDIT.md | NOT_STARTED |
-| R033 | Phase checkpoint review and protected-boundary verification | scripts/checkpoint_review.py | artifacts/audit/checkpoints | IN_PROGRESS |
+| R028 | Minimal end-to-end Streamlit demonstration | ui/ | tests/test_ui_dashboard.py | PASS |
+| R029 | Data/model/system/evaluation cards and final report | *.md; reports/ | FINAL_TECHNICAL_REPORT.md | PASS |
+| R030 | Claim ledger, resume evidence, interview explanations | CLAIM_LEDGER.json; reports/ | reports/RESUME_EVIDENCE.md; artifacts/analysis/resume_claims.json; INTERVIEW_GUIDE.md | PASS |
+| R031 | Data-supported figures and underlying tables | scripts/plot_model_results.py; scripts/plot_training_results.py; scripts/plot_serving_results.py; scripts/finalize_release.py | reports/figures; artifacts/analysis/figure_tables | PASS |
+| R032 | Full independent audit and cross-check | scripts/audit_release.py; root docs | FINAL_AUDIT.md; artifacts/audit/final_audit.json | PASS_WITH_LIMITATIONS |
+| R033 | Phase checkpoint review and protected-boundary verification | control documents and stage review artifacts | artifacts/audit/checkpoints | PASS |

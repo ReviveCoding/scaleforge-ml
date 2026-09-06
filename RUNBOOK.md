@@ -1,30 +1,93 @@
 # ScaleForge-ML Runbook
 
-## Safety and order of operations
+Run repository/control work from Windows and Linux-native ML/CUDA/vLLM work from WSL2 Ubuntu. Never install native-Windows vLLM, change drivers, run simultaneous heavy GPU jobs, or tune against protected GSM8K test/MATH-500 outcomes. Existing protected protocols are CLOSED.
 
-Run commands from the repository root. Windows performs repository/control tasks; WSL2 performs Linux-native PyTorch CUDA and vLLM tasks. Never install native-Windows vLLM. Never access protected datasets before the frozen-manifest validator passes. Do not run two heavy GPU jobs concurrently.
+## Paths and environments
 
-## Planned stages
+```text
+Windows: C:\Users\bjw-0\Downloads\scaleforge-ml
+WSL:     /mnt/c/Users/bjw-0/Downloads/scaleforge-ml
+Train:   .venv       (Python 3.12.14, PyTorch 2.14.0+cu130)
+Serve:   .venv-serve (Python 3.12.14, PyTorch 2.13.0+cu132, vLLM 0.28.0)
+```
 
-1. `FOUNDATION`: persist controls; record preflight; initialize `main`; checkpoint.
-2. `ENGINEERING`: package/config schemas, fixtures, tests, CI, artifact contracts.
-3. `DATA_DEVELOPMENT`: acquire only GSM8K train first; validate provenance/schema/parser/splits/token lengths; create data card/manifests.
-4. `MODEL_DEVELOPMENT`: deterministic M0/M1 and compact LoRA pilots/finalists using FIT/VALIDATION only.
-5. `MODEL_FREEZE`: select M*, freeze all scientific inputs and gates, validate hashes.
-6. `MODEL_QUALIFICATION`: ledger protected accesses; execute GSM8K test and MATH-500 once under frozen identity; canonicalize; paired analysis; close.
-7. `TRAINING_SYSTEMS`: freeze workload; T0 profile; controlled interventions; replicated finalists; thermal/order analysis.
-8. `SERVING_DEVELOPMENT`: isolated vLLM environment; HF baseline pilot; freeze experimental SLO; tune only on development corpus.
-9. `SERVING_QUALIFICATION`: balanced replicated load tests; preserve request/failure telemetry; Pareto/knee analysis.
-10. `DISTRIBUTED`: detect topology; run real DDP only if >=2 physical GPUs and authorized; otherwise validate launch code and publish pending runbook.
-11. `WAREHOUSE_RELEASE`: fail-closed canonicalization, statistics, independent gates, figures, claim ledger.
-12. `DOCUMENTATION_AUDIT`: cards/report/resume/interview/UI, stop features, independent cross-check and final audit.
+Environment inventories are `artifacts/manifests/train_environment.json`, `serve_environment.json`, and `serve_environment.txt`; dependency locks are `uv.lock` and `requirements-serve.lock`. Project-local caches are preferred. No external cache is a source of truth.
 
-## Phase checkpoint
+## CPU quality and package gates
 
-At every stage boundary: inspect `git diff` and status; run applicable tests/linters/types/build; validate new evidence and hashes; verify the protected-access ledger; update requirements, status, decisions, and claims; write a checkpoint artifact; make a local commit when useful.
+```bash
+cd /mnt/c/Users/bjw-0/Downloads/scaleforge-ml
+.venv/bin/python -m ruff format --check src tests scripts api ui
+.venv/bin/python -m ruff check src tests scripts api ui
+.venv/bin/python -m mypy src
+.venv/bin/python -m pytest
+.venv/bin/python -m build
+```
 
-## Failure handling
+`pytest` enforces 80% coverage for non-GPU core logic. Hosted CI runs equivalent CPU-safe checks without downloading model weights. The manual GPU workflow is optional/self-hosted.
 
-Record command, environment, timestamps, logs, partial artifacts, and taxonomy. Do not delete unfavorable or failed evidence. On two materially identical sandbox/network escalations, stop retrying, diagnose, use a safer workspace-local alternative, continue unaffected work, and ask only if essential.
+## Safe evidence rebuild
 
-Exact environment setup, data, training, serving, qualification, and distributed commands will be added only after their scripts exist and have been smoke-tested; unverified commands are not presented as operational.
+These commands only validate already completed qualification artifacts and regenerate canonical tables/figures/release summaries:
+
+```bash
+.venv/bin/python scripts/analyze_model_qualification.py
+.venv/bin/python scripts/analyze_training_qualification.py
+.venv/bin/python scripts/analyze_serving_qualification.py
+.venv/bin/python scripts/build_warehouse.py
+.venv/bin/python scripts/plot_model_results.py
+.venv/bin/python scripts/plot_training_results.py
+.venv/bin/python scripts/plot_serving_results.py
+.venv/bin/python scripts/finalize_release.py
+```
+
+`build_warehouse.py` fails closed on missing/incomplete matrices, duplicate IDs, inconsistent failures, unequal training workloads, or telemetry identity mismatch. It writes canonical Parquet tables, `results.duckdb`, and `warehouse_integrity.json`.
+
+## Services
+
+HF baseline in the train environment:
+
+```bash
+.venv/bin/python scripts/serve_hf.py --host 127.0.0.1 --port 8001
+```
+
+vLLM must run only in `.venv-serve`. Under this WSL host the default V2 runner fails unified virtual addressing; the qualified fallback sets `VLLM_USE_V2_MODEL_RUNNER=0` and serves the frozen M0 checkpoint with the OpenAI-compatible API. Consult `configs/serving/qualification.yaml` before reproducing. Do not describe the fallback as vLLM V2.
+
+Read-only Streamlit evidence dashboard:
+
+```bash
+.venv/bin/streamlit run ui/app.py
+```
+
+The dashboard reads canonical analysis files; it does not launch inference or edit evidence.
+
+## Data and model state
+
+The deterministic development pipeline is implemented by `scripts/prepare_data.py`, but official-test acquisition and protected generation must not be rerun for development. `FREEZE_MANIFEST.json`, `FINAL_ACCESS_LEDGER.json`, and model protocol v3 govern the closed result. A scientific change requires a new experiment identity, fresh freeze, and explicit acknowledgement that earlier protected evidence was consumed.
+
+The historical model progression is immutable:
+
+1. v1 closed after parser overflow with outcomes exposed.
+2. v2 completed with an overflow-safe parser, then closed after a trailing-zero defect was observed.
+3. v3 froze a corrected evaluator and re-scored byte-identical v2 text; no generation/model/prompt changed.
+
+## Training and serving reproduction discipline
+
+Before any new run longer than one hour, measure a pilot, record total estimated time in `PROJECT_STATUS.md`, and confirm it resolves an open requirement. Training uses fresh compile caches, synchronized CUDA, warmup, equal token workload, three or more replicates, balanced order, and telemetry. Serving uses fresh server processes, the frozen 64-request POLICY corpus, the six-level concurrency grid, request-level failures, and frozen SLOs. Never rerun because a result is unfavorable.
+
+## Distributed qualification
+
+Current numerical status is `BLOCKED_EXTERNAL`: one physical CUDA GPU. The two-process CPU/Gloo command used to validate launch plumbing is:
+
+```bash
+torchrun --standalone --nproc-per-node=2 scripts/distributed_smoke.py \
+  --run-id distributed-launch-smoke-20260906 --backend gloo
+```
+
+It is not scaling evidence. Exact freeze, 1-GPU reference, 2-GPU DDP, order, hardware, validation, and analysis commands for a later authorized host are in `DISTRIBUTED_QUALIFICATION_PENDING.md`. Do not run FSDP2 unless a new measured memory question justifies a new protocol.
+
+## Failure and checkpoint handling
+
+Preserve the command, environment, timestamps, logs, partial artifacts, taxonomy, and protected-outcome exposure. If outcomes exist, retry only the identical frozen configuration for reproducibility/recovery; a scientific change creates a new identity. Do not erase failed attempts.
+
+At each stage boundary inspect the diff, run applicable checks, validate hashes/evidence, verify the protected ledger, update `REQUIREMENTS_MATRIX.md`, `PROJECT_STATUS.md`, `DECISIONS.md`, and `CLAIM_LEDGER.json`, then write a local checkpoint. Never push without an explicit request.
