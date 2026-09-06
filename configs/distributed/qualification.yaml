@@ -1,0 +1,37 @@
+protocol_identity: SF-DIST-v1
+state: DEVELOPMENT
+model:
+  repository: Qwen/Qwen2.5-1.5B-Instruct
+  revision: 989aa7980e4cf806f80c7fef2b1adb7bc71aa306
+  dtype: bfloat16
+data:
+  path: artifacts/data/split_manifest.parquet
+  split_role: FIT
+  fingerprint: 88699af7cc17fb3d596dff57434b13e2f5e01ce1c94a5e7d6a9901c20136ec8
+  sequence_length: 640
+workload:
+  examples: 192
+  global_batch_size: 16
+  micro_batch_size: 2
+  warmup_steps: 2
+  measured_steps: 10
+  seed: 20260905
+  learning_rate: 0.0001
+  weight_decay: 0.01
+  dynamic_batch_padding: true
+  lora_rank: 32
+  lora_alpha: 64
+  lora_dropout: 0.05
+  target_modules: [q_proj, k_proj, v_proj, o_proj, gate_proj, up_proj, down_proj]
+qualification:
+  physical_gpu_counts: [1, 2]
+  replicates_per_gpu_count: 3
+  balanced_order: [1, 2, 2, 1, 1, 2]
+  fresh_process_per_run: true
+  fixed_global_workload: true
+  backend: nccl
+  preserve_failures: true
+analysis:
+  primary_metric: global_non_padding_tokens_per_second
+  report: [speedup, scaling_efficiency, peak_memory_per_gpu, communication_operators]
+  prohibit_claim_without_two_physical_gpus: true

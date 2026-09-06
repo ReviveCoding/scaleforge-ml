@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "updated_at": "2026-09-06T00:08:29-04:00",
+  "updated_at": "2026-09-06T00:25:46-04:00",
   "policy": "No user-facing numeric claim is permitted without a validated canonical qualification artifact.",
   "claims": [
     {
@@ -142,6 +142,22 @@
       "status": "SUPPORTED_WITH_QUALIFIER",
       "qualification": "Request-path success only. vLLM exhibited a repeatable post-measurement EngineCore force-kill and leaked semaphore during shutdown.",
       "prohibited_stronger_claim": "Do not claim the service lifecycle was failure-free or production-ready."
+    },
+    {
+      "claim_id": "CLM-DIST-001",
+      "claim_text": "Two-GPU DDP speedup and scaling efficiency were not locally qualified because only one physical CUDA GPU was available.",
+      "metric": "distributed_scaling_efficiency",
+      "baseline": "one_physical_gpu_reference",
+      "candidate": "two_physical_gpu_ddp",
+      "artifact_paths": [
+        "artifacts/manifests/gpu_topology.json",
+        "artifacts/analysis/distributed/distributed_status.json",
+        "DISTRIBUTED_QUALIFICATION_PENDING.md"
+      ],
+      "protocol_identity": "SF-DIST-v1",
+      "status": "NOT_SUPPORTED",
+      "qualification": "Implementation and CPU/Gloo launch behavior are tested; no two-GPU CUDA execution occurred.",
+      "prohibited_stronger_claim": "Do not state or imply any measured distributed speedup, scaling efficiency, communication overhead, or multi-GPU memory result."
     }
   ]
 }

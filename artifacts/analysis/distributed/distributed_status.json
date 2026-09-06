@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0.0",
+  "created_at": "2026-09-06T04:25:46.830910+00:00",
+  "protocol_identity": "SF-DIST-v1",
+  "state": "DEVELOPMENT",
+  "status": "BLOCKED_EXTERNAL",
+  "physical_cuda_gpu_count": 1,
+  "pytorch_cuda_device_count": 1,
+  "reason": "Fewer than two distinct physical CUDA GPUs are visible locally.",
+  "ddp_implementation": "scripts/benchmark_ddp_training.py",
+  "fixed_global_workload": true,
+  "cpu_gloo_launch_smoke": {
+    "status": "PASS",
+    "world_size": 2,
+    "rank_0_all_reduce_sum": 3.0,
+    "rank_1_all_reduce_sum": 3.0,
+    "numerical_scaling_claim_allowed": false
+  },
+  "distributed_freeze_guard": "PASS_REFUSED_ONE_GPU_HOST",
+  "fsdp2": {
+    "status": "NOT_APPLICABLE",
+    "reason": "The 1.5B model fits on one GPU and no measured memory bottleneck justifies sharding."
+  },
+  "distributed_serving": {
+    "status": "BLOCKED_EXTERNAL",
+    "preferred_future_design": "replica/data-parallel capacity scaling",
+    "tensor_parallelism": "NOT_JUSTIFIED_FOR_CURRENT_1_5B_MODEL"
+  },
+  "artifact_sha256": {
+    "artifacts/manifests/gpu_topology.json": "9383ac07841fa2e4d1b626148d4fe909d1219a895570bbd7fdcc104b83adabf5",
+    "artifacts/raw/distributed/distributed-launch-smoke-20260906-rank0.json": "5d0d5fd121fc24ce99762ff262864645275aaca39817071c22e7a800fbdff9e3",
+    "artifacts/raw/distributed/distributed-launch-smoke-20260906-rank1.json": "4346cb2834a24ca8c08216bfe5854b8eba2fc053ba0f028b27e7a7739b48ef1b",
+    "scripts/benchmark_ddp_training.py": "a337c8e9f094c829233e4ed44f1f5f57a836622c312149b020a8cca205b80f4f",
+    "configs/distributed/qualification.yaml": "80c87cdac8e589eb1441de713636ce170459ffab1cbbbd2a72e9ae160da9784"
+  },
+  "next_action": "Execute DISTRIBUTED_QUALIFICATION_PENDING.md unchanged on an authorized two-GPU host."
+}

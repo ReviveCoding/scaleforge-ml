@@ -1,0 +1,21 @@
+{
+  "schema_version": "1.0.0",
+  "created_at": "2026-09-06T04:25:46.830910+00:00",
+  "stage": "DISTRIBUTED_LOCAL_VALIDATION",
+  "protocol_identity": "SF-DIST-v1",
+  "status": "BLOCKED_EXTERNAL",
+  "checks": {
+    "physical_gpu_topology_recorded": true,
+    "physical_cuda_gpu_count": 1,
+    "two_process_gloo_launch": "PASS",
+    "all_reduce_rank_0": "PASS_SUM_3",
+    "all_reduce_rank_1": "PASS_SUM_3",
+    "ddp_cli_import": "PASS",
+    "distributed_freeze_guard": "PASS_REFUSED_ONE_GPU_HOST",
+    "fixed_global_batch_unit_tests": "PASS_5_TESTS_WITH_METRICS_TESTS",
+    "numeric_scaling_claim_present": false,
+    "protected_data_used": false
+  },
+  "fsdp2_status": "NOT_APPLICABLE",
+  "pending_runbook": "DISTRIBUTED_QUALIFICATION_PENDING.md"
+}

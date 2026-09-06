@@ -1,0 +1,13 @@
+{
+  "schema_version": "1.0.0",
+  "created_at": "2026-09-06T04:25:46.830910+00:00",
+  "run_id": "distributed-launch-smoke-20260906",
+  "state": "PILOT",
+  "backend": "gloo",
+  "rank": 0,
+  "local_rank": 0,
+  "world_size": 2,
+  "all_reduce_sum": 3.0,
+  "status": "COMPLETED",
+  "numerical_scaling_claim_allowed": false
+}
