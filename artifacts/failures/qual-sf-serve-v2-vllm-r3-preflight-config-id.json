@@ -1,0 +1,17 @@
+{
+  "schema_version": "1.0.0",
+  "recorded_at": "2026-09-05T23:24:46.0321384-04:00",
+  "protocol_identity": "SF-SERVE-v2",
+  "state": "QUALIFICATION",
+  "attempt": "qual-sf-serve-v2-vllm-r3-preflight-config-id",
+  "git_sha": "9a02578d53af0e58e93d6f191891966b3205bf97",
+  "failure_type": "artifact_integrity_failure",
+  "stage": "qualification_preflight",
+  "requested_config_id": "s2_vllm_v1_bf16",
+  "required_config_id": "s2_vllm_v1_runner",
+  "error": "ValueError: serving qualification run is outside the frozen run matrix",
+  "protected_outcomes_exposed": false,
+  "protected_access_case": "A",
+  "disposition": "Retry permitted under the unchanged frozen scientific configuration using the manifest's exact config identity.",
+  "scientific_configuration_changed": false
+}

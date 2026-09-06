@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "updated_at": "2026-09-05T14:20:00-04:00",
+  "updated_at": "2026-09-06T00:08:29-04:00",
   "policy": "No user-facing numeric claim is permitted without a validated canonical qualification artifact.",
   "claims": [
     {
@@ -94,6 +94,54 @@
       "status": "SUPPORTED_WITH_QUALIFIER",
       "qualification": "PyTorch peak allocated memory on one RTX 4090 Laptop GPU; three runs per configuration; fixed model, data, global batch, and measured tokens.",
       "prohibited_stronger_claim": "Do not equate allocated-memory reduction with total system VRAM or generalize to other accelerators."
+    },
+    {
+      "claim_id": "CLM-SERVE-001",
+      "claim_text": "At the frozen ScaleForge SLO-compliant concurrency-2 operating point, vLLM increased median successful serving throughput by 71.39%, from 0.1208 to 0.2070 requests/s (95% paired three-replicate bootstrap interval 51.01% to 89.52%).",
+      "metric": "median_paired_max_slo_compliant_throughput_change_pct",
+      "baseline": "s0_hf_bf16_c2",
+      "candidate": "s2_vllm_v1_runner_c2",
+      "artifact_paths": [
+        "artifacts/analysis/serving/serving_qualification_sf_serve_v2.json",
+        "artifacts/warehouse/serving_runs.parquet",
+        "artifacts/analysis/figure_tables/F07_serving_throughput.parquet"
+      ],
+      "protocol_identity": "SF-SERVE-v2",
+      "status": "SUPPORTED_WITH_QUALIFIER",
+      "qualification": "Three fresh-server replicates per runtime on one RTX 4090 Laptop GPU; identical 64-request POLICY corpus, model, prompt, tokenizer, 512-token cap, and deterministic decoding; all frozen request-path gates passed.",
+      "prohibited_stronger_claim": "Do not call this a production throughput guarantee, omit n=3/laptop/prefix-cache qualifiers, claim vLLM V2, or generalize beyond this workload and hardware."
+    },
+    {
+      "claim_id": "CLM-SERVE-002",
+      "claim_text": "At concurrency 2, vLLM reduced p95 time per output token by 65.19% and p95 end-to-end latency by 34.75%, while increasing p95 TTFT from 86.86 ms to 443.24 ms.",
+      "metric": "selected_operating_point_tail_latency_change_pct",
+      "baseline": "s0_hf_bf16_c2",
+      "candidate": "s2_vllm_v1_runner_c2",
+      "artifact_paths": [
+        "artifacts/analysis/serving/serving_qualification_sf_serve_v2.json",
+        "artifacts/analysis/serving/serving_qualification_points.parquet",
+        "artifacts/analysis/figure_tables/F08_serving_ttft.parquet"
+      ],
+      "protocol_identity": "SF-SERVE-v2",
+      "status": "SUPPORTED_WITH_QUALIFIER",
+      "qualification": "Hierarchical request-within-replicate bootstrap; p95 TTFT point estimate passes the frozen 500 ms bound, but its 95% interval is 404.74 to 527.72 ms and crosses that bound.",
+      "prohibited_stronger_claim": "Do not claim vLLM improved every latency metric or that TTFT met the frozen bound with 95% confidence."
+    },
+    {
+      "claim_id": "CLM-SERVE-003",
+      "claim_text": "All 2,304 measured serving qualification requests succeeded across 36 frozen HF/vLLM operating points.",
+      "metric": "request_success_rate",
+      "baseline": "s0_hf_bf16",
+      "candidate": "s2_vllm_v1_runner",
+      "artifact_paths": [
+        "artifacts/analysis/serving/serving_qualification_sf_serve_v2.json",
+        "artifacts/warehouse/serving_requests.parquet",
+        "artifacts/failures/serve-vllm-qualification-shutdown.json"
+      ],
+      "protocol_identity": "SF-SERVE-v2",
+      "status": "SUPPORTED_WITH_QUALIFIER",
+      "qualification": "Request-path success only. vLLM exhibited a repeatable post-measurement EngineCore force-kill and leaked semaphore during shutdown.",
+      "prohibited_stronger_claim": "Do not claim the service lifecycle was failure-free or production-ready."
     }
   ]
 }

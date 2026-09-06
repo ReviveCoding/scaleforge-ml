@@ -8,6 +8,10 @@ from scaleforge.analysis.serving import (
     mark_pareto_frontier,
     slo_compliant_throughput,
 )
+from scaleforge.analysis.serving_qualification import (
+    paired_replicate_percent_change,
+    saturation_knee,
+)
 
 
 def test_hierarchical_interval_is_replicate_aware_and_reproducible() -> None:
@@ -47,3 +51,22 @@ def test_slo_compliant_throughput_includes_error_gate() -> None:
     )
     assert throughput == pytest.approx(2.0)
     assert config_id == "safe"
+
+
+def test_paired_replicate_change_is_reproducible() -> None:
+    baseline = pd.Series([1.0, 2.0, 4.0]).to_numpy()
+    candidate = pd.Series([1.5, 3.0, 6.0]).to_numpy()
+    result = paired_replicate_percent_change(baseline, candidate, bootstrap_samples=100, seed=3)
+    assert result.estimate_percent == pytest.approx(50.0)
+    assert result.low_percent == pytest.approx(50.0)
+    assert result.high_percent == pytest.approx(50.0)
+
+
+def test_saturation_knee_finds_bending_point() -> None:
+    frame = pd.DataFrame(
+        {
+            "concurrency": [1, 2, 4, 8, 16],
+            "successful_requests_per_s": [1.0, 1.8, 2.8, 3.0, 3.1],
+        }
+    )
+    assert saturation_knee(frame) == 4

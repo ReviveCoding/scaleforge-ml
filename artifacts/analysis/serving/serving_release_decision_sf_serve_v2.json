@@ -1,0 +1,27 @@
+{
+  "schema_version": "1.0.0",
+  "protocol_identity": "SF-SERVE-v2",
+  "state": "CLOSED",
+  "decision": "REVIEW",
+  "selected_configuration": {
+    "config_id": "s2_vllm_v1_runner",
+    "concurrency": 2,
+    "runner": "V1 compatibility mode",
+    "deployment_status": "REVIEW_REQUIRED"
+  },
+  "release_gates": {
+    "all_36_points_complete": true,
+    "candidate_max_slo_compliant_throughput_gt_baseline": true,
+    "candidate_quality_non_regression": true,
+    "service_error_rate_max_0_01": true,
+    "frozen_critical_gates_pass": true,
+    "lifecycle_shutdown_clean_observation": false
+  },
+  "limitations": [
+    "Only three performance replicates were feasible; uncertainty is correspondingly wide.",
+    "Laptop temperature, clock, power, and order are observational confounds, not randomized treatments.",
+    "The fixed 64-request corpus repeats at every point. vLLM prefix-cache state therefore carries across concurrency points within a replicate, as frozen in the protocol.",
+    "vLLM V2 was incompatible with WSL unified virtual addressing; qualification used the documented V1 runner fallback.",
+    "vLLM force-killed its idle EngineCore and reported one leaked semaphore at every post-measurement shutdown; request-level success was unaffected."
+  ]
+}

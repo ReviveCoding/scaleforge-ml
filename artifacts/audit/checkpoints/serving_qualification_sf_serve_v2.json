@@ -1,0 +1,38 @@
+{
+  "schema_version": "1.0.0",
+  "created_at": "2026-09-06T00:08:29-04:00",
+  "stage": "SERVING_QUALIFICATION",
+  "protocol_identity": "SF-SERVE-v2",
+  "source_git_sha": "9a02578d53af0e58e93d6f191891966b3205bf97",
+  "state": "CLOSED",
+  "checks": {
+    "source_diff_inspected": true,
+    "frozen_source_hashes_verified_before_analysis": true,
+    "expected_points": 36,
+    "observed_points": 36,
+    "measured_requests": 2304,
+    "request_failures": 0,
+    "failed_attempts_preserved": true,
+    "protected_data_boundary": "PASS_POLICY_ONLY_CORPUS",
+    "ruff": "PASS",
+    "mypy": "PASS",
+    "pytest": "PASS_54_TESTS",
+    "coverage": "PASS_82_PERCENT"
+  },
+  "release_decision": "REVIEW",
+  "selected_configuration": "s2_vllm_v1_runner concurrency=2",
+  "artifact_sha256": {
+    "artifacts/analysis/serving/serving_qualification_sf_serve_v2.json": "3b4ac87a7986dcfa92cb879528bf12c0b980fcf5faf5d9961418d1f142c38ab3",
+    "artifacts/analysis/serving/serving_release_decision_sf_serve_v2.json": "639406c9ec76e83e22b7f6c30aa76f28b48e408838745e8bdcf996f838c4160e",
+    "artifacts/warehouse/serving_requests.parquet": "863de1c95168969ef6978820f0922c31912310d9d7df0554d0c46cbc51e36169",
+    "artifacts/warehouse/serving_runs.parquet": "a232966178c9aad6a7fbbf4c6bd8f9abc7c3d50b439bee015194261678edef4a",
+    "artifacts/warehouse/serving_gpu_telemetry.parquet": "823b4b528b5c792b857d8ef774d045b302c7bcfa6ad1323a585d793eca9c76db"
+  },
+  "limitations": [
+    "Three performance replicates on one laptop GPU.",
+    "vLLM V1 runner required because V2 failed under WSL UVA.",
+    "Repeated-corpus prefix-cache state carries within each replicate.",
+    "vLLM shutdown force-killed an idle EngineCore and leaked a semaphore after every replicate.",
+    "The candidate p95 TTFT point estimate passes 500 ms, while its hierarchical 95% interval crosses the bound."
+  ]
+}

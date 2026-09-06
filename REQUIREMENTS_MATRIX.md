@@ -19,14 +19,14 @@ Statuses: `NOT_STARTED`, `IN_PROGRESS`, `PASS`, `PASS_WITH_LIMITATIONS`, `BLOCKE
 | R013 | Profile-led controlled training interventions | src/scaleforge/profiling | artifacts/profiles; reports/figures/F04-F06* | PASS |
 | R014 | Replicated synchronized training qualification with telemetry | src/scaleforge/benchmarks | artifacts/analysis/training/training_qualification_sf_train_v1.json; artifacts/warehouse/training_runs.parquet; gpu_telemetry.parquet | PASS_WITH_LIMITATIONS |
 | R015 | Separate WSL vLLM installation and inventory | requirements-serve.lock; scripts/setup_serve.sh | artifacts/manifests/serve_environment.txt; artifacts/manifests/serve_environment.json | PASS_WITH_LIMITATIONS |
-| R016 | HF/vLLM candidates with apples-to-apples serving corpus | api/hf_server.py; scripts/load_test.py; scripts/run_serving_grid.py | artifacts/raw/serving; artifacts/manifests/serving_corpus.json | IN_PROGRESS |
+| R016 | HF/vLLM candidates with apples-to-apples serving corpus | api/hf_server.py; scripts/load_test.py; scripts/run_serving_grid.py | artifacts/raw/serving; artifacts/manifests/serving_corpus.json; artifacts/analysis/serving/serving_qualification_sf_serve_v2.json | PASS_WITH_LIMITATIONS |
 | R017 | FastAPI health/generate/metrics and structured logging | api/ | tests/test_api.py; tests/test_hf_server_api.py | PASS |
 | R018 | Development SLO proposal frozen before qualification | configs/serving/slo.yaml; scripts/propose_serving_slo.py | artifacts/analysis/serving/hf_baseline_slo_pilot.parquet; configs/serving/slo.yaml | PASS |
-| R019 | Load test request telemetry, failures, tails, Pareto and knee | scripts/load_test.py; scripts/run_serving_grid.py; src/scaleforge/analysis/serving.py | artifacts/warehouse/serving_requests.parquet; reports/figures/F07-F10* | IN_PROGRESS |
+| R019 | Load test request telemetry, failures, tails, Pareto and knee | scripts/load_test.py; scripts/run_serving_grid.py; scripts/analyze_serving_qualification.py | artifacts/warehouse/serving_requests.parquet; artifacts/warehouse/serving_runs.parquet; reports/figures/F07-F10* | PASS |
 | R020 | Detect GPU count; real distributed metrics or honest external block | src/scaleforge/distributed | artifacts/manifests/gpu_topology.json; DISTRIBUTED_QUALIFICATION_PENDING.md | IN_PROGRESS |
 | R021 | DDP launch/test; justified FSDP2 only | scripts/distributed; tests | artifacts/raw/distributed; distributed runbook | NOT_STARTED |
 | R022 | Validated Parquet/DuckDB canonical result warehouse | src/scaleforge/warehouse | artifacts/warehouse/*.parquet; artifacts/warehouse/results.duckdb | IN_PROGRESS |
-| R023 | Correct uncertainty, failure, thermal, and order analysis | src/scaleforge/analysis | artifacts/analysis; reports/figures/F13* | IN_PROGRESS |
+| R023 | Correct uncertainty, failure, thermal, and order analysis | src/scaleforge/analysis; scripts/analyze_serving_qualification.py | artifacts/analysis/serving/serving_qualification_sf_serve_v2.json; artifacts/failures; reports/figures/F13* | PASS_WITH_LIMITATIONS |
 | R024 | Independent critical release gates | src/scaleforge/release | artifacts/warehouse/release_gate_results.parquet; F14* | NOT_STARTED |
 | R025 | Professional typed package and configuration | pyproject.toml; src/scaleforge; configs | dist/*; mypy/ruff evidence | IN_PROGRESS |
 | R026 | Tests and meaningful non-GPU coverage gate | tests/ | artifacts/quality/foundation_quality.json; coverage.xml | PASS |

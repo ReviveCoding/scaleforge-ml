@@ -1,0 +1,267 @@
+{
+  "schema_version": "1.0.0",
+  "created_at": "2026-09-06T04:05:26.704236+00:00",
+  "protocol_identity": "SF-SERVE-v2",
+  "state": "ANALYSIS",
+  "source_git_sha": "9a02578d53af0e58e93d6f191891966b3205bf97",
+  "runs_expected": 36,
+  "runs_observed": 36,
+  "measured_requests": 2304,
+  "request_failures": 0,
+  "input_artifact_sha256": {
+    "configs/serving/qualification.yaml": "13010325f8e90b7c74df668c5546d8fe5fabebe62cef81aadb8e62e25d4a24bf",
+    "configs/serving/slo.yaml": "655b9b3a305f5db0ca36342d8b751b0aaa9f4a41e18af4e61f9710381b81d6ec",
+    "artifacts/manifests/serving_freeze.json": "b267ccf0267a8deccef58372c879203478da9d9e404cfcf13f735bc52d5b8b10",
+    "artifacts/raw/serving/qual-sf-serve-v2-hf-c1-r1-requests.jsonl": "8d348189827824adb556459e25b699faa52bb88018c03163f4ccdd601af162df",
+    "artifacts/raw/serving/qual-sf-serve-v2-hf-c1-r1-gpu.csv": "536053dc234fd6b635fbdba44a5a4af5e0dde7854d2c87944537af3ed4dc5707",
+    "artifacts/analysis/serving/qual-sf-serve-v2-hf-c1-r1.json": "0b3fe42736f66198a460af9d83ed581dd25025d55c7a451931e3467acb958700",
+    "artifacts/raw/serving/qual-sf-serve-v2-hf-c2-r1-requests.jsonl": "80e122ce1ae5856c0641c01ac9a82b988dc52f718329d06d5fe116b703e4b57e",
+    "artifacts/raw/serving/qual-sf-serve-v2-hf-c2-r1-gpu.csv": "892378de0bf4c5e78a2b70b81d3ad0d51ea8b637621fccc1444a75aefa3873b2",
+    "artifacts/analysis/serving/qual-sf-serve-v2-hf-c2-r1.json": "0456c16334c913608c4da7ae13d1e95eaa58134dcfa17fdaeb26797678f1cc2e",
+    "artifacts/raw/serving/qual-sf-serve-v2-hf-c4-r1-requests.jsonl": "48e9383ce8d9afbcdbacb24678eeef2ed9e3edcb0e57ea56ee7f6d33617dc9cc",
+    "artifacts/raw/serving/qual-sf-serve-v2-hf-c4-r1-gpu.csv": "118900bdfdb777f4cccc0e0e50d71811976c1f67e014bb878e604e8339540f3d",
+    "artifacts/analysis/serving/qual-sf-serve-v2-hf-c4-r1.json": "466216e8666bea8bb6ae68544dd24956c8ba11de98797229b360ecace5a3875b",
+    "artifacts/raw/serving/qual-sf-serve-v2-hf-c8-r1-requests.jsonl": "e57bbdaa9551e8f20f8d0fb1676ad66896f62cf6ad4a038d1eb6c29b9a250a98",
+    "artifacts/raw/serving/qual-sf-serve-v2-hf-c8-r1-gpu.csv": "336ab540426795350c32747c87a7aa97d714a334433c517e73864c0ef9786003",
+    "artifacts/analysis/serving/qual-sf-serve-v2-hf-c8-r1.json": "802ba4ab4a117a2595a29b9ac82bc87867badc5406e2ebe9b2c23514a9a631dc",
+    "artifacts/raw/serving/qual-sf-serve-v2-hf-c16-r1-requests.jsonl": "a7b50ab6f9a87b604e1fe88bbc579476abf911cffecf56d9c52ffc3ec3d8d3d9",
+    "artifacts/raw/serving/qual-sf-serve-v2-hf-c16-r1-gpu.csv": "019f0157e620cfde4979ac3123b6226000a6f1edebc58c571dd4e00898599a5f",
+    "artifacts/analysis/serving/qual-sf-serve-v2-hf-c16-r1.json": "16bc64248cf5a48c3512ca30ada4994df6b463d40eb806a3a45312a676ef7953",
+    "artifacts/raw/serving/qual-sf-serve-v2-hf-c32-r1-requests.jsonl": "2a005d311bc3192399e4578e56f5f88eeca87f57e9cc780cb54ee0a40fcaa3e1",
+    "artifacts/raw/serving/qual-sf-serve-v2-hf-c32-r1-gpu.csv": "c39b6355d269d00bb248f389d00df0a0361e89f3ab6b0fdfef8ccd5cfdd017c3",
+    "artifacts/analysis/serving/qual-sf-serve-v2-hf-c32-r1.json": "6ba2a151dacd2ff60bedcb8c8f33159804f5b08a607c8ac9b0e2aaf4f2bcdecf",
+    "artifacts/raw/serving/qual-sf-serve-v2-vllm-c32-r1-requests.jsonl": "e7dab2b4dd565064fc942c48df53ccb4c46357ad03d899797f908e174b0a1932",
+    "artifacts/raw/serving/qual-sf-serve-v2-vllm-c32-r1-gpu.csv": "a8cd519f4e6a10dfe5be2d4680a73e5b700a58db5b70b4ff73e07876074722c9",
+    "artifacts/analysis/serving/qual-sf-serve-v2-vllm-c32-r1.json": "2635e1352221727dc3a137f115ca6705e98af79beaf2f8cdf8a9444035469769",
+    "artifacts/raw/serving/qual-sf-serve-v2-vllm-c16-r1-requests.jsonl": "d0716a351766fbe0f8caf2bce468a67444ab2114ae730a3f2a2d3984d5f168c6",
+    "artifacts/raw/serving/qual-sf-serve-v2-vllm-c16-r1-gpu.csv": "45e1c32a294640c4f6a1a7390ff7a5cff75be743b9ffd9f41f7dd63417a297bc",
+    "artifacts/analysis/serving/qual-sf-serve-v2-vllm-c16-r1.json": "ce79725368f96e33b8d5ee7e5cd7c7162da490112206464890e7733fb0a72682",
+    "artifacts/raw/serving/qual-sf-serve-v2-vllm-c8-r1-requests.jsonl": "46bb6ce974db0c0ccb49ffce0d526b3c8b712525320666e828c311d2a077aaaa",
+    "artifacts/raw/serving/qual-sf-serve-v2-vllm-c8-r1-gpu.csv": "77d3cd5ccaef41be077600c77cef1860e89dbb6d13098ec6041981464c3062be",
+    "artifacts/analysis/serving/qual-sf-serve-v2-vllm-c8-r1.json": "532752d04361ce9bebadef7a3e554251290065e9d234cbb7b3ef81eebe1b8522",
+    "artifacts/raw/serving/qual-sf-serve-v2-vllm-c4-r1-requests.jsonl": "ad62a27c534f0bbd1668ac1a1258865a94857137bb88505c11f5454aacf96540",
+    "artifacts/raw/serving/qual-sf-serve-v2-vllm-c4-r1-gpu.csv": "cad91a90f4b7d13d563efd30826b489464831fcd4bda323882036d2fd06b2766",
+    "artifacts/analysis/serving/qual-sf-serve-v2-vllm-c4-r1.json": "249164aa8e4364737045fe5bd6f6456e0d73df01e4a97f27061b9f6a8b4d7745",
+    "artifacts/raw/serving/qual-sf-serve-v2-vllm-c2-r1-requests.jsonl": "db2db5b90c38a7601b3b26a059779e454313c6c692bdee43dde703b507edc1d9",
+    "artifacts/raw/serving/qual-sf-serve-v2-vllm-c2-r1-gpu.csv": "77bf8b4128cb0503e25195a67b901d6f2a24551075f3e89b810e7b9e2270109d",
+    "artifacts/analysis/serving/qual-sf-serve-v2-vllm-c2-r1.json": "4a4ac7f6817a8e597f032750d9cc14a10254a198b33939d8376ea15d5c8b637f",
+    "artifacts/raw/serving/qual-sf-serve-v2-vllm-c1-r1-requests.jsonl": "70844a50a010d898a773ea51cea8a298cb0ec9cef6cadce29646ffad5464df6a",
+    "artifacts/raw/serving/qual-sf-serve-v2-vllm-c1-r1-gpu.csv": "e3416e6e983682a6b5c8ff16fefe13d9e5d1656c9226cac55983ee1359d9751d",
+    "artifacts/analysis/serving/qual-sf-serve-v2-vllm-c1-r1.json": "5761e0f4cb5fa0d668d324304f75cd973b0771535e809c5eae5f8eeed6197dd9",
+    "artifacts/raw/serving/qual-sf-serve-v2-vllm-c4-r2-requests.jsonl": "d4f0b853a723204d022add29736a74dd860403a328185987f9e9e3df70cafe71",
+    "artifacts/raw/serving/qual-sf-serve-v2-vllm-c4-r2-gpu.csv": "6de756c1c966a4966be1026d28827f6e3c517c8312643cc62ce6e8cd78e6228a",
+    "artifacts/analysis/serving/qual-sf-serve-v2-vllm-c4-r2.json": "647a7a16709ba2e32e38a993e35166761d15c4523567729e5a90cad106463f74",
+    "artifacts/raw/serving/qual-sf-serve-v2-vllm-c8-r2-requests.jsonl": "ea149982b8f6e72304ebadcd136847490d8a4621b08ca20e7fab6de0e40a79de",
+    "artifacts/raw/serving/qual-sf-serve-v2-vllm-c8-r2-gpu.csv": "b3a460292ee861e87c227d07a130788f53cd739749ca072b81a29a995cec2daf",
+    "artifacts/analysis/serving/qual-sf-serve-v2-vllm-c8-r2.json": "a364ff80774d067ba8ba287b3b65301b254641383f233956b52c671d899b0f96",
+    "artifacts/raw/serving/qual-sf-serve-v2-vllm-c16-r2-requests.jsonl": "e1e6c122d493fd3b1dc85c01b85b0459d5ffa266c3f987e1700d7c6fbcacffae",
+    "artifacts/raw/serving/qual-sf-serve-v2-vllm-c16-r2-gpu.csv": "8c7e819c1d8cac7a9175e9d48af7c61bb1b2be5f500f6d437d361017aedffdb9",
+    "artifacts/analysis/serving/qual-sf-serve-v2-vllm-c16-r2.json": "23fda6225815ed8e6924ee8192042167db6410704a40ad76901a2d4e627e49bd",
+    "artifacts/raw/serving/qual-sf-serve-v2-vllm-c32-r2-requests.jsonl": "92aa1bcbf79733f9f1ccfcb717ef78e70c621dc96aa2c280df0ee74793116cca",
+    "artifacts/raw/serving/qual-sf-serve-v2-vllm-c32-r2-gpu.csv": "15507b3ee6dc0e9d74008fce3b7bae8427a1a6fd892556e0c690f9e5cefac22e",
+    "artifacts/analysis/serving/qual-sf-serve-v2-vllm-c32-r2.json": "fa8773598d5c3e89023ee9f6f4b67e4f1d8e86d6b11613874e5471a9e819a254",
+    "artifacts/raw/serving/qual-sf-serve-v2-vllm-c1-r2-requests.jsonl": "334786c3f9d62f64d2d33b17d4bf894f47a3d25d1307830eeee2ed27ed590a07",
+    "artifacts/raw/serving/qual-sf-serve-v2-vllm-c1-r2-gpu.csv": "e822595c33c4e5145bc482104ae80c20520b23ac356fab500f31f985b24a0d06",
+    "artifacts/analysis/serving/qual-sf-serve-v2-vllm-c1-r2.json": "2ee7a4e108179a7bed1c0bdc80f66ceb4517ec177b59fc0b990f6e62939965f3",
+    "artifacts/raw/serving/qual-sf-serve-v2-vllm-c2-r2-requests.jsonl": "bf9a3171872b3dd271eb24102ef2fed09250416c001a0b6753575d95c6c44bf4",
+    "artifacts/raw/serving/qual-sf-serve-v2-vllm-c2-r2-gpu.csv": "2fba7ad5c983c403d0ce8a4e0609e34fff043b6c8171e9bf27c6964e377b5cae",
+    "artifacts/analysis/serving/qual-sf-serve-v2-vllm-c2-r2.json": "0b39de82d06dbd868530948be6a505a48b20b3ee305f1167cf2a517a6423a95e",
+    "artifacts/raw/serving/qual-sf-serve-v2-hf-c2-r2-requests.jsonl": "760515d211aedaa8d02399e4f6bf05eb4254a188d292ec669a78b5892ff6d11c",
+    "artifacts/raw/serving/qual-sf-serve-v2-hf-c2-r2-gpu.csv": "b5c1ed1cba33e2a51aeed4879555764f9481b1ad3b932f79d7c3654e6c96b625",
+    "artifacts/analysis/serving/qual-sf-serve-v2-hf-c2-r2.json": "eb54f97f6433e22929f359ef50172dfd8538fdc3f873975eea6bf3b55be98630",
+    "artifacts/raw/serving/qual-sf-serve-v2-hf-c1-r2-requests.jsonl": "02fc856037fa85db6beb65020221e8052c33cb0f74a9632f454104e1a882e7b2",
+    "artifacts/raw/serving/qual-sf-serve-v2-hf-c1-r2-gpu.csv": "ef3492f935bb0ae3d2f608fc4d9a6ea7a4164862bb8c3c3e2a0a91cf3c59e1a0",
+    "artifacts/analysis/serving/qual-sf-serve-v2-hf-c1-r2.json": "d55ffaf495a7e2de7482fe8363d39865bf51c957b574132ca962cb7067a5bb32",
+    "artifacts/raw/serving/qual-sf-serve-v2-hf-c32-r2-requests.jsonl": "28ee3410db44419237483482139ebc28a041e959f40e60494e2ab84e76f6da28",
+    "artifacts/raw/serving/qual-sf-serve-v2-hf-c32-r2-gpu.csv": "47892cb8c0da88265f2b28db2748b413ecd93dcefce8579c13008ae59c77cd4e",
+    "artifacts/analysis/serving/qual-sf-serve-v2-hf-c32-r2.json": "c35938a99801979c7d8e7acff4812e7bb23fd0c40c293f05257857fb9134398e",
+    "artifacts/raw/serving/qual-sf-serve-v2-hf-c16-r2-requests.jsonl": "402082a0c12d11f1f280e5b72507e1fd64b12f25c35a8613446defe0a281ae09",
+    "artifacts/raw/serving/qual-sf-serve-v2-hf-c16-r2-gpu.csv": "d7be3beeb5eb2dbf6457db7358ae76aa0fe94c829ac81edd53601101dee53535",
+    "artifacts/analysis/serving/qual-sf-serve-v2-hf-c16-r2.json": "975da7f715c990df2e7103dbaf4450a55c9a719be2711b5b4d2aea9540b823e9",
+    "artifacts/raw/serving/qual-sf-serve-v2-hf-c8-r2-requests.jsonl": "3959f0bcf37718b96463a78f9b7d06ce6d305a6c0ea509bd593bd56a10a00ae9",
+    "artifacts/raw/serving/qual-sf-serve-v2-hf-c8-r2-gpu.csv": "989ddb68782b8ded1735b4e0e4c1ca66b94b71694344441952a8baabb114f84f",
+    "artifacts/analysis/serving/qual-sf-serve-v2-hf-c8-r2.json": "a43040c833fa45ce4896aef9035b314a3e4ea87e0dd0594e801a059d83d5bd00",
+    "artifacts/raw/serving/qual-sf-serve-v2-hf-c4-r2-requests.jsonl": "b9ae3e4e6d7c548662f9de7bfb9f37793009995f5ce9c6e62fd442a464a3a01e",
+    "artifacts/raw/serving/qual-sf-serve-v2-hf-c4-r2-gpu.csv": "c507be8b1b7f6eefb553574f1174857d0550f2c0018f24e45d0cc585156900a1",
+    "artifacts/analysis/serving/qual-sf-serve-v2-hf-c4-r2.json": "e803313760e922f5afe7dea0b265c3557ae44e7161cecd60dc9f7089b973a0a8",
+    "artifacts/raw/serving/qual-sf-serve-v2-hf-c8-r3-requests.jsonl": "7720656ba51aeabb2bb0c86129eb9fc5386467e4c4aab7c0854d6813125459a0",
+    "artifacts/raw/serving/qual-sf-serve-v2-hf-c8-r3-gpu.csv": "9776046f7e5e3f4c60b84b4f23717375bad0b7ca65885cfa944996aa42ad7d02",
+    "artifacts/analysis/serving/qual-sf-serve-v2-hf-c8-r3.json": "a7078784569e4379390d35781977d4779c2e10901296be10b87b302da7dee0fc",
+    "artifacts/raw/serving/qual-sf-serve-v2-hf-c4-r3-requests.jsonl": "df0f7fff39d502c155a1686fb8742d6577e08ee333746c553e5e306d9ae8475d",
+    "artifacts/raw/serving/qual-sf-serve-v2-hf-c4-r3-gpu.csv": "cf11028661e9424cc8bc0ce6c9c1310eca452bd9d42e4880b377e2030b13e38d",
+    "artifacts/analysis/serving/qual-sf-serve-v2-hf-c4-r3.json": "49a06bf3eb41b3c607bd089a829d5179bdd6d0e476442ca25e8bc1172be31dbe",
+    "artifacts/raw/serving/qual-sf-serve-v2-hf-c2-r3-requests.jsonl": "8b4d223c134853aa479264968a8a78b66e7d8949a561bf6e580569b1833ed85d",
+    "artifacts/raw/serving/qual-sf-serve-v2-hf-c2-r3-gpu.csv": "0a8875228f097c7b4af2d4f210804e1ec3a0ded645980008e67be0c7855a008c",
+    "artifacts/analysis/serving/qual-sf-serve-v2-hf-c2-r3.json": "a18077ee6fe6dbcecd8cb19ddd0ec60d0efb5da65f6959602dc4315f6d142843",
+    "artifacts/raw/serving/qual-sf-serve-v2-hf-c1-r3-requests.jsonl": "4e36e9359e6809ecc53eb07f30571036811245aa3fa8632f285913ccf5b241fe",
+    "artifacts/raw/serving/qual-sf-serve-v2-hf-c1-r3-gpu.csv": "e54f3958b08f535d264139ddaeefc2be8fde02e04ebc6173fb6b281603930874",
+    "artifacts/analysis/serving/qual-sf-serve-v2-hf-c1-r3.json": "076be25e35a1802cd10c3b46afdf360822ca4d69c0fd28f03b2b672f95059614",
+    "artifacts/raw/serving/qual-sf-serve-v2-hf-c32-r3-requests.jsonl": "819e0cc58fd27910b496c982e4c6591a7b9b672776c264f80de74d24e1948bf1",
+    "artifacts/raw/serving/qual-sf-serve-v2-hf-c32-r3-gpu.csv": "78738e0dade7f8cd040c4421e5f303730c63b30aeb8bcfc49997c0df8ffc130c",
+    "artifacts/analysis/serving/qual-sf-serve-v2-hf-c32-r3.json": "ede7e9bae4c31003148e08177b1866ae72f8989b2b6f47218a50d4821afa2d21",
+    "artifacts/raw/serving/qual-sf-serve-v2-hf-c16-r3-requests.jsonl": "844e6d1113d031970b8329471241ef117b8c918e91f5c7ac85f3f785f359a9ce",
+    "artifacts/raw/serving/qual-sf-serve-v2-hf-c16-r3-gpu.csv": "81f315250fa015dacf47a29ce9077554f8c968101689eb57fcd1b289d996c067",
+    "artifacts/analysis/serving/qual-sf-serve-v2-hf-c16-r3.json": "c1f0093a9d83f849ef6b742118c9031e64fa6bd651041daa0e39164bb28d35cb",
+    "artifacts/raw/serving/qual-sf-serve-v2-vllm-c16-r3-requests.jsonl": "b5f6cfb9184eb684fffc38011935c7e4499cdd06b181fa3e9a7c5ce86dee2d8c",
+    "artifacts/raw/serving/qual-sf-serve-v2-vllm-c16-r3-gpu.csv": "07921ceb8e43b9434bf1d568cef4cf987fba7590c2a8ae90b08724fdfc7a53c2",
+    "artifacts/analysis/serving/qual-sf-serve-v2-vllm-c16-r3.json": "075732e4f254f22156f6208019a03ee97f2ff6b1c2099b7b159acec8585b32ab",
+    "artifacts/raw/serving/qual-sf-serve-v2-vllm-c32-r3-requests.jsonl": "bd74c66f12b4e9a6e2819bdc08b93e30400edf1f35237b79e73e5f1482fa4c8e",
+    "artifacts/raw/serving/qual-sf-serve-v2-vllm-c32-r3-gpu.csv": "e99fe1b5020dfaeb7d43026a898096c68bb66c1faf88e8461436e6e22f387ae5",
+    "artifacts/analysis/serving/qual-sf-serve-v2-vllm-c32-r3.json": "c845412131898f8fa85eb5215cb1368aa0600011a6b435307d6715798435188a",
+    "artifacts/raw/serving/qual-sf-serve-v2-vllm-c1-r3-requests.jsonl": "23b81d24c82a602984bc4c37a0ebfc05c052fe92576ba5fa812a54486f3da18d",
+    "artifacts/raw/serving/qual-sf-serve-v2-vllm-c1-r3-gpu.csv": "ea09096bd5c3419052370a6386a3c647772d6eb21ed7e82a354e27caeff51346",
+    "artifacts/analysis/serving/qual-sf-serve-v2-vllm-c1-r3.json": "35e770465bd4f523fd96879667bc43a2ad01bae1e2511c0deae53fa80a151a6c",
+    "artifacts/raw/serving/qual-sf-serve-v2-vllm-c2-r3-requests.jsonl": "250047c3d9ee53216916581da73c48d02c287d8aa008ca65c6a5b3326bd8959e",
+    "artifacts/raw/serving/qual-sf-serve-v2-vllm-c2-r3-gpu.csv": "6dcba8674106d10e82ef85b74c33715641856d6f08c0456ada5396bf5134f1fe",
+    "artifacts/analysis/serving/qual-sf-serve-v2-vllm-c2-r3.json": "085c964bd381b9c8f6d65669bb8b5cc9a6695a1493ae232cc61e32c0c491dc99",
+    "artifacts/raw/serving/qual-sf-serve-v2-vllm-c4-r3-requests.jsonl": "7485f1e0a6ec0e7db3ee9cab6341eee07ad650089aed613f246f5fd69cdb72ef",
+    "artifacts/raw/serving/qual-sf-serve-v2-vllm-c4-r3-gpu.csv": "7eb38f62f60e75f3dac53b5686aec4ab2f65aca39f9eb7d3079093bd35baefb5",
+    "artifacts/analysis/serving/qual-sf-serve-v2-vllm-c4-r3.json": "d9392c31b0a9cf855f7db171a4687f059adf6bd9b06cd3e4d939bf692c3262a4",
+    "artifacts/raw/serving/qual-sf-serve-v2-vllm-c8-r3-requests.jsonl": "7e1127e75c948eea118d31215920d635dd182270fda3fcee43c2b049f52ce86d",
+    "artifacts/raw/serving/qual-sf-serve-v2-vllm-c8-r3-gpu.csv": "64ea13674a0c6fe2f81e21f201f045e391a4b1b612ab5610e8ec2bdf720e2940",
+    "artifacts/analysis/serving/qual-sf-serve-v2-vllm-c8-r3.json": "961830a624386f708302d13e9026304d308f971fd8963f364f98b0c48e254376"
+  },
+  "slo_scope": "ScaleForge experimental interactive SLO; not a Google SLO",
+  "max_slo_compliant_throughput": {
+    "s0_hf_bf16": {
+      "concurrency": 2,
+      "throughput": 0.12078376601218051,
+      "output_tokens_per_s": 32.302108422882526,
+      "ttft_p95_ms": 86.85806530029363,
+      "tpot_p95_ms": 112.51263181987736,
+      "e2e_p95_ms": 25696.94974059948,
+      "error_rate": 0.0,
+      "exact_match": 0.890625,
+      "parse_failure_rate": 0.0
+    },
+    "s2_vllm_v1_runner": {
+      "concurrency": 2,
+      "throughput": 0.2070146429168911,
+      "output_tokens_per_s": 56.05244917354384,
+      "ttft_p95_ms": 443.2363999983863,
+      "tpot_p95_ms": 39.16454357729153,
+      "e2e_p95_ms": 16767.906479249716,
+      "error_rate": 0.0,
+      "exact_match": 0.9114583333333334,
+      "parse_failure_rate": 0.0
+    }
+  },
+  "selected_configuration": {
+    "config_id": "s2_vllm_v1_runner",
+    "concurrency": 2,
+    "runner": "V1 compatibility mode",
+    "deployment_status": "REVIEW_REQUIRED"
+  },
+  "paired_replicate_throughput_change": {
+    "baseline_median": 0.12078376601218051,
+    "candidate_median": 0.2070146429168911,
+    "estimate_percent": 71.39277052846207,
+    "low_percent": 51.01241130789849,
+    "high_percent": 89.51544859731568,
+    "pairs": 3,
+    "samples": 5000
+  },
+  "selected_point_metric_changes_percent": {
+    "throughput": 71.39277052846207,
+    "output_tokens_per_s": 73.52566724046032,
+    "ttft_p95_ms": 410.2996462861439,
+    "tpot_p95_ms": -65.19098083138748,
+    "e2e_p95_ms": -34.74748307283517
+  },
+  "selected_point_latency_uncertainty": {
+    "s0_hf_bf16": {
+      "ttft_p95_ms": {
+        "estimate_ms": 86.85806530029363,
+        "ci_low_ms": 72.63268425031129,
+        "ci_high_ms": 151.1155734506236
+      },
+      "tpot_p95_ms": {
+        "estimate_ms": 112.51263181987736,
+        "ci_low_ms": 96.8326607100197,
+        "ci_high_ms": 132.83403930270012
+      },
+      "e2e_p95_ms": {
+        "estimate_ms": 25696.94974059948,
+        "ci_low_ms": 23581.701032999263,
+        "ci_high_ms": 26781.4962198001
+      }
+    },
+    "s2_vllm_v1_runner": {
+      "ttft_p95_ms": {
+        "estimate_ms": 443.2363999983863,
+        "ci_low_ms": 404.7383120014274,
+        "ci_high_ms": 527.7235679968726
+      },
+      "tpot_p95_ms": {
+        "estimate_ms": 39.16454357729153,
+        "ci_low_ms": 38.277493856265835,
+        "ci_high_ms": 42.9257336374838
+      },
+      "e2e_p95_ms": {
+        "estimate_ms": 16767.906479249716,
+        "ci_low_ms": 14909.034855001664,
+        "ci_high_ms": 17931.821392952035
+      }
+    }
+  },
+  "paired_quality_at_candidate_operating_point": {
+    "pairs": 192,
+    "baseline_exact_match": 0.890625,
+    "candidate_exact_match": 0.9114583333333334,
+    "delta_percentage_points": 2.083333333333333,
+    "candidate_only": 5,
+    "baseline_only": 1,
+    "both_correct": 170,
+    "both_wrong": 16,
+    "inference_note": "Transitions are descriptive because the same 64 prompts repeat across three serving replicates."
+  },
+  "saturation_knee": {
+    "s0_hf_bf16": 8,
+    "s2_vllm_v1_runner": 16
+  },
+  "thermal_and_order_diagnostics": {
+    "unit": "qualification run",
+    "n": 36,
+    "outcome": "throughput residual percent after config-by-concurrency median removal",
+    "associations": {
+      "temperature_median_c": {
+        "spearman_rho": 0.24794820683288835,
+        "p_value_descriptive": 0.14482236230434853,
+        "n": 36
+      },
+      "sm_clock_median_mhz": {
+        "spearman_rho": 0.3967790215665053,
+        "p_value_descriptive": 0.016578033577825026,
+        "n": 36
+      },
+      "power_median_w": {
+        "spearman_rho": 0.4427158177685542,
+        "p_value_descriptive": 0.006853729210040935,
+        "n": 36
+      },
+      "absolute_order": {
+        "spearman_rho": 0.014949527021805445,
+        "p_value_descriptive": 0.9310400956076372,
+        "n": 36
+      }
+    },
+    "interpretation": "These observational associations diagnose laptop thermal/order confounding; they are not causal adjustments or primary release statistics."
+  },
+  "release_gates": {
+    "all_36_points_complete": true,
+    "candidate_max_slo_compliant_throughput_gt_baseline": true,
+    "candidate_quality_non_regression": true,
+    "service_error_rate_max_0_01": true,
+    "frozen_critical_gates_pass": true,
+    "lifecycle_shutdown_clean_observation": false
+  },
+  "release_decision": "REVIEW",
+  "release_decision_note": "All predeclared request-path gates pass, so S2 at concurrency 2 is the selected experimental runtime. Overall serving remains REVIEW because the repeatable vLLM shutdown defect blocks an unqualified production-readiness claim.",
+  "limitations": [
+    "Only three performance replicates were feasible; uncertainty is correspondingly wide.",
+    "Laptop temperature, clock, power, and order are observational confounds, not randomized treatments.",
+    "The fixed 64-request corpus repeats at every point. vLLM prefix-cache state therefore carries across concurrency points within a replicate, as frozen in the protocol.",
+    "vLLM V2 was incompatible with WSL unified virtual addressing; qualification used the documented V1 runner fallback.",
+    "vLLM force-killed its idle EngineCore and reported one leaked semaphore at every post-measurement shutdown; request-level success was unaffected."
+  ]
+}

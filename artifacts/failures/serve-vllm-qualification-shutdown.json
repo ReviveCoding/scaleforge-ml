@@ -1,0 +1,16 @@
+{
+  "schema_version": "1.0.0",
+  "recorded_at": "2026-09-05T23:54:31.2572946-04:00",
+  "protocol_identity": "SF-SERVE-v2",
+  "state": "QUALIFICATION",
+  "failure_type": "service_failure",
+  "stage": "post_measurement_shutdown",
+  "runtime": "vLLM 0.28.0 V1 runner",
+  "replicates_affected": [1, 2, 3],
+  "measured_requests_affected": 0,
+  "protected_outcomes_exposed_before_failure": true,
+  "protected_access_case": "B",
+  "observed": "After every completed replicate, SIGINT caused the process manager to force-kill an idle EngineCore and Python reported one leaked semaphore.",
+  "request_outcomes": "All 1152 vLLM measured requests completed successfully before shutdown.",
+  "disposition": "Preserve as a lifecycle-reliability defect; no scientific configuration or result was changed and no rerun was performed for this defect."
+}
