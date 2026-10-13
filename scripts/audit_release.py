@@ -38,8 +38,8 @@ def main() -> None:
         "EVALUATION_CARD.md",
         "FINAL_TECHNICAL_REPORT.md",
         "FINAL_AUDIT.md",
-        "reports/RESUME_EVIDENCE.md",
-        "INTERVIEW_GUIDE.md",
+        "reports/MEASURED_RESULTS.md",
+        "docs/EXPERIMENT_DECISIONS.md",
     ]
     missing_documents = [path for path in required_documents if not Path(path).is_file()]
 
@@ -103,13 +103,13 @@ def main() -> None:
             "71.39%",
             "BLOCKED_EXTERNAL",
         ],
-        "reports/RESUME_EVIDENCE.md": [
+        "reports/MEASURED_RESULTS.md": [
             "66.64%",
             "49.43%",
             "348.51%",
             "71.39%",
         ],
-        "INTERVIEW_GUIDE.md": ["17.21", "348.51%", "71.39%", "only one GPU"],
+        "docs/EXPERIMENT_DECISIONS.md": ["17.21", "348.51%", "71.39%", "only one GPU"],
     }
     documentation_mismatches: list[str] = []
     for raw_path, tokens in document_tokens.items():
@@ -128,7 +128,7 @@ def main() -> None:
         "resume_export_matches_supported_ledger": supported_ids == resume_ids,
         "no_supported_distributed_numeric_claim": not supported_distributed_claims,
         "frozen_and_qualification_hashes_match": not hash_mismatches,
-        "recruiter_document_key_numbers_present": not documentation_mismatches,
+        "research_document_key_numbers_present": not documentation_mismatches,
     }
     status = "PASS" if all(checks.values()) else "BLOCK"
     result = {
