@@ -38,8 +38,6 @@ def main() -> None:
         "EVALUATION_CARD.md",
         "FINAL_TECHNICAL_REPORT.md",
         "FINAL_AUDIT.md",
-        "reports/RESUME_EVIDENCE.md",
-        "INTERVIEW_GUIDE.md",
     ]
     missing_documents = [path for path in required_documents if not Path(path).is_file()]
 
@@ -47,7 +45,7 @@ def main() -> None:
     gates = pd.read_parquet("artifacts/warehouse/release_gate_results.parquet")
     failures = pd.read_parquet("artifacts/warehouse/failure_events.parquet")
     ledger = read_json(Path("CLAIM_LEDGER.json"))
-    resume = read_json(Path("artifacts/analysis/resume_claims.json"))
+    supported_export = read_json(Path("artifacts/analysis/resume_claims.json"))
 
     expected_gate_decisions = {
         "MODEL": "PASS",
@@ -62,7 +60,7 @@ def main() -> None:
         for claim in ledger["claims"]
         if claim["status"] in {"SUPPORTED", "SUPPORTED_WITH_QUALIFIER"}
     }
-    resume_ids = {claim["claim_id"] for claim in resume["claims"]}
+    export_ids = {claim["claim_id"] for claim in supported_export["claims"]}
     supported_distributed_claims = [
         claim["claim_id"]
         for claim in ledger["claims"]
@@ -103,13 +101,6 @@ def main() -> None:
             "71.39%",
             "BLOCKED_EXTERNAL",
         ],
-        "reports/RESUME_EVIDENCE.md": [
-            "66.64%",
-            "49.43%",
-            "348.51%",
-            "71.39%",
-        ],
-        "INTERVIEW_GUIDE.md": ["17.21", "348.51%", "71.39%", "only one GPU"],
     }
     documentation_mismatches: list[str] = []
     for raw_path, tokens in document_tokens.items():
@@ -125,10 +116,10 @@ def main() -> None:
         "release_gates_exact": observed_gate_decisions == expected_gate_decisions,
         "failures_preserved": len(failures) >= 1,
         "claim_artifacts_present": not missing_claim_artifacts,
-        "resume_export_matches_supported_ledger": supported_ids == resume_ids,
+        "supported_claim_export_matches_ledger": supported_ids == export_ids,
         "no_supported_distributed_numeric_claim": not supported_distributed_claims,
         "frozen_and_qualification_hashes_match": not hash_mismatches,
-        "recruiter_document_key_numbers_present": not documentation_mismatches,
+        "technical_document_key_numbers_present": not documentation_mismatches,
     }
     status = "PASS" if all(checks.values()) else "BLOCK"
     result = {
