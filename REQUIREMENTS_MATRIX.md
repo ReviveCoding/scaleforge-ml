@@ -33,7 +33,7 @@ Statuses: `NOT_STARTED`, `IN_PROGRESS`, `PASS`, `PASS_WITH_LIMITATIONS`, `BLOCKE
 | R027 | CPU CI, build/smoke, optional manual GPU workflow | .github/workflows | workflow YAML; local validation | PASS |
 | R028 | Minimal end-to-end Streamlit demonstration | ui/ | tests/test_ui_dashboard.py | PASS |
 | R029 | Data/model/system/evaluation cards and final report | *.md; reports/ | FINAL_TECHNICAL_REPORT.md | PASS |
-| R030 | Claim ledger, resume evidence, interview explanations | CLAIM_LEDGER.json; reports/ | reports/RESUME_EVIDENCE.md; artifacts/analysis/resume_claims.json; INTERVIEW_GUIDE.md | PASS |
+| R030 | Claim ledger, measured results, and experiment decisions | CLAIM_LEDGER.json; reports/ | reports/MEASURED_RESULTS.md; artifacts/analysis/resume_claims.json; docs/EXPERIMENT_DECISIONS.md | PASS |
 | R031 | Data-supported figures and underlying tables | scripts/plot_model_results.py; scripts/plot_training_results.py; scripts/plot_serving_results.py; scripts/finalize_release.py | reports/figures; artifacts/analysis/figure_tables | PASS |
 | R032 | Full independent audit and cross-check | scripts/audit_release.py; root docs | FINAL_AUDIT.md; artifacts/audit/final_audit.json | PASS_WITH_LIMITATIONS |
 | R033 | Phase checkpoint review and protected-boundary verification | control documents and stage review artifacts | artifacts/audit/checkpoints | PASS |
