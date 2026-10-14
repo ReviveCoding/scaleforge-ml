@@ -22,6 +22,7 @@ def test_paired_quality_rejects_bad_units() -> None:
     with pytest.raises(ValueError):
         paired_quality(np.array([]), np.array([]))
 
+
 @pytest.mark.parametrize("invalid", [0, -3, True, 2.5])
 def test_paired_quality_requires_positive_integer_bootstrap_count(invalid) -> None:
     with pytest.raises(ValueError, match="bootstrap_samples"):
