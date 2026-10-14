@@ -24,7 +24,7 @@ official immutable sources
   -> frozen POLICY corpus/SLO -> HF and vLLM load qualification
   -> raw artifacts + failures -> Parquet/DuckDB validation
   -> paired/hierarchical statistics -> independent release gates
-  -> cards, report, claim ledger, resume/interview evidence
+  -> cards, report, claim ledger, and audit evidence
 ```
 
 The code uses a typed `src/scaleforge` package, config-controlled scripts, separate WSL train and serving environments, FastAPI endpoints (`/health`, `/generate`, `/metrics`), request-level and GPU telemetry, CPU CI, and a read-only Streamlit evidence dashboard.
@@ -59,7 +59,7 @@ The service objectives are ScaleForge experimental SLOs, not Google SLOs: p95 TT
 - `ui/`: read-only Streamlit evidence dashboard
 - `tests/`: CPU-safe unit, integration-fixture, API, statistics, artifact, and release tests
 - `artifacts/warehouse/`: canonical Parquet tables and DuckDB database
-- `artifacts/analysis/`: qualification decisions, figure tables, and resume-safe claim export
+- `artifacts/analysis/`: qualification decisions, figure tables, and traceable claim evidence
 - `reports/figures/`: figures F01-F10, F13, and F14
 
 ## Reproduction
@@ -82,8 +82,7 @@ Protected model generation is CLOSED and must not be rerun for tuning. Exact sta
 
 - [Final technical report](FINAL_TECHNICAL_REPORT.md)
 - [Data card](DATA_CARD.md), [model card](MODEL_CARD.md), [system card](SYSTEM_CARD.md), [evaluation card](EVALUATION_CARD.md)
-- [Resume evidence](reports/RESUME_EVIDENCE.md) and [interview guide](INTERVIEW_GUIDE.md)
-- [Final audit](FINAL_AUDIT.md) and [requirements matrix](REQUIREMENTS_MATRIX.md)
+- [Final audit](FINAL_AUDIT.md), [claim ledger](CLAIM_LEDGER.json), and [requirements matrix](REQUIREMENTS_MATRIX.md)
 - `artifacts/analysis/release_decision.json` and `artifacts/analysis/warehouse_integrity.json`
 
 No raw model weights or large raw datasets are committed. No cloud GPU, paid API, or fabricated distributed result was used.
