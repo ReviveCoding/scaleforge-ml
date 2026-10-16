@@ -28,6 +28,13 @@ def paired_quality(
     bootstrap_samples: int = 10_000,
     seed: int = 20260904,
 ) -> PairedQuality:
+    """Compute paired exact-match deltas with a validated bootstrap budget."""
+    if (
+        isinstance(bootstrap_samples, bool)
+        or not isinstance(bootstrap_samples, int)
+        or bootstrap_samples < 1
+    ):
+        raise ValueError("bootstrap_samples must be a positive integer")
     baseline = np.asarray(baseline, dtype=bool)
     candidate = np.asarray(candidate, dtype=bool)
     if baseline.ndim != 1 or candidate.ndim != 1 or len(baseline) != len(candidate):
