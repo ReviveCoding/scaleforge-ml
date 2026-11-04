@@ -82,7 +82,7 @@ def load_qualification() -> pd.DataFrame:
     for dataset, expected in EXPECTED.items():
         subset = frame.loc[frame["dataset_id"].eq(dataset)]
         counts = subset.groupby("config_id")["example_id"].nunique().to_dict()
-        if counts != {config: expected for config in CONFIGS}:
+        if counts != dict.fromkeys(CONFIGS, expected):
             raise ValueError(f"incomplete {dataset} qualification data: {counts}")
         pairing = subset.pivot(index="example_id", columns="config_id", values="correct")
         if len(pairing) != expected or pairing.isna().any().any():
